@@ -4,33 +4,6 @@
   
     
     <entry>
-      <title>Billion-Scale Federated Learning on Mobile Clients: A Submodel Design with Tunable Privacy</title>
-      <link href="/2022/11/06/billion-scale-federated-learning-on-mobile-clients-a-submodel-design-with-tunable-privacy/"/>
-      <url>/2022/11/06/billion-scale-federated-learning-on-mobile-clients-a-submodel-design-with-tunable-privacy/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Billion-Scale-Federated-Learning-on-Mobile-Clients-A-Submodel-Design-with-Tunable-Privacy"><a href="#Billion-Scale-Federated-Learning-on-Mobile-Clients-A-Submodel-Design-with-Tunable-Privacy" class="headerlink" title="Billion-Scale Federated Learning on Mobile Clients: A Submodel Design with Tunable Privacy"></a>Billion-Scale Federated Learning on Mobile Clients: A Submodel Design with Tunable Privacy</h1>]]></content>
-      
-      
-      <categories>
-          
-          <category> About Thesis </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> About Thesis </tag>
-            
-            <tag> About FL </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>SparkSession</title>
       <link href="/2022/10/28/sparksession/"/>
       <url>/2022/10/28/sparksession/</url>
@@ -259,33 +232,6 @@
     
     
     <entry>
-      <title>TOWARDS FEDERATED LEARNING AT SCALE: SYSTEM DESIGN</title>
-      <link href="/2022/10/28/towards-federated-learning-at-scale-system-design/"/>
-      <url>/2022/10/28/towards-federated-learning-at-scale-system-design/</url>
-      
-        <content type="html"><![CDATA[<h1 id="TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN"><a href="#TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN" class="headerlink" title="TOWARDS FEDERATED LEARNING AT SCALE: SYSTEM DESIGN"></a>TOWARDS FEDERATED LEARNING AT SCALE: SYSTEM DESIGN</h1><p>Android’s AIDL IPC mechanism？</p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>把代码放数据那，处理的问题：privacy, ownership, the locality of data</p><h2 id="部分相关工作"><a href="#部分相关工作" class="headerlink" title="部分相关工作"></a>部分相关工作</h2><ol><li><p>general description of FL: McMahan &amp; Ramage (2017)</p></li><li><p>theory of FL: Koneˇ cn  ́ y et al. (2016a), McMahan et al. (2017; 2018)</p></li><li><p>Federated Learning infrastructure:</p><ol><li>whether to focus on asynchronous or synchronous training algorithms: asynchronous training: Dean et al. (2012)</li><li>a consistent trend towards synchronous large batch training: (data center)Goyal et al., 2017; Smith et al., 2018</li><li>(Federated Averaging algorithm)McMahan et al. (2017)</li><li>enhancing privacy guarantees: (differential privacy)McMahan et al., 2018, (Secure Aggregation)Bonawitz et al., 2017</li></ol></li><li><p>Our system:</p><ol><li>Federated Averaging</li><li>Secure Aggregation: ensures that on a global level individual updates from phones are uninspectable</li><li>phone keyboard, tens of millions of real-world devices</li><li>issues: <ol><li>device availability that correlates with the local data distribution in complex ways</li><li>unreliable device connectivity and interrupted execution</li><li>orchestration of lock-step execution across devices with varying availability</li><li>limited device storage and compute resources</li></ol></li></ol></li></ol><h2 id="PROTOCOL"><a href="#PROTOCOL" class="headerlink" title="PROTOCOL:"></a>PROTOCOL:</h2><ol><li><p>训练过程：device训练完毕时，服务器向device发送本轮的全局参数和其他必要的状态例如FL Checkpoint，每个参与者在本地根据全局的状态和本地的数据集进行梯度的计算，将更新的数据发送给服务器，服务器再将这些更新全部聚合。</p></li><li><p>选择：设备的选择，满足一定的条件（例如充电和使用wifi），一轮选择小几百的数据量，满足条件后就和服务器建立起一个双向的连接，用于检查设备的liveness并进行multi-step的交流。（选择的数量大概小几百）。未连接的设备服务器告诉他稍后连接。达到足够数量的设备本轮才算是成功。</p></li><li><p>Pace steering: 给device发送重连的时间窗口，FL Populations少的时候，服务器使用无状态的概率算法拒绝一些设备以确保checkin同时到达。多的时候，使用随机的设备check in时间，避免了thundering herd问题，告诉设备按需连接。</p></li><li><p>服务器</p><ol><li>处理10个-上亿个设备的情况，处理10个-几万个参与者的情况，没一轮的更新可能是千K到几十M。</li><li>多个Coordinators：enable global synchronization and advancing rounds in lockstep，每个Coordinator负责一个FL Population，Coordinator用地址和FL Population的名字注册一个共享锁服务，一个FL Population只能有一个owner。接收并处理每个Selector有多少设备参与的信息，生成Aggregator去管理不同FL任务的轮次。</li><li>Selector：和device交流，不断接受Coordinator的信息（FL Population需要多少设备，如何决定要不要一个设备），当Aggregator生成后，将subset的devices发送给Aggregator。</li><li>Master Aggregator：管理每一个FL任务的轮次，</li><li>流水线优化，这样的架构使得上一轮的报告和下一轮的选择可以一起做。</li></ol></li><li><p>设备:</p><ol><li>服务器分反一个a TensorFlow graph and instructions for how to execute it。</li><li>在example store里面选择数据的标准，如何打包data，设备上跑多少个epoch，计算图中节点的标签个数。维护一个example store，实现提供数据的API，不断的移除旧的数据，并按照平台的推荐对数据进行加密。</li><li>设备中的架构（图2），多租户，可以训练多个FL Population。</li><li>保护FL不受到不可信设备的攻击：不能用用户身份授权，所以用了Android’s remote attestation mechanism，并且这样的方式也提供了data poisoning的保护(Bagdasaryan et al., 2018)，</li></ol></li><li><p>通过分析数据去监测Device的健康（将数据上传到云）：</p><p>Device上传：训练被激活时设备的状态，跑了多频繁和多久，用了多少内存，有什么错误，OS等等，不包含用户信息（PII），记录设备的状态序列。服务器端记录：每一个轮次多少设备被接受和拒绝了等等。</p></li></ol><h2 id="SECURE-AGGREGATION（reporting-phrase）"><a href="#SECURE-AGGREGATION（reporting-phrase）" class="headerlink" title="SECURE AGGREGATION（reporting phrase）"></a>SECURE AGGREGATION（reporting phrase）</h2><p>​    每个设备发送的梯度加密，服务器端只有在收集到足够多的数据之后才进行总和的计算。时间复杂度随着用户是O($用户数^2$)，首先所有的Aggregator做安全聚合（固定的数目k），然后Master Aggregator再做一次非安全聚合。</p><h2 id="工具和工作流："><a href="#工具和工作流：" class="headerlink" title="工具和工作流："></a>工具和工作流：</h2><ol><li><p>不能直接推测每一个的训练样本? 做一个工具去查看测试和模拟的数据</p></li><li><p>新修改的模型要编成FL Plan再放到服务器上跑。</p></li><li><p>模型资源的话费和运行时候的兼容性质必须自动的由基础框架验证。</p></li><li><p>如何建立模型？</p><ol><li>定义在手机上跑着的FL任务（训练和评测任务），就是实现对应的函数接口，实现输入向量到loss或者accuracy的映射。部署时候就使用设备上 样本商店 提供的数据。</li><li>除了实现每个设备的FL任务之外，还要给定一个配置文件：一轮多少个设备效果最好，模型的超参（学习率）等等。同时，可以定义多组FLtask，这在比如探索什么样的学习率比较好十分有用。</li><li>使用模型工具可以模拟 FL服务器和一些列设备，使用一些模拟的数据集。 训练出来的结果也可用作预训练的模型。</li></ol></li><li><p>FL Plan生成：</p><ol><li>FL Plan自动由前面的模型和配置生成。这个计划，其实可以由一个python程序表示，python程序会编排一个TF计算图。</li><li>版本、测试和部署管理：<ol><li>模型的更新：<ol><li>必须来自可审计的，同行审议过的代码</li><li>必须在模拟测试集上已经经过测试</li><li>使用的资源限定在一定的范围内</li><li>声称支持的tf上全部经过测试。不同终端上TF版本代码的变换，和数据中心化的训练不同的是，数据中心化的训练可以一直rebuild图，但是终端上的设备的TF runtime版本可能很老。因此由FL infrastructure来对FL Plan进行等价的变换以适应特定的版本，不同的版本经过同样的release test以确保不同的版本的变换是等价的。</li></ol></li><li>数据的写入：每一轮结束之后，模型的聚类的参数就会被写到server的被指定的位置。每个设备的每一次训练由任务名称、论次名称和其他的一些数据标识，对应的一些指标可以由这个系统去分析。</li></ol></li></ol><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2></li><li><p>On-device item ranking</p></li><li><p>Content suggestions for on-device keyboards</p></li><li><p>Next word prediction</p></li></ol><h2 id="OPERATIONAL-PROFILE（经验）"><a href="#OPERATIONAL-PROFILE（经验）" class="headerlink" title="OPERATIONAL PROFILE（经验）"></a>OPERATIONAL PROFILE（经验）</h2><p>​    </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> About Thesis </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> About Thesis </tag>
-            
-            <tag> About FL </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>概率论部分内容复习</title>
       <link href="/2022/10/28/gai-lu-lun-yu-shu-li-tong-ji/"/>
       <url>/2022/10/28/gai-lu-lun-yu-shu-li-tong-ji/</url>
@@ -305,6 +251,33 @@
             <tag> About Reading </tag>
             
             <tag> About Math </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>TOWARDS FEDERATED LEARNING AT SCALE: SYSTEM DESIGN</title>
+      <link href="/2022/10/28/towards-federated-learning-at-scale-system-design/"/>
+      <url>/2022/10/28/towards-federated-learning-at-scale-system-design/</url>
+      
+        <content type="html"><![CDATA[<h1 id="TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN"><a href="#TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN" class="headerlink" title="TOWARDS FEDERATED LEARNING AT SCALE: SYSTEM DESIGN"></a>TOWARDS FEDERATED LEARNING AT SCALE: SYSTEM DESIGN</h1><p>Android’s AIDL IPC mechanism？</p><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>把代码放数据那，处理的问题：privacy, ownership, the locality of data</p><h2 id="部分相关工作"><a href="#部分相关工作" class="headerlink" title="部分相关工作"></a>部分相关工作</h2><ol><li><p>general description of FL: McMahan &amp; Ramage (2017)</p></li><li><p>theory of FL: Koneˇ cn  ́ y et al. (2016a), McMahan et al. (2017; 2018)</p></li><li><p>Federated Learning infrastructure:</p><ol><li>whether to focus on asynchronous or synchronous training algorithms: asynchronous training: Dean et al. (2012)</li><li>a consistent trend towards synchronous large batch training: (data center)Goyal et al., 2017; Smith et al., 2018</li><li>(Federated Averaging algorithm)McMahan et al. (2017)</li><li>enhancing privacy guarantees: (differential privacy)McMahan et al., 2018, (Secure Aggregation)Bonawitz et al., 2017</li></ol></li><li><p>Our system:</p><ol><li>Federated Averaging</li><li>Secure Aggregation: ensures that on a global level individual updates from phones are uninspectable</li><li>phone keyboard, tens of millions of real-world devices</li><li>issues: <ol><li>device availability that correlates with the local data distribution in complex ways</li><li>unreliable device connectivity and interrupted execution</li><li>orchestration of lock-step execution across devices with varying availability</li><li>limited device storage and compute resources</li></ol></li></ol></li></ol><h2 id="PROTOCOL"><a href="#PROTOCOL" class="headerlink" title="PROTOCOL:"></a>PROTOCOL:</h2><ol><li><p>训练过程：device训练完毕时，服务器向device发送本轮的全局参数和其他必要的状态例如FL Checkpoint，每个参与者在本地根据全局的状态和本地的数据集进行梯度的计算，将更新的数据发送给服务器，服务器再将这些更新全部聚合。</p></li><li><p>选择：设备的选择，满足一定的条件（例如充电和使用wifi），一轮选择小几百的数据量，满足条件后就和服务器建立起一个双向的连接，用于检查设备的liveness并进行multi-step的交流。（选择的数量大概小几百）。未连接的设备服务器告诉他稍后连接。达到足够数量的设备本轮才算是成功。</p></li><li><p>Pace steering: 给device发送重连的时间窗口，FL Populations少的时候，服务器使用无状态的概率算法拒绝一些设备以确保checkin同时到达。多的时候，使用随机的设备check in时间，避免了thundering herd问题，告诉设备按需连接。</p></li><li><p>服务器</p><ol><li>处理10个-上亿个设备的情况，处理10个-几万个参与者的情况，没一轮的更新可能是千K到几十M。</li><li>多个Coordinators：enable global synchronization and advancing rounds in lockstep，每个Coordinator负责一个FL Population，Coordinator用地址和FL Population的名字注册一个共享锁服务，一个FL Population只能有一个owner。接收并处理每个Selector有多少设备参与的信息，生成Aggregator去管理不同FL任务的轮次。</li><li>Selector：和device交流，不断接受Coordinator的信息（FL Population需要多少设备，如何决定要不要一个设备），当Aggregator生成后，将subset的devices发送给Aggregator。</li><li>Master Aggregator：管理每一个FL任务的轮次，</li><li>流水线优化，这样的架构使得上一轮的报告和下一轮的选择可以一起做。</li></ol></li><li><p>设备:</p><ol><li>服务器分反一个a TensorFlow graph and instructions for how to execute it。</li><li>在example store里面选择数据的标准，如何打包data，设备上跑多少个epoch，计算图中节点的标签个数。维护一个example store，实现提供数据的API，不断的移除旧的数据，并按照平台的推荐对数据进行加密。</li><li>设备中的架构（图2），多租户，可以训练多个FL Population。</li><li>保护FL不受到不可信设备的攻击：不能用用户身份授权，所以用了Android’s remote attestation mechanism，并且这样的方式也提供了data poisoning的保护(Bagdasaryan et al., 2018)，</li></ol></li><li><p>通过分析数据去监测Device的健康（将数据上传到云）：</p><p>Device上传：训练被激活时设备的状态，跑了多频繁和多久，用了多少内存，有什么错误，OS等等，不包含用户信息（PII），记录设备的状态序列。服务器端记录：每一个轮次多少设备被接受和拒绝了等等。</p></li></ol><h2 id="SECURE-AGGREGATION（reporting-phrase）"><a href="#SECURE-AGGREGATION（reporting-phrase）" class="headerlink" title="SECURE AGGREGATION（reporting phrase）"></a>SECURE AGGREGATION（reporting phrase）</h2><p>​    每个设备发送的梯度加密，服务器端只有在收集到足够多的数据之后才进行总和的计算。时间复杂度随着用户是O($用户数^2$)，首先所有的Aggregator做安全聚合（固定的数目k），然后Master Aggregator再做一次非安全聚合。</p><h2 id="工具和工作流："><a href="#工具和工作流：" class="headerlink" title="工具和工作流："></a>工具和工作流：</h2><ol><li><p>不能直接推测每一个的训练样本? 做一个工具去查看测试和模拟的数据</p></li><li><p>新修改的模型要编成FL Plan再放到服务器上跑。</p></li><li><p>模型资源的话费和运行时候的兼容性质必须自动的由基础框架验证。</p></li><li><p>如何建立模型？</p><ol><li>定义在手机上跑着的FL任务（训练和评测任务），就是实现对应的函数接口，实现输入向量到loss或者accuracy的映射。部署时候就使用设备上 样本商店 提供的数据。</li><li>除了实现每个设备的FL任务之外，还要给定一个配置文件：一轮多少个设备效果最好，模型的超参（学习率）等等。同时，可以定义多组FLtask，这在比如探索什么样的学习率比较好十分有用。</li><li>使用模型工具可以模拟 FL服务器和一些列设备，使用一些模拟的数据集。 训练出来的结果也可用作预训练的模型。</li></ol></li><li><p>FL Plan生成：</p><ol><li>FL Plan自动由前面的模型和配置生成。这个计划，其实可以由一个python程序表示，python程序会编排一个TF计算图。</li><li>版本、测试和部署管理：<ol><li>模型的更新：<ol><li>必须来自可审计的，同行审议过的代码</li><li>必须在模拟测试集上已经经过测试</li><li>使用的资源限定在一定的范围内</li><li>声称支持的tf上全部经过测试。不同终端上TF版本代码的变换，和数据中心化的训练不同的是，数据中心化的训练可以一直rebuild图，但是终端上的设备的TF runtime版本可能很老。因此由FL infrastructure来对FL Plan进行等价的变换以适应特定的版本，不同的版本经过同样的release test以确保不同的版本的变换是等价的。</li></ol></li><li>数据的写入：每一轮结束之后，模型的聚类的参数就会被写到server的被指定的位置。每个设备的每一次训练由任务名称、论次名称和其他的一些数据标识，对应的一些指标可以由这个系统去分析。</li></ol></li></ol><h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2></li><li><p>On-device item ranking</p></li><li><p>Content suggestions for on-device keyboards</p></li><li><p>Next word prediction</p></li></ol><h2 id="OPERATIONAL-PROFILE（经验）"><a href="#OPERATIONAL-PROFILE（经验）" class="headerlink" title="OPERATIONAL PROFILE（经验）"></a>OPERATIONAL PROFILE（经验）</h2><p>​    </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> About Thesis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> About Thesis </tag>
+            
+            <tag> About FL </tag>
             
         </tags>
       

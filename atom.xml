@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2022-11-06T03:39:10.093Z</updated>
+  <updated>2022-10-28T15:07:36.174Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -15,33 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Billion-Scale Federated Learning on Mobile Clients: A Submodel Design with Tunable Privacy</title>
-    <link href="https://hiyoungshen.github.io/2022/11/06/billion-scale-federated-learning-on-mobile-clients-a-submodel-design-with-tunable-privacy/"/>
-    <id>https://hiyoungshen.github.io/2022/11/06/billion-scale-federated-learning-on-mobile-clients-a-submodel-design-with-tunable-privacy/</id>
-    <published>2022-11-06T03:28:13.000Z</published>
-    <updated>2022-11-06T03:39:10.093Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Billion-Scale-Federated-Learning-on-Mobile-Clients-A-Submodel-Design-with-Tunable-Privacy&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
-    
-    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
-    
-  </entry>
   
   <entry>
     <title>SparkSession</title>
@@ -272,33 +245,6 @@
   </entry>
   
   <entry>
-    <title>TOWARDS FEDERATED LEARNING AT SCALE: SYSTEM DESIGN</title>
-    <link href="https://hiyoungshen.github.io/2022/10/28/towards-federated-learning-at-scale-system-design/"/>
-    <id>https://hiyoungshen.github.io/2022/10/28/towards-federated-learning-at-scale-system-design/</id>
-    <published>2022-10-28T12:58:29.000Z</published>
-    <updated>2022-11-06T03:40:10.261Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN&quot;&gt;&lt;a href=&quot;#TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
-    
-    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
-    
-  </entry>
-  
-  <entry>
     <title>概率论部分内容复习</title>
     <link href="https://hiyoungshen.github.io/2022/10/28/gai-lu-lun-yu-shu-li-tong-ji/"/>
     <id>https://hiyoungshen.github.io/2022/10/28/gai-lu-lun-yu-shu-li-tong-ji/</id>
@@ -322,6 +268,33 @@
     <category term="About Reading" scheme="https://hiyoungshen.github.io/tags/About-Reading/"/>
     
     <category term="About Math" scheme="https://hiyoungshen.github.io/tags/About-Math/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TOWARDS FEDERATED LEARNING AT SCALE: SYSTEM DESIGN</title>
+    <link href="https://hiyoungshen.github.io/2022/10/28/towards-federated-learning-at-scale-system-design/"/>
+    <id>https://hiyoungshen.github.io/2022/10/28/towards-federated-learning-at-scale-system-design/</id>
+    <published>2022-10-28T12:58:29.000Z</published>
+    <updated>2022-11-06T03:40:10.261Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN&quot;&gt;&lt;a href=&quot;#TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
     
   </entry>
   
@@ -564,6 +537,35 @@
         
         
     <summary type="html">&lt;h1 id=&quot;An-Explorative-Study-of-the-Mobile-App-Ecosystem-from-App-Developers’-Perspective&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Software-Analysis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/tags/About-Software-Analysis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AppNet: Understanding App Recommendation in Google Play</title>
+    <link href="https://hiyoungshen.github.io/2021/10/30/appnet-understanding-app-recommendation-in-google-play/"/>
+    <id>https://hiyoungshen.github.io/2021/10/30/appnet-understanding-app-recommendation-in-google-play/</id>
+    <published>2021-10-30T08:37:00.000Z</published>
+    <updated>2022-10-28T15:07:36.161Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;AppNet-Understanding-App-Recommendation-in-Google-Play&quot;&gt;&lt;a href=&quot;#AppNet-Understanding-App-Recommendation-in-Google-Play&quot;</summary>
         
       
     
