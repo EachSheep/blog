@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2022-10-30T13:17:10.275Z</updated>
+  <updated>2022-11-05T08:13:27.500Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://hiyoungshen.github.io/2022/11/03/automatic-reliability-testing-for-cluster-management-controllers/"/>
+    <id>https://hiyoungshen.github.io/2022/11/03/automatic-reliability-testing-for-cluster-management-controllers/</id>
+    <published>2022-11-03T06:47:43.975Z</published>
+    <updated>2022-11-05T08:13:27.500Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Automatic-Reliability-Testing-for-Cluster-Management-Controllers&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title></title>
@@ -535,35 +556,6 @@
     <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
     
     <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/tags/About-Software-Analysis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Bitcoin: A Peer-to-Peer Electronic Cash System</title>
-    <link href="https://hiyoungshen.github.io/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/"/>
-    <id>https://hiyoungshen.github.io/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/</id>
-    <published>2021-10-30T08:37:00.000Z</published>
-    <updated>2022-10-28T15:07:36.161Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Bitcoin-A-Peer-to-Peer-Electronic-Cash-System&quot;&gt;&lt;a href=&quot;#Bitcoin-A-Peer-to-Peer-Electronic-Cash-System&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
-    
-    <category term="About Block Chain" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Block-Chain/"/>
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
-    
-    <category term="About Block Chain" scheme="https://hiyoungshen.github.io/tags/About-Block-Chain/"/>
     
   </entry>
   
