@@ -245,6 +245,60 @@
   </entry>
   
   <entry>
+    <title>FedScale: Benchmarking Model and System Performance of Federated Learning at Scale</title>
+    <link href="https://hiyoungshen.github.io/2022/10/28/fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/"/>
+    <id>https://hiyoungshen.github.io/2022/10/28/fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/</id>
+    <published>2022-10-28T12:58:29.000Z</published>
+    <updated>2022-11-06T03:41:02.793Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;FedScale-Benchmarking-Model-and-System-Performance-of-Federated-Learning-at-Scale&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TOWARDS FEDERATED LEARNING AT SCALE: SYSTEM DESIGN</title>
+    <link href="https://hiyoungshen.github.io/2022/10/28/towards-federated-learning-at-scale-system-design/"/>
+    <id>https://hiyoungshen.github.io/2022/10/28/towards-federated-learning-at-scale-system-design/</id>
+    <published>2022-10-28T12:58:29.000Z</published>
+    <updated>2022-11-06T03:40:10.261Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN&quot;&gt;&lt;a href=&quot;#TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
+    
+  </entry>
+  
+  <entry>
     <title>概率论部分内容复习</title>
     <link href="https://hiyoungshen.github.io/2022/10/28/gai-lu-lun-yu-shu-li-tong-ji/"/>
     <id>https://hiyoungshen.github.io/2022/10/28/gai-lu-lun-yu-shu-li-tong-ji/</id>
@@ -523,64 +577,6 @@
     <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
     
     <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/tags/About-Software-Analysis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AppNet: Understanding App Recommendation in Google Play</title>
-    <link href="https://hiyoungshen.github.io/2021/10/30/appnet-understanding-app-recommendation-in-google-play/"/>
-    <id>https://hiyoungshen.github.io/2021/10/30/appnet-understanding-app-recommendation-in-google-play/</id>
-    <published>2021-10-30T08:37:00.000Z</published>
-    <updated>2022-10-28T15:07:36.161Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;AppNet-Understanding-App-Recommendation-in-Google-Play&quot;&gt;&lt;a href=&quot;#AppNet-Understanding-App-Recommendation-in-Google-Play&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
-    
-    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Software-Analysis/"/>
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
-    
-    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/tags/About-Software-Analysis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Bitcoin: A Peer-to-Peer Electronic Cash System</title>
-    <link href="https://hiyoungshen.github.io/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/"/>
-    <id>https://hiyoungshen.github.io/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/</id>
-    <published>2021-10-30T08:37:00.000Z</published>
-    <updated>2022-10-28T15:07:36.161Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Bitcoin-A-Peer-to-Peer-Electronic-Cash-System&quot;&gt;&lt;a href=&quot;#Bitcoin-A-Peer-to-Peer-Electronic-Cash-System&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
-    
-    <category term="About Block Chain" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Block-Chain/"/>
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
-    
-    <category term="About Block Chain" scheme="https://hiyoungshen.github.io/tags/About-Block-Chain/"/>
     
   </entry>
   
