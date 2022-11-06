@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2022-10-28T15:07:36.174Z</updated>
+  <updated>2022-11-06T03:39:10.093Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Billion-Scale Federated Learning on Mobile Clients: A Submodel Design with Tunable Privacy</title>
+    <link href="https://hiyoungshen.github.io/2022/11/06/billion-scale-federated-learning-on-mobile-clients-a-submodel-design-with-tunable-privacy/"/>
+    <id>https://hiyoungshen.github.io/2022/11/06/billion-scale-federated-learning-on-mobile-clients-a-submodel-design-with-tunable-privacy/</id>
+    <published>2022-11-06T03:28:13.000Z</published>
+    <updated>2022-11-06T03:39:10.093Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Billion-Scale-Federated-Learning-on-Mobile-Clients-A-Submodel-Design-with-Tunable-Privacy&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
+    
+  </entry>
   
   <entry>
     <title>SparkSession</title>
@@ -554,35 +581,6 @@
     <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
     
     <category term="About Block Chain" scheme="https://hiyoungshen.github.io/tags/About-Block-Chain/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Demystifying Illegal Mobile Gambling Apps</title>
-    <link href="https://hiyoungshen.github.io/2021/10/29/demystifying-illegal-mobile-gambling-apps/"/>
-    <id>https://hiyoungshen.github.io/2021/10/29/demystifying-illegal-mobile-gambling-apps/</id>
-    <published>2021-10-29T12:43:54.000Z</published>
-    <updated>2022-10-28T15:07:36.164Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Demystifying-Illegal-Mobile-Gambling-Apps&quot;&gt;&lt;a href=&quot;#Demystifying-Illegal-Mobile-Gambling-Apps&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
-    
-    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Software-Analysis/"/>
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
-    
-    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/tags/About-Software-Analysis/"/>
     
   </entry>
   

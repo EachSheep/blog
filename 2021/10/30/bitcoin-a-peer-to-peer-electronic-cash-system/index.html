@@ -709,7 +709,7 @@
 <!-- /vscode-markdown-toc -->
 <h2 id="1-作者信息"><a href="#1-作者信息" class="headerlink" title="1. 作者信息"></a>1. <a name></a>作者信息</h2><ul>
 <li>Satoshi Nakamoto</li>
-<li><a href="mailto:&#x73;&#97;&#x74;&#111;&#115;&#x68;&#x69;&#x6e;&#x40;&#103;&#x6d;&#x78;&#x2e;&#x63;&#111;&#x6d;">&#x73;&#97;&#x74;&#111;&#115;&#x68;&#x69;&#x6e;&#x40;&#103;&#x6d;&#x78;&#x2e;&#x63;&#111;&#x6d;</a></li>
+<li><a href="mailto:&#x73;&#97;&#116;&#x6f;&#115;&#104;&#105;&#x6e;&#64;&#103;&#109;&#120;&#x2e;&#99;&#111;&#x6d;">&#x73;&#97;&#116;&#x6f;&#115;&#104;&#105;&#x6e;&#64;&#103;&#109;&#120;&#x2e;&#99;&#111;&#x6d;</a></li>
 <li><a target="_blank" rel="noopener" href="http://www.bitcoin.org/">www.bitcoin.org</a></li>
 </ul>
 <h2 id="2-行文思路"><a href="#2-行文思路" class="headerlink" title="2. 行文思路"></a>2. <a name="-1"></a>行文思路</h2><p>本文主要介绍了区块链系统，并验证了这个系统的优点和好处。<br>目录：</p>
@@ -747,7 +747,7 @@
 <li>数字签名（初步理解，可能有错）：</li>
 <li>防止交易信息被篡改</li>
 <li>保证交易信息来自发送方</li>
-<li><img src="/.io//pic1.png" class="lazyload placeholder" data-srcset="/.io//pic1.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li>
+<li><img src="/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/pic1.png" class="lazyload placeholder" data-srcset="/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/pic1.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li>
 <li>上图的三个框框分别即位ABC</li>
 <li>以A-&gt;B为例，A想和B交易，会产生一条交易信息，以为info(A,B)，需要验证以下几点：<ul>
 <li>交易信息不能被篡改（info(A,B)进行一次hash运算，生成一个摘要message(A,B)）</li>
@@ -761,7 +761,7 @@
 <li>一个用户的账本（这个用户有多少钱），不是像中心化系统那样去处理的，有一个你的账户，这个账户上有一个你的余额，而是根据和你相关的所有的交易记录去确定你有多少的余额。</li>
 <li>Timestamp Server</li>
 <li>为了确保交易被记录之后，这个账本在之后不被篡改。</li>
-<li><img src="/.io//pic2.png" class="lazyload placeholder" data-srcset="/.io//pic2.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li>
+<li><img src="/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/pic2.png" class="lazyload placeholder" data-srcset="/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/pic2.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li>
 <li>我们假设有这么几个区块，区块A、区块B、区块C、区块D、区块E…按照如下顺序排列构成一条区块链：    区块A-&gt;区块B-&gt;区块C-&gt;区块D-&gt;区块E-&gt;…假设A是创世区块，就是区块链上的第一个区块。    那么B区块的时间戳哈希值便包含了A区块时间戳的哈希值。我们可以知道，由于B区块包含了A区块的时间戳，我们就可以判断B区块在后，A区块在前。同理，C区块的时间戳又包含了A、B区块的时间戳，D区块又包含了A、B、C区块的时间戳…    时间戳服务就如同区块链上的这条链。保证了区块按照顺序连接成区块链。如果我们要根据区块D来找到区块A就可以运用计算机科学上面的递归思想：根据区块D的哈希值找到D的上一个区块，区块C，又根据区块C找到区块B，根据B找到A，最后由于A是第一个创世区块，没有上一个区块，因此这个递归过程结束，找到了区块A。    传统的时间戳服务，如商品包装盒上的生产日期，想改动的话只需要把包装盒上原来的生产日期抹除，再印上一个新的生产日期即可。而比特币的时间戳服务意味着要想篡改某一个区块的内容，就必须把这个区块前面以及后面的区块统统改掉。    而比特币从发布至今，已经过了十几年，并且系统规定每10分钟链接一个新的区块。那条公认的区块链上面的某一个区块可能前后皆连接了数千万甚至上亿个的区块，因此想要改动所要付出的计算量已经庞大到了一个不可能的程度。    所以，比特币的时间戳服务保证了每个区块里面的交易记录无法被篡改。一个区块只要链接到那条公认的区块链上，就可以保证这个区块里面的所有交易记录皆是真实有效且无法篡改的。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/118120800">来源</a></li>
 </ul>
 <h2 id="6-Proof-of-work（工作量证明）"><a href="#6-Proof-of-work（工作量证明）" class="headerlink" title="6. Proof-of-work（工作量证明）"></a>6. <a name="Proof-of-work"></a>Proof-of-work（工作量证明）</h2><ul>
@@ -783,7 +783,7 @@
 </ul>
 <h2 id="7-Network"><a href="#7-Network" class="headerlink" title="7. Network"></a>7. <a name="Network"></a>Network</h2><ul>
 <li>区块链生成的顺序：</li>
-<li><img src="/.io//pic3.png" class="lazyload placeholder" data-srcset="/.io//pic3.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li>
+<li><img src="/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/pic3.png" class="lazyload placeholder" data-srcset="/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/pic3.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li>
 <li>最长链原则（如果两台机器同时找出了答案，接受谁的打包，奖励给谁？）<ul>
 <li>当同时出现多个用户打包出符合系统要求的区块时，那么先暂时不把打包好的区块串链到公认的区块链上，而是让那些用户继续打包新的区块，并把打包好的区块暂时链接到自己的区块上，形成一个自己的支链。当某一个时刻出现一条最长支链时，那个拥有最长支链的用户，就可以把自己的这条最长支链，链接到公认的区块链上。其他用户打包出的，符合系统要求，但是比较短的支链，则会被系统舍弃。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/118120800">来源</a></li>
 </ul>
@@ -816,7 +816,7 @@
 </ul>
 <h2 id="11-Combining-and-Splitting-Value"><a href="#11-Combining-and-Splitting-Value" class="headerlink" title="11. Combining and Splitting Value"></a>11. <a name="CombiningandSplittingValue"></a>Combining and Splitting Value</h2><ul>
 <li>每一个交易的形式：</li>
-<li><img src="/.io//pic4.png" class="lazyload placeholder" data-srcset="/.io//pic4.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li>
+<li><img src="/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/pic4.png" class="lazyload placeholder" data-srcset="/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/pic4.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li>
 <li>比特币采用的是全民记账，并且在比特币交易上的人,都是通过哈希加密匿名的，只能通过地址交易。矿工的记账只是记录每一个地址的交易信息，而并不计算地址的余额。因为比特币每一个账本上的内容都是相同的，所以比特币的记账过程可以举例为：    <ul>
 <li>A通过挖矿获得了12.5个比特币，并且用了0.1个比特币向B买了部 iphone11pro ,那么A交易信息包含的输入（in）和 输出(out)分别为：    </li>
 <li>in：空用户给了A 12.5个比特币（因为12.5个比特币是系统的奖励，不是某个用户给A的，因此可以把付款方看成是一个空用户）。   </li>
@@ -826,7 +826,7 @@
 <li> 比特币钱包只需要根据比特币系统中A的所有交易记录，便可以推算出A的余额。</li>
 </ul>
 <h2 id="12-Privacy"><a href="#12-Privacy" class="headerlink" title="12. Privacy:"></a>12. <a name="Privacy:"></a>Privacy:</h2><ul>
-<li><img src="/.io//pic5.png" class="lazyload placeholder" data-srcset="/.io//pic5.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li>
+<li><img src="/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/pic5.png" class="lazyload placeholder" data-srcset="/2021/10/30/bitcoin-a-peer-to-peer-electronic-cash-system/pic5.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li>
 <li>省去了trusted third party，trusted third party需要我们对第三方有着绝对的信任。</li>
 <li>bitcoin的交易记录完全是公开的，知道哪个公钥和哪个公钥之间产生了交易记录，但是却不知道这个公钥对应着谁。</li>
 </ul>

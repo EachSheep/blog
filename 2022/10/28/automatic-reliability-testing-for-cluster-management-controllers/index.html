@@ -647,7 +647,7 @@
 <p>Borg, Omega and Kubernetes 依赖state-reconciliation principle去变得高弹性和可拓展性，所有的<strong>集群管理</strong>的<strong>逻辑</strong>即<strong>控制器</strong>被嵌入在松散耦合的微服务中（这些<strong>集群管理的逻辑就是微服务</strong>）。每一个控制器独立的观测当前的集群的状态，采取特定的措施使得当前的集群满足特定的状态。复杂的分布式的本质是建立稳定性强的正确的控制器很难，控制器面临着<strong>无数的可靠性问题</strong>，导致<strong>数据损失，安全和资源泄漏</strong>。</p>
 <p><strong>Sieve</strong>，测试集群控制器的工具，通过不断的干扰控制器看到的当前集群的状态，然后去比较集群受到干扰和没受到干扰时候的状态去检测安全和liveness的问题。Sieve的设计基于基本<strong>状态恢复系统的基本机会</strong>，这些系统基于<strong>state-centric interfaces between controllers and cluster state</strong>，Sieve找到了46个严重的安全和liveness的bug，35个确认，22个修复，false-positive比例是$3.5%$</p>
 <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>控制器遵循<strong>state-reconciliation principle</strong>，reconciles the current state of the cluster to match a desired state. 集群的状态放在逻辑上中心化的，高可用的数据中心，K8S里面的<strong>pods、nodes、volumns和应用实例都被表示为集群中状态的对象</strong>。</p>
-<p><img src="/.io//123.png" class="lazyload placeholder" data-srcset="/.io//123.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p><img src="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/123.png" class="lazyload placeholder" data-srcset="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/123.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
 <p>Kubernetes controllers管理Cassandra的时候，删掉pod和finalizing中间如果受到干扰，vol没删掉，就会导致storage的泄漏。</p>
 <p><strong>优点</strong>：高可用，1) 不需要正式的对控制器和集群管理的配置说明文件 2) 不需要假设代码可能在哪里出现bug 3) 高度专业化的测试输入。<strong>只需要创建控制器镜像和基本测试工作流的表示，自动化测试</strong>，即只需要提供manifest说明如何在测试下创建和部署控制器，以及一系列的测试工作流（成熟的控制器一般都有）。</p>
 <p><strong>insight</strong>：认为state-centric interfaces非常适合去观察和干扰控制器的view。<strong>控制器的动作是当前它看到的集群状态的严格函数</strong>。</p>
@@ -655,11 +655,11 @@
 <p>2）自动的使用生成的测试计划，标记安全和liveness的问题。（可以这么做是由于state-centric interfaces的一些特点，这样的系统往往<strong>有简单的高度内聚的</strong>state centric的接口，这种接口基本上只做读写和接收状态改变的操作，并且所有的对象共享策略（例如k8s里面就用同样的域去表示metadata））。</p>
 <p><strong>测试方法：</strong>干扰控制器的view，插入1）中间状态 2）已经失效的状态 3）未观测的状态，根据控制器的状态和行为去生成<strong>测试计划</strong>，避免冗余和无效的测试计划。</p>
 <h2 id="Bg"><a href="#Bg" class="headerlink" title="Bg"></a>Bg</h2><p><strong>k8s的架构</strong>：</p>
-<p><img src="/.io//123-1667563760827-2.png" class="lazyload placeholder" data-srcset="/.io//123-1667563760827-2.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p><img src="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/123-1667563760827-2.png" class="lazyload placeholder" data-srcset="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/123-1667563760827-2.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
 <p>k8s的核心由API服务器的集成和高可用、高一致性的数据存储（etcd）组成，etcd里面存储了<strong>对象状态（pods、volumns、nodes、groups of applications）</strong>，所有k8s中的其他组件都和k8s进行交互。控制器调用API Server中的API去获得Object的状态。</p>
 <p>好处：可拓展性强，增加新的应用的时候只需要增加新的控制器和新的State Object。</p>
 <p><strong>k8s的控制器的工作方式</strong>：</p>
-<p><img src="/.io//123-1667564276682-4.png" class="lazyload placeholder" data-srcset="/.io//123-1667564276682-4.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p><img src="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/123-1667564276682-4.png" class="lazyload placeholder" data-srcset="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/123-1667564276682-4.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
 <p>部署ZooKeeper集群的时候，用户<strong>首先创建</strong>一个ZooKeeper的对象，这个<strong>对象</strong>指定了用户想要的集群的状态，例如多少个，版本，存储的大小，然后<strong>ZooKeeper Controller</strong>接受到ZooKeeper对象被创建的消息，就想方设法达到用户制定的状态，首先创建一个StatefulSet的对象（有状态应用的抽象），然后一个a StatefulSet controller随后被告知一个StatefulSet的对象被创建了，然后轮流的创建pod和volumn，之后scheduler，storage controller，worker都被创建去带来实际的container和volumn。如果这个时候用户编辑了ZooKeeper对象时候，每一个控制器就都会微调达到对应的状态。</p>
 <p><strong>这个测试很重要，控制器的可靠性很难保证，当前的测试方法不行</strong>。</p>
 <h2 id="Design"><a href="#Design" class="headerlink" title="Design"></a>Design</h2><p><strong>Sieve tests controllers with the following workflow：</strong></p>
@@ -673,19 +673,19 @@
 <h4 id="如何Perturbing控制器的state-view"><a href="#如何Perturbing控制器的state-view" class="headerlink" title="如何Perturbing控制器的state view"></a>如何Perturbing控制器的state view</h4><p>注入特定的错误（crash、delay、connection change）。</p>
 <p><strong>decouple policy from mechanism</strong>：有利于拓展当前的策略，通过编排潜在的干扰机制增加新的策略。<strong>策略</strong>：a view Sieve exposes to the controller at a particular condition. <strong>机制</strong>：说明了如何注入错误去create a view。</p>
 <h4 id="这三种干扰分别是什么？"><a href="#这三种干扰分别是什么？" class="headerlink" title="这三种干扰分别是什么？"></a>这三种干扰分别是什么？</h4><p><strong>Intermediate states</strong>：中间状态指的是控制器还没完成所有状态更新之前中间的一些状态，在controller失败后，k8s就会开一个新的实例，恢复之前的中间状态。</p>
-<p><img src="/.io//Snipaste_2022-11-04_21-35-34.png" class="lazyload placeholder" data-srcset="/.io//Snipaste_2022-11-04_21-35-34.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p><img src="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/Snipaste_2022-11-04_21-35-34.png" class="lazyload placeholder" data-srcset="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/Snipaste_2022-11-04_21-35-34.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
 <p>例如RabbitMQ控制器，找到了一个bug：</p>
 <p>workload：尝试将存储从10GB-&gt;15GB,1）首先更新VolCur为15GB，然后更新VolReq为15GB（触发k8s）resize大小。在更新VolCur和VolReq的时候Sieve挂了，但是却不能正确恢复，已经被700行go代码修复了。</p>
 <p><strong>Stale states</strong>：</p>
 <p>图2可以看出来，控制器不直接和consist data stores去交互，而是和API server去交互，API server的话里面的状态可能会受到delayed notifications的影响。</p>
 <p>假如有多个API Server都可用的时候，可能有一些API Server的状态比较新，有的状态不是很新，要是控制器刚开始连的是一个比较新的API Server，然后又连接了一个比较旧的Server（由于负载均衡等原因），控制器可能会做重新配置，但是控制器不应该这么做，应该正确识别这些错误。</p>
 <p>Percona’s MongoDB，找到一个新bug：</p>
-<p><img src="/.io//Snipaste_2022-11-04_21-45-19.png" class="lazyload placeholder" data-srcset="/.io//Snipaste_2022-11-04_21-45-19.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p><img src="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/Snipaste_2022-11-04_21-45-19.png" class="lazyload placeholder" data-srcset="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/Snipaste_2022-11-04_21-45-19.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
 <p>关闭MongoDB集群的时候，controller等着看见MongoDB的state object的删除的时间戳，控制器看到这个变化的时候，就会删除所有的pods和volumes。</p>
 <p>Sieve让这个控制器就错误的删除了一个live的MongoDB的集群。有一个工作流首先关闭了MongoDB的集群然后重新创建了一个同样的集群，等到新的集群创建完成后，Sieve就引入了一个这样的错误，使得controller把这个集群给删了。</p>
 <p><strong>Unobserved states</strong>：现在的controller设计成level-triggered systems(opposed to being edge-triggered)，和别的设计不同的是，别的设计观测所有的集群状态的改变，做这所有的状态的改变，但是level-triggered systems就只根据当前的状态去控制转变集群的状态.</p>
 <p>Instaclustr’s Cassandra controller，找到了一个bug导致资源泄露和服务失败：</p>
-<p><img src="/.io//Snipaste_2022-11-04_21-56-52.png" class="lazyload placeholder" data-srcset="/.io//Snipaste_2022-11-04_21-56-52.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<p><img src="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/Snipaste_2022-11-04_21-56-52.png" class="lazyload placeholder" data-srcset="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/Snipaste_2022-11-04_21-56-52.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
 <p>在scale-down的时候，controller应该得知pods被删除后移除了所有的volumns，而pods的生命周期是由StatefulSet Controller管理的，Sieve就暂停了了发送给Cassandra控制器的消息，因此Cassandra不知道pods被删除了，这导致Cassandra控制器没有删除对应的volumns。</p>
 <h4 id="如何收集Reference-Traces"><a href="#如何收集Reference-Traces" class="headerlink" title="如何收集Reference Traces"></a>如何收集Reference Traces</h4><p>通过封装API Server的函数，封装了10个函数，在这里面注入干扰。</p>
 <p>由此跑一下所有开发者提供的workload，通过学习每一个controller收到的集群状态改变的提醒，和控制器对集群状态的任何读和写的操作，或者是对API Server的client（也就是controller机器自己）维护的local cache去收集两方面的reference traces：</p>
@@ -703,7 +703,7 @@
 <li>block/unblock an API server from processing events</li>
 </ul>
 <p>根据测试计划就可以复现bug。</p>
-<p><img src="/.io//image-20221104221955496.png" class="lazyload placeholder" data-srcset="/.io//image-20221104221955496.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221104221955496"></p>
+<p><img src="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/image-20221104221955496.png" class="lazyload placeholder" data-srcset="/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/image-20221104221955496.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221104221955496"></p>
 <h4 id="测试计划生成"><a href="#测试计划生成" class="headerlink" title="测试计划生成"></a>测试计划生成</h4><p>制定了一系列规则，在这些规则里生成计划，<strong>这个说法很有意思，不说如何制定测试状态，因为大家看到你是怎么制定的就感觉就这，但是避免无用的测试计划这个说法让我感觉很牛</strong>。</p>
 <ul>
 <li><strong>Intermediate-state rule</strong>：集群从一个状态更新到另一个状态要若干步骤，对于若干个步骤$U_{1}, U_{2}…$，做一个步骤就让Controller崩溃一遍，生成一个测试计划。</li>
