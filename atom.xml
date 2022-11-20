@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2022-10-28T15:07:36.174Z</updated>
+  <updated>2022-11-20T12:38:19.234Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -17,192 +17,174 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>SparkSession</title>
-    <link href="https://hiyoungshen.github.io/2022/10/28/sparksession/"/>
-    <id>https://hiyoungshen.github.io/2022/10/28/sparksession/</id>
-    <published>2022-10-28T15:07:36.174Z</published>
-    <updated>2022-10-28T15:07:36.174Z</updated>
+    <title>Data-Free Knowledge Distillation for Heterogeneous Federated Learning</title>
+    <link href="https://hiyoungshen.github.io/2022/11/20/pmlr21-data-free-knowledge-distillation-for-pmlr21-heterogeneous-federated-learning/"/>
+    <id>https://hiyoungshen.github.io/2022/11/20/pmlr21-data-free-knowledge-distillation-for-pmlr21-heterogeneous-federated-learning/</id>
+    <published>2022-11-20T09:57:11.000Z</published>
+    <updated>2022-11-20T12:38:19.234Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;A-tale-of-Spark-Session-and-Spark-Context-https-medium-com-achilleus-spark-session-10d0d66d1d24&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h1 id=&quot;PMLR21-Data-Free-Knowledge-Distillation-for-Heterogeneous-Federated-Learning&quot;&gt;&lt;a</summary>
         
       
     
     
     
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
     
-    <category term="About Spark" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-Spark/"/>
+    <category term="About FL" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-FL/"/>
     
     
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
     
-    <category term="About Spark" scheme="https://hiyoungshen.github.io/tags/About-Spark/"/>
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
+    
+    <category term="About " scheme="https://hiyoungshen.github.io/tags/About/"/>
     
   </entry>
   
   <entry>
-    <title>AWSEMRFilesystem</title>
-    <link href="https://hiyoungshen.github.io/2022/10/28/web-pa-chong-de-yi-chang-chu-li/"/>
-    <id>https://hiyoungshen.github.io/2022/10/28/web-pa-chong-de-yi-chang-chu-li/</id>
-    <published>2022-10-28T15:07:36.174Z</published>
-    <updated>2022-10-28T15:07:36.174Z</updated>
+    <title></title>
+    <link href="https://hiyoungshen.github.io/2022/11/16/fl/"/>
+    <id>https://hiyoungshen.github.io/2022/11/16/fl/</id>
+    <published>2022-11-16T12:00:30.951Z</published>
+    <updated>2022-11-16T14:45:15.494Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;获取Web数据，撰写爬虫需要处理大量异常&quot;&gt;&lt;a href=&quot;#获取Web数据，撰写爬虫需要处理大量异常&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;FL&quot;&gt;&lt;a href=&quot;#FL&quot; class=&quot;headerlink&quot; title=&quot;FL&quot;&gt;&lt;/a&gt;FL&lt;/h1&gt;&lt;h2 id=&quot;Statistical-heterogeneity&quot;&gt;&lt;a href=&quot;#Statistical-heterogeneity&quot;</summary>
         
       
     
     
     
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
-    
-    <category term="About Web" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-Web/"/>
-    
-    
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
-    
-    <category term="About Web" scheme="https://hiyoungshen.github.io/tags/About-Web/"/>
     
   </entry>
   
   <entry>
-    <title>aws emr notebook attached successfully but still &quot;Workspace is not attached to cluster. Click Ok to continue.&quot;</title>
-    <link href="https://hiyoungshen.github.io/2022/10/28/aws-emr-notebook-attached-successfully-but-still-workspace-is-not-attached-to-cluster-click-ok-to-continue/"/>
-    <id>https://hiyoungshen.github.io/2022/10/28/aws-emr-notebook-attached-successfully-but-still-workspace-is-not-attached-to-cluster-click-ok-to-continue/</id>
-    <published>2022-10-28T15:07:36.174Z</published>
-    <updated>2022-10-28T15:07:36.174Z</updated>
+    <title></title>
+    <link href="https://hiyoungshen.github.io/2022/11/12/iclr21-heterofl-computation-and-communication-efficient-federated-learning-for-heterogeneous-clients/"/>
+    <id>https://hiyoungshen.github.io/2022/11/12/iclr21-heterofl-computation-and-communication-efficient-federated-learning-for-heterogeneous-clients/</id>
+    <published>2022-11-12T04:45:14.763Z</published>
+    <updated>2022-11-12T14:14:20.710Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;aws-emr-notebook-attached-successfully-but-still-“Workspace-is-not-attached-to-cluster-Click-Ok-to-continue-”&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h1 id=&quot;ICLR21-HETEROFL-COMPUTATION-AND-COMMUNICATION-EFFICIENT-FEDERATED-LEARNING-FOR-HETEROGENEOUS-CLIENTS&quot;&gt;&lt;a</summary>
         
       
     
     
     
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
-    
-    <category term="About AWS" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-AWS/"/>
-    
-    
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
-    
-    <category term="About AWS" scheme="https://hiyoungshen.github.io/tags/About-AWS/"/>
     
   </entry>
   
   <entry>
-    <title>nohup失效时</title>
-    <link href="https://hiyoungshen.github.io/2022/10/28/nohup-shi-xiao-shi/"/>
-    <id>https://hiyoungshen.github.io/2022/10/28/nohup-shi-xiao-shi/</id>
-    <published>2022-10-28T15:07:36.174Z</published>
-    <updated>2022-10-28T15:07:36.174Z</updated>
+    <title>MobiCom20-Billion-Scale Federated Learning on Mobile Clients A Submodel Design with Tunable Privacy</title>
+    <link href="https://hiyoungshen.github.io/2022/11/12/mobicom20-billion-scale-federated-learning-on-mobile-clients-a-submodel-design-with-tunable-privacy/"/>
+    <id>https://hiyoungshen.github.io/2022/11/12/mobicom20-billion-scale-federated-learning-on-mobile-clients-a-submodel-design-with-tunable-privacy/</id>
+    <published>2022-11-12T04:19:00.000Z</published>
+    <updated>2022-11-12T14:10:30.723Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;使用screen命令可一定程度上模拟-Linux-screen命令-菜鸟教程-runoob-com&quot;&gt;&lt;a href=&quot;#使用screen命令可一定程度上模拟-Linux-screen命令-菜鸟教程-runoob-com&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;MobiCom20-Billion-Scale-Federated-Learning-on-Mobile-Clients-A-Submodel-Design-with-Tunable-Privacy&quot;&gt;&lt;a</summary>
         
       
     
     
     
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
-    
-    <category term="About Linux" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-Linux/"/>
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
     
     
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
     
-    <category term="About Linux" scheme="https://hiyoungshen.github.io/tags/About-Linux/"/>
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
     
   </entry>
   
   <entry>
-    <title>EMRNotebookCannotWriteFileThroughS3</title>
-    <link href="https://hiyoungshen.github.io/2022/10/28/emrnotebookcannotwritefilethroughs3/"/>
-    <id>https://hiyoungshen.github.io/2022/10/28/emrnotebookcannotwritefilethroughs3/</id>
-    <published>2022-10-28T15:07:36.167Z</published>
-    <updated>2022-10-28T15:07:36.167Z</updated>
+    <title>OSDI21-Oort Efficient Federated Learning via Guided Participant Selection</title>
+    <link href="https://hiyoungshen.github.io/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/"/>
+    <id>https://hiyoungshen.github.io/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/</id>
+    <published>2022-11-12T04:19:00.000Z</published>
+    <updated>2022-11-12T14:22:52.547Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;自AWS-EMR5-x和6-x的某个版本后-AWS-EMR-Notebook在EMR创建的EC2机器上运行&quot;&gt;&lt;a href=&quot;#自AWS-EMR5-x和6-x的某个版本后-AWS-EMR-Notebook在EMR创建的EC2机器上运行&quot;</summary>
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;Oort优化了中央服务器选择client的策略，不再用random选择的策略，而是给每一个client都设置一个名叫utility的东西，utility是根据client的历史上根据对model的更新算出来的.&lt;/li&gt;
+&lt;li&gt;优化了statistical</summary>
         
       
     
     
     
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
-    
-    <category term="About AWS" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-AWS/"/>
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
     
     
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
     
-    <category term="About AWS" scheme="https://hiyoungshen.github.io/tags/About-AWS/"/>
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
     
   </entry>
   
   <entry>
-    <title>AWSEMRFilesystem</title>
-    <link href="https://hiyoungshen.github.io/2022/10/28/awsemrfilesystem/"/>
-    <id>https://hiyoungshen.github.io/2022/10/28/awsemrfilesystem/</id>
-    <published>2022-10-28T15:07:36.151Z</published>
-    <updated>2022-10-28T15:07:36.151Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Latest-AWS-EMR-Filesystem-recommended&quot;&gt;&lt;a href=&quot;#Latest-AWS-EMR-Filesystem-recommended&quot; class=&quot;headerlink&quot; title=&quot;Latest AWS EMR</summary>
-        
-      
-    
-    
-    
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
-    
-    <category term="About AWS" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-AWS/"/>
-    
-    
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
-    
-    <category term="About AWS" scheme="https://hiyoungshen.github.io/tags/About-AWS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Automatic Reliability Testing for Cluster Management Controllers</title>
-    <link href="https://hiyoungshen.github.io/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/"/>
-    <id>https://hiyoungshen.github.io/2022/10/28/automatic-reliability-testing-for-cluster-management-controllers/</id>
+    <title>ICML22-FedScale-Benchmarking Model and System Performance of Federated Learning at Scale&#39;</title>
+    <link href="https://hiyoungshen.github.io/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/"/>
+    <id>https://hiyoungshen.github.io/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/</id>
     <published>2022-10-28T12:58:29.000Z</published>
-    <updated>2022-11-06T03:23:37.372Z</updated>
+    <updated>2022-11-12T14:30:58.576Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Automatic-Reliability-Testing-for-Cluster-Management-Controllers&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h1 id=&quot;ICML22-FedScale-Benchmarking-Model-and-System-Performance-of-Federated-Learning-at-Scale&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OSDI22-Automatic Reliability Testing for Cluster Management Controllers</title>
+    <link href="https://hiyoungshen.github.io/2022/10/28/osdi22-automatic-reliability-testing-for-cluster-management-controllers/"/>
+    <id>https://hiyoungshen.github.io/2022/10/28/osdi22-automatic-reliability-testing-for-cluster-management-controllers/</id>
+    <published>2022-10-28T12:58:29.000Z</published>
+    <updated>2022-11-20T12:41:41.703Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;OSDI22-Automatic-Reliability-Testing-for-Cluster-Management-Controllers&quot;&gt;&lt;a</summary>
         
       
     
@@ -218,18 +200,18 @@
   </entry>
   
   <entry>
-    <title>FedScale: Benchmarking Model and System Performance of Federated Learning at Scale</title>
-    <link href="https://hiyoungshen.github.io/2022/10/28/fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/"/>
-    <id>https://hiyoungshen.github.io/2022/10/28/fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/</id>
+    <title>SysML19-TOWARDS FEDERATED LEARNING AT SCALE: SYSTEM DESIGN</title>
+    <link href="https://hiyoungshen.github.io/2022/10/28/sysml19-towards-federated-learning-at-scale-system-design/"/>
+    <id>https://hiyoungshen.github.io/2022/10/28/sysml19-towards-federated-learning-at-scale-system-design/</id>
     <published>2022-10-28T12:58:29.000Z</published>
-    <updated>2022-11-06T03:41:02.793Z</updated>
+    <updated>2022-11-12T11:30:58.762Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;FedScale-Benchmarking-Model-and-System-Performance-of-Federated-Learning-at-Scale&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h1 id=&quot;SysML19-TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN&quot;&gt;&lt;a href=&quot;#SysML19-TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN&quot;</summary>
         
       
     
@@ -272,313 +254,44 @@
   </entry>
   
   <entry>
-    <title>TOWARDS FEDERATED LEARNING AT SCALE: SYSTEM DESIGN</title>
-    <link href="https://hiyoungshen.github.io/2022/10/28/towards-federated-learning-at-scale-system-design/"/>
-    <id>https://hiyoungshen.github.io/2022/10/28/towards-federated-learning-at-scale-system-design/</id>
-    <published>2022-10-28T12:58:29.000Z</published>
-    <updated>2022-11-06T03:40:10.261Z</updated>
+    <title>Build a blog like this</title>
+    <link href="https://hiyoungshen.github.io/2021/10/14/build-a-blog-like-this/"/>
+    <id>https://hiyoungshen.github.io/2021/10/14/build-a-blog-like-this/</id>
+    <published>2021-10-14T11:32:36.000Z</published>
+    <updated>2022-10-28T15:07:36.164Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN&quot;&gt;&lt;a href=&quot;#TOWARDS-FEDERATED-LEARNING-AT-SCALE-SYSTEM-DESIGN&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;How-to-build-a-blog-like-this&quot;&gt;&lt;a href=&quot;#How-to-build-a-blog-like-this&quot; class=&quot;headerlink&quot; title=&quot;How to build a blog like</summary>
         
       
     
     
     
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    <category term="About Me" scheme="https://hiyoungshen.github.io/categories/About-Me/"/>
     
     
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
-    
-    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
+    <category term="About Blogs" scheme="https://hiyoungshen.github.io/tags/About-Blogs/"/>
     
   </entry>
   
   <entry>
-    <title>百年孤独</title>
-    <link href="https://hiyoungshen.github.io/2022/02/05/bai-nian-gu-du/"/>
-    <id>https://hiyoungshen.github.io/2022/02/05/bai-nian-gu-du/</id>
-    <published>2022-02-05T12:58:29.000Z</published>
-    <updated>2022-10-28T15:07:36.177Z</updated>
+    <title>About Me</title>
+    <link href="https://hiyoungshen.github.io/2021/08/07/about-me/"/>
+    <id>https://hiyoungshen.github.io/2021/08/07/about-me/</id>
+    <published>2021-08-07T08:39:00.000Z</published>
+    <updated>2022-10-28T15:07:36.151Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
-        
-      
     
     
+    <category term="About Me" scheme="https://hiyoungshen.github.io/categories/About-Me/"/>
     
-    <category term="About Reading" scheme="https://hiyoungshen.github.io/categories/About-Reading/"/>
     
-    
-    <category term="About Reading" scheme="https://hiyoungshen.github.io/tags/About-Reading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>cfw</title>
-    <link href="https://hiyoungshen.github.io/2022/01/30/cfw/"/>
-    <id>https://hiyoungshen.github.io/2022/01/30/cfw/</id>
-    <published>2022-01-30T07:15:35.000Z</published>
-    <updated>2022-10-28T15:07:36.174Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;最近配置cfw走系统代理&quot;&gt;&lt;a href=&quot;#最近配置cfw走系统代理&quot; class=&quot;headerlink&quot; title=&quot;最近配置cfw走系统代理&quot;&gt;&lt;/a&gt;最近配置cfw走系统代理&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
-    
-    
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
-    
-    <category term="About VPN" scheme="https://hiyoungshen.github.io/tags/About-VPN/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于论文写作</title>
-    <link href="https://hiyoungshen.github.io/2022/01/25/guan-yu-lun-wen-xie-zuo/"/>
-    <id>https://hiyoungshen.github.io/2022/01/25/guan-yu-lun-wen-xie-zuo/</id>
-    <published>2022-01-25T08:47:21.000Z</published>
-    <updated>2022-10-28T15:07:36.174Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;毕业论文&quot;&gt;&lt;a href=&quot;#毕业论文&quot; class=&quot;headerlink&quot; title=&quot;毕业论文&quot;&gt;&lt;/a&gt;毕业论文&lt;/h1&gt;&lt;h2 id=&quot;格式上注意点&quot;&gt;&lt;a href=&quot;#格式上注意点&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
-    
-    <category term="About Composition" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Composition/"/>
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
-    
-    <category term="About Composition" scheme="https://hiyoungshen.github.io/tags/About-Composition/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux下中断程序导致写文件失败</title>
-    <link href="https://hiyoungshen.github.io/2022/01/19/linux-xia-zhong-duan-cheng-xu-dao-zhi-xie-wen-jian-shi-bai/"/>
-    <id>https://hiyoungshen.github.io/2022/01/19/linux-xia-zhong-duan-cheng-xu-dao-zhi-xie-wen-jian-shi-bai/</id>
-    <published>2022-01-19T03:44:22.000Z</published>
-    <updated>2022-10-28T15:07:36.167Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Linux下中断程序导致写文件失败&quot;&gt;&lt;a href=&quot;#Linux下中断程序导致写文件失败&quot; class=&quot;headerlink&quot; title=&quot;Linux下中断程序导致写文件失败&quot;&gt;&lt;/a&gt;Linux下中断程序导致写文件失败&lt;/h1&gt;&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
-    
-    <category term="About Linux" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-Linux/"/>
-    
-    
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
-    
-    <category term="About Linux" scheme="https://hiyoungshen.github.io/tags/About-Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python request+selenium爬虫经验</title>
-    <link href="https://hiyoungshen.github.io/2022/01/17/python-request-selenium-pa-chong-jing-yan/"/>
-    <id>https://hiyoungshen.github.io/2022/01/17/python-request-selenium-pa-chong-jing-yan/</id>
-    <published>2022-01-17T13:48:49.000Z</published>
-    <updated>2022-10-28T15:07:36.174Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Background&quot;&gt;&lt;a href=&quot;#Background&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
-    
-    <category term="About Web" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-Web/"/>
-    
-    
-    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
-    
-    <category term="About Web" scheme="https://hiyoungshen.github.io/tags/About-Web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mobile App Squatting</title>
-    <link href="https://hiyoungshen.github.io/2021/12/17/mobile-app-squatting/"/>
-    <id>https://hiyoungshen.github.io/2021/12/17/mobile-app-squatting/</id>
-    <published>2021-12-17T10:34:28.000Z</published>
-    <updated>2022-10-28T15:07:36.167Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Mobile-App-Squatting&quot;&gt;&lt;a href=&quot;#Mobile-App-Squatting&quot; class=&quot;headerlink&quot; title=&quot;Mobile App Squatting&quot;&gt;&lt;/a&gt;Mobile App</summary>
-        
-      
-    
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
-    
-    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Software-Analysis/"/>
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
-    
-    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/tags/About-Software-Analysis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>区块链技术与应用</title>
-    <link href="https://hiyoungshen.github.io/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/"/>
-    <id>https://hiyoungshen.github.io/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/</id>
-    <published>2021-12-06T07:01:43.000Z</published>
-    <updated>2022-10-28T15:07:36.174Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;课时3，Data-structure&quot;&gt;&lt;a href=&quot;#课时3，Data-structure&quot; class=&quot;headerlink&quot; title=&quot;课时3，Data structure&quot;&gt;&lt;/a&gt;课时3，Data</summary>
-        
-      
-    
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
-    
-    <category term="About Block Chain" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Block-Chain/"/>
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
-    
-    <category term="About Block Chain" scheme="https://hiyoungshen.github.io/tags/About-Block-Chain/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Understanding the Evolution of Mobile App Ecosystems: A Longitudinal Measurement Study of Google Play</title>
-    <link href="https://hiyoungshen.github.io/2021/11/04/understanding-the-evolution-of-mobile-app-ecosystems/"/>
-    <id>https://hiyoungshen.github.io/2021/11/04/understanding-the-evolution-of-mobile-app-ecosystems/</id>
-    <published>2021-11-04T06:39:09.000Z</published>
-    <updated>2022-10-28T15:07:36.174Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Understanding-the-Evolution-of-Mobile-App-Ecosystems-A-Longitudinal-Measurement-Study-of-Google-Play&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
-    
-    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Software-Analysis/"/>
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
-    
-    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/tags/About-Software-Analysis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>An Explorative Study of the Mobile App Ecosystem from App Developers’ Perspective</title>
-    <link href="https://hiyoungshen.github.io/2021/10/30/an-explorative-study-of-the-mobile-app-ecosystem-from/"/>
-    <id>https://hiyoungshen.github.io/2021/10/30/an-explorative-study-of-the-mobile-app-ecosystem-from/</id>
-    <published>2021-10-30T08:40:33.000Z</published>
-    <updated>2022-10-28T15:07:36.154Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;An-Explorative-Study-of-the-Mobile-App-Ecosystem-from-App-Developers’-Perspective&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
-    
-    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Software-Analysis/"/>
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
-    
-    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/tags/About-Software-Analysis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AppNet: Understanding App Recommendation in Google Play</title>
-    <link href="https://hiyoungshen.github.io/2021/10/30/appnet-understanding-app-recommendation-in-google-play/"/>
-    <id>https://hiyoungshen.github.io/2021/10/30/appnet-understanding-app-recommendation-in-google-play/</id>
-    <published>2021-10-30T08:37:00.000Z</published>
-    <updated>2022-10-28T15:07:36.161Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;AppNet-Understanding-App-Recommendation-in-Google-Play&quot;&gt;&lt;a href=&quot;#AppNet-Understanding-App-Recommendation-in-Google-Play&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
-    
-    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Software-Analysis/"/>
-    
-    
-    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
-    
-    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/tags/About-Software-Analysis/"/>
+    <category term="About Me" scheme="https://hiyoungshen.github.io/tags/About-Me/"/>
     
   </entry>
   

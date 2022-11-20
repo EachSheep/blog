@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>OSDI21-Oort Efficient Federated Learning via Guided Participant Selection | SHEN Haiyang</title>
+
+  <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="../../../../favicon.ico">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://cdn.jsdelivr.net/gh/inkss/fontawesome@5.15.3/css/all.min.css" rel="stylesheet">
+
+  
+  
+  
+<link rel="stylesheet" href="../../../../css/animate.min.css">
+
+  
+<link rel="stylesheet" href="../../../../css/style.css">
+
+  
+  
+    
+<link rel="stylesheet" href="../../../../js/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="../../../../js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script src="../../../../cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="../../../../cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+        <script src="../../../../js/valine/av-min@3.0.4.js"></script>
+        <script src="../../../../https:/cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="atom.xml" title="SHEN Haiyang" type="application/atom+xml">
+</head>
+
+  
+  <!-- 依赖于jquery和vue -->
+  <script src="../../../../js/jquery3.5.1.js"></script>
+  <script src="../../../../js/vue2.6.11.js"></script>
+  
+  <body>
+    <!-- 预加载动画 -->
+    <!-- 页面预加载动画 -->
+
+<div id='loader'>
+  <link rel="stylesheet" href="../../../../js/loaded/index.css" >
+  <div class="loading-left-bg"></div>
+  <div class="loading-right-bg"></div>
+  <div class="spinner-box">
+    <div class="configure-border-1">
+      <div class="configure-core"></div>
+    </div>
+    <div class="configure-border-2">
+      <div class="configure-core"></div>
+    </div>
+    <div class="loading-word">loading...</div>
+  </div>
+</div>
+
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+  
+</script>
+
+    
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 头部导航等 -->
+    
+<header class="header " id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="../../../../medias/logo.png" class="lazyload placeholder" data-srcset="../../../../medias/logo.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+      <h3 class="drawer-box-head_title">SHEN Haiyang</h3>
+      <h5 class="drawer-box-head_desc">SHEN Haiyang is the best!</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="../../../../index.html" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="../../../../archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="../../../../tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="../../../../categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="../../../../about" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">About</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="../../../../friends" class="drawer-menu-item-link">
+                  
+                  <span class="name">Friends</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(6)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(6)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(6)">
+                  
+                  <li>
+                    <a href="../../../../gallery">
+                      
+                      <i class="fas fa-picture-o" style="margin-top: -20px;"></i>
+                      
+                      <span>Gallery</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="../../../../music">
+                      
+                      <i class="fas fa-music" style="margin-top: -20px;"></i>
+                      
+                      <span>Music</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a href="../../../../https:/github.com/hiyoungshen/">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="../../../../medias/logo.png" class="lazyload placeholder" data-srcset="../../../../medias/logo.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="logo">
+        </div>
+      
+      <a href="../../../../index.html" class="logo">SHEN Haiyang</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="../../../../index.html" class="menu-item-link" title="Home">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="../../../../archives" class="menu-item-link" title="Archives">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="../../../../tags" class="menu-item-link" title="Tags">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="../../../../categories" class="menu-item-link" title="Categories">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="../../../../about" class="menu-item-link" title="About">
+                  
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  
+                  <span class="name">About</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="../../../../friends" class="menu-item-link" title="Friends">
+                  
+                  <span class="name">Friends</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="../../../../gallery">
+                      
+                      <i class="fas fa-picture-o" style="margin-top: -20px;"></i>
+                      
+                      <span>Gallery</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="../../../../music">
+                      
+                      <i class="fas fa-music" style="margin-top: -20px;"></i>
+                      
+                      <span>Music</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="../../../../js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("../../../../search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/hiyoungshen/" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+
+    <!-- 当头部导航设置为背景透明的时候  -->
+    
+      <script src="../../../../js/header/index.js" data-pjax></script>
+    
+</header>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (href, before, media, attributes) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="../../../../js/swiper/swiper.min.js"></script>
+<script src="../../../../js/swiper/vue-awesome-swiper.js"></script>
+<script src="../../../../js/swiper/swiper.animate1.0.3.min.js"></script>
+
+
+  <script src="../../../../js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="../../../../js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="../../../../https:/cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+
+
+    <!-- 内容区域 -->
+    <div id="safearea">
+      <main class="main" id="pjax-container" style="margin-top: 0;">
+        
+ <!-- prismjs 代码高亮 -->
+ 
+    
+    <link href="../../../../js/prism/prism-line-numbers.css" rel="stylesheet">
+    
+        <link href="../../../../js/prism/prism-coy.min.css" rel="stylesheet">
+    
+
+    <style>
+        pre[class*="language-"] {
+            overflow-y: hidden;
+        }
+        .line-numbers .line-numbers-rows {
+            border: none;
+        }
+    </style>
+  
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+<!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('../../../../medias/10.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        OSDI21-Oort Efficient Federated Learning via Guided Participant Selection
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2022-11-12 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="../../../../categories/About-Thesis/" class="post-detail-header_category">
+              About Thesis
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="../../../../js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+<div class="row justify-position">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <ul>
+<li>Oort优化了中央服务器选择client的策略，不再用random选择的策略，而是给每一个client都设置一个名叫utility的东西，utility是根据client的历史上根据对model的更新算出来的.</li>
+<li>优化了statistical model efficiency和system efficiency</li>
+<li>同时做出了一个可以让开发者选择自己想要的数据的系统方便开发者去做测试。</li>
+</ul>
+<p>作者是怎么在那么多上使用ImageNet数据集跑MobileNet模型的？每个clienr是怎么确定自己用什么样的数据的？</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/507487766">一种新型的联邦分布式架构（Oort）及未来研究方向 - 知乎 (zhihu.com)</a></p>
+<h1 id="OSDI21-Oort-Efficient-Federated-Learning-via-Guided-Participant-Selection"><a href="#OSDI21-Oort-Efficient-Federated-Learning-via-Guided-Participant-Selection" class="headerlink" title="OSDI21-Oort Efficient Federated Learning via Guided Participant Selection"></a>OSDI21-Oort Efficient Federated Learning via Guided Participant Selection</h1><h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><ul>
+<li><strong>Target</strong>: improve the performance of federated training and testing with guided participant selection<ul>
+<li>prioritizes the use of those clients who have both data that offers the greatest utility in improving model accuracy and the capability to run training quickly</li>
+<li>To enable FL developers to interpret their results in model testing, Oort enforces their requirements on the distribution of participant data while improving the duration of federated testing by cherry-picking clients</li>
+</ul>
+</li>
+<li><strong>Result</strong>: time-to-accuracy performance by 1.2×-14.1× and final model accuracy by 1.3%-9.8%, while efficiently enforcing developer-specified model testing criteria at the scale of millions of clients.</li>
+<li>方法：通过选择一个client的子集（通过client最近的loss去选择，惩罚会导致全局聚合时间增加的client）去优化statistical model efficiency和system efficiency<ul>
+<li>选择client的方法用的是FL已经给你提供的信息，并且限制参与者的数量。（可以通过调参兼顾模型的公平性和保护隐私的要求）。</li>
+<li>开发者可以自定义测试数据集的分布去debug model efficiency。</li>
+<li>PySyft上实现，真实的workloads上测试。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Background-and-Motivation"><a href="#Background-and-Motivation" class="headerlink" title="Background and Motivation"></a>Background and Motivation</h2><h3 id="FL"><a href="#FL" class="headerlink" title="FL"></a>FL</h3><p>联邦学习通常每一轮几百台设备，花好几天训练完成。（为什么不挑选出人数最多的分布去做训练？然后在设备上做finetune）</p>
+<p>开发者测试的时候有挑选出一部分数据集做训练的需求：</p>
+<ul>
+<li>“50k representative samples”</li>
+<li>“x samples of class y”</li>
+<li>“a subset with less than X% data deviation from the global”</li>
+</ul>
+<h3 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h3><ul>
+<li>数据异构性：展示了一些数据集上不同clients之间数据规模和pairwise data divergence的CDF图。</li>
+<li>设备异构性：用mobilenet在几百个设备上跑，计算了<strong>推导延迟</strong>和<strong>网络的吞吐率</strong>画了两张图。</li>
+<li>Enormous population and pervasive uncertainty</li>
+<li>Privacy concerns</li>
+</ul>
+<h3 id="Limitations-of-Existing-FL-Solutions"><a href="#Limitations-of-Existing-FL-Solutions" class="headerlink" title="Limitations of Existing FL Solutions"></a>Limitations of Existing FL Solutions</h3><ul>
+<li>the potential for curbing these disadvantages by cherry-picking participants before execution has largely been overlooked</li>
+<li>Suboptimality in maximizing efficiency： 用MobileNet和ShuffleNet在1.6 million的OpenImage数据集上做训练，在超过一万四的clients上随机选择100个做训练，用图片在100clients均匀分布训练出的结果为upper bound，发现即使用了YoGi和Prox等优化技术，忽略系统的异构性都会显著增加每一轮此的延迟。</li>
+<li>Inability to enforce data selection criteria：当前的participants选择策略不仅影响执行，也影响最终训练的bias和confidence。使用预训练的shufflenet做训练的时候，和数据的全局分布比起来，差距也很大，尽管当clients数量增加的时候，这种deviation会减少，但是<strong>去量化不同客户端数量下的这种偏差</strong>，仍然十分重要。同时，即使选择了很多的clients，开发者仍然不能指定他们想要的数据集的分布，比如开发者想要一个相对balanced datasets，但是randomchoice可能会导致这样的bias，如图4(b)所示。</li>
+</ul>
+<h2 id="Oort设计"><a href="#Oort设计" class="headerlink" title="Oort设计"></a>Oort设计</h2><p>Oort is a participant selection framework that identifies and cherry-picks valuable participants for FL training and testing</p>
+<ul>
+<li>位于Coordinator里面，和FL execution interact.</li>
+<li>Given developer-specified criteria, it responds with a list of participants, whereas the driver is in charge of initiating and managing execution on the Oort-selected remote participants</li>
+</ul>
+<p><img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111134439590.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111134439590.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221111134439590"></p>
+<p>Oort interacts with the developer and FL execution frameworks. </p>
+<ul>
+<li><strong>Job submission</strong>: the developer submits and specifies the participant selection criteria to the FL coordinator in the cloud. </li>
+<li><strong>Participant selection</strong>: the coordinator enquires the clients meeting eligibility properties (e.g., battery level), and forwards their characteristics (e.g., liveness) to Oort.</li>
+<li><strong>Given the developer requirements (and execution feedbacks in case of training 2a）.</strong></li>
+<li><strong>Oort selects participants based on the given criteria and notifies the coordinator of this participant selection( 2b )</strong></li>
+<li>Execution: the coordinator distributes relevant profiles (e.g., model) to these participants, and then each participant independently computes results (e.g., model weights in training) on her data</li>
+<li>Aggregation: when participants complete the computation, the coordinator aggregates updates from participants</li>
+</ul>
+<h3 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h3><p><strong>Training selector</strong>: </p>
+<ul>
+<li>improve the timeto-accuracy performance of federated training</li>
+<li>it captures the utility of clients in training, and efficiently explores and selects high-utility clients at runtime</li>
+</ul>
+<p><img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111135103438.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111135103438.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221111135103438"></p>
+<ul>
+<li><strong>When the individual client data characteristics (e.g., categorical distribution) are not provided</strong>, the testing selector determines the number of participants needed to cap the data deviation of participants <strong>from the global</strong></li>
+<li>it cherry-picks participants to <strong>serve the exact developer-specified requirements</strong> on data while minimizing the duration of testing</li>
+</ul>
+<h2 id="联邦模型的训练"><a href="#联邦模型的训练" class="headerlink" title="联邦模型的训练"></a>联邦模型的训练</h2><h3 id="the-trade-off-in-selecting-participants-for-FL-training"><a href="#the-trade-off-in-selecting-participants-for-FL-training" class="headerlink" title="the trade-off in selecting participants for FL training"></a>the trade-off in selecting participants for FL training</h3><p>客户端数据和系统performance有coupled的本质，因此要综合考虑。</p>
+<p>又使用了MobileNet在OpenImage的dataset可视化了这两个有效性的分别的影响（Figure 7）.</p>
+<ul>
+<li>优化System Efficiency（“Opt-Sys. Efficiency”）能够减少每个轮次的执行时间（例如选择最快的clients），这可能会导致更多的训练轮次（相比随机选择而言），因为client的数据之前可能已经被其它参与者过去的轮次的数据表示过了（<strong>为什么？</strong>）。</li>
+<li>选择高statistical utility（”Opt-Stat. Efficiency”）的clients可能会导致每一轮的时间更长（如果clients是system的bottleneck的话（<strong>为什么</strong>？））</li>
+<li><img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111141201330.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111141201330.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221111141201330"></li>
+</ul>
+<h3 id="how-Oort-quantifies-the-client-utility-while-respecting-privacy"><a href="#how-Oort-quantifies-the-client-utility-while-respecting-privacy" class="headerlink" title="how Oort quantifies the client utility while respecting privacy"></a>how Oort quantifies the client utility while respecting privacy</h3><h4 id="Client-Statistical-Utility："><a href="#Client-Statistical-Utility：" class="headerlink" title="Client Statistical Utility："></a>Client Statistical Utility：</h4><p>be able to efficiently capture the client data utility toward improving model performance for various training tasks, and respect privacy</p>
+<p><strong>leverage importance sampling</strong>：就是选择带来梯度更新最大的clients，</p>
+<p><strong>impractical</strong>：</p>
+<ul>
+<li>客户端算这些范数的时候会带来额外的时间开销。</li>
+<li>这个梯度范数随着模型的更新会不断的变化。（为什么这是impractical的理由？）</li>
+</ul>
+<p><img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111141548161.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111141548161.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221111141548161"></p>
+<p><strong>因此</strong>：做了个近似来减少时间开销，就是用loss而不是用weights（感觉像是编了个故事，先编个比较难的，然后说它不好，然后说我这个好，搞个简单的）。Insight：更大的梯度对应着更大的loss（为什么？）</p>
+<p><img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111142603020.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111142603020.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221111142603020"></p>
+<p><strong>How Oort respects privacy：</strong></p>
+<ul>
+<li>Training loss measures the prediction confidence of a model without revealing the raw data and is often collected in real FL deployments。（人家都收集了这个，我这个没有额外的收集数据）。</li>
+<li>三种考虑隐私的方式（其实就是对上面这个公式的解释，没有额外的多做多少工作）：<ul>
+<li>只依靠loss选择client，loss是本地计算的，不会揭示客户端上样本的数据分布。</li>
+<li>和LDP一样，即使的loss引起了隐私问题，也可以用差分隐私技术去解决这样的问题。</li>
+<li>Oort可以灵活的更换其它的选择client的客户端的策略。</li>
+</ul>
+</li>
+<li>在technical report上有进一步的各种策略的理论分析（比如使用batch数据的梯度的norm），并且用实验展示了使用数据有噪音情况下的较好的性能（为了证明确实可以用差分隐私这样的技术去解决这个问题）。</li>
+</ul>
+<h4 id="Trading-off-Statistical-and-System-Efficiency"><a href="#Trading-off-Statistical-and-System-Efficiency" class="headerlink" title="Trading off Statistical and System Efficiency"></a>Trading off Statistical and System Efficiency</h4><p>Simply selecting clients with high statistical utility can hamper the system efficiency。（因为statistical utility的增加会导致训练时间的增长，这可能会影响system efficiency，好的system efficiency应该是训练每一轮此的时间相对来说比较快的），采取了图中所示的计算方式。</p>
+<ul>
+<li>t是每一个客户端训练的时间。</li>
+<li>惩罚了那些会成为系统overhead的客户端。</li>
+</ul>
+<p><img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111150040681.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111150040681.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221111150040681"></p>
+<ul>
+<li><p><strong>Navigating the trade-off</strong>：</p>
+<p>  <img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111153210944.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111153210944.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221111153210944"></p>
+<p>  随着round的进行，模型的loss会逐渐下降，在<strong>模型的训练的后期，应该减小对能够取得高statistical utility的clients的选择</strong>：</p>
+<p>  <img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111153506139-1668152108109-1.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111153506139-1668152108109-1.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221111153506139"></p>
+</li>
+</ul>
+<h4 id="how-it-selects-high-utility-clients-at-scale-despite-staleness-in-client-utility-as-training-evolves"><a href="#how-it-selects-high-utility-clients-at-scale-despite-staleness-in-client-utility-as-training-evolves" class="headerlink" title="how it selects high-utility clients at scale despite staleness in client utility as training evolves"></a>how it selects high-utility clients at scale despite staleness in client utility as training evolves</h4><p>还有一些其它的考虑：</p>
+<ul>
+<li><strong>Scalability</strong>: a client’s utility can only be determined after it has participated in training; <strong>how to choose from clients at scale without having to try all clients once</strong>? （为了提高选择器的效率）</li>
+<li><strong>Staleness</strong>: since not every client participates in every round, <strong>how to account for the change in a client’s utility since its last participation</strong>?（客户端并不是每一轮都参加的，如何处理这样的问题）。</li>
+<li><strong>Robustness</strong>: how to <strong>be robust to outliers in the presence of corrupted clients</strong> (e.g., with noisy data)? （如何对有outliers的数据鲁棒）</li>
+</ul>
+<p>做了一些实验上的探索：</p>
+<p><strong>Online exploration-exploitation of high-utility clients</strong></p>
+<ul>
+<li>将选择客户端抽象为多臂老虎机问题，clients比作“arm”，utility比作“reward”，多臂老虎机和强化学习的方法比起来，scalable and flexible（即使解空间例如客户端的数量跟随时间变化很大）（这里其实就是解释为什么要用多臂老虎机，这样好）。<strong>多臂老虎机既可以根据之前的概率做出选择，也可以探索未被选择的客户端：</strong><ul>
+<li>每一个选择轮次开始的时候,Oort都接受上一个训练轮次的反馈，会更新每一个客户端的statistical utility和system performance。</li>
+<li>对于已经explored的客户端来说，Oort计算客户端的utility并依据high-utility减小选择的范围。</li>
+<li>然后采样$\epsilon \in [0,1]$比率的participants（那些之前没有被selected的）。 </li>
+</ul>
+</li>
+</ul>
+<p><strong>Exploitation under staleness in client utility</strong></p>
+<p>受到多臂老虎机置信区间的影响，搞了个incentive term，慢慢的增加client的utility（如果一个client已经被忽略了很长的时间），这样的话当一个client被忽略很久了，他的被选的概率会慢慢的增加。</p>
+<p>不直接的选择top-k的utility，搞了个confidence interval c on the cut-off utility（默认$95%$），就是选择utility大于$c%$的top $(1-\epsilon) \times K$的，这样的话可以去除clients utility不确定性的干扰。</p>
+<p><strong>Robust exploitation under outliers</strong></p>
+<p>只根据utility选be vulnerable to outliers in unfavorable settings</p>
+<ul>
+<li><p>因此Oort会在一些客户端已经被用过一些轮次之后把其移除。</p>
+</li>
+<li><p>限制client utility的上限值。</p>
+</li>
+</ul>
+<p><strong>Accommodation to diverse selection criteria</strong></p>
+<p>可以自定义utility的计算方法。</p>
+<h2 id="联邦学习的模型测试（没大看懂）"><a href="#联邦学习的模型测试（没大看懂）" class="headerlink" title="联邦学习的模型测试（没大看懂）"></a>联邦学习的模型测试（没大看懂）</h2><h3 id="开发者未自定义数据的分布时默认给出的数据具有代表性"><a href="#开发者未自定义数据的分布时默认给出的数据具有代表性" class="headerlink" title="开发者未自定义数据的分布时默认给出的数据具有代表性"></a>开发者未自定义数据的分布时默认给出的数据具有代表性</h3><p>enable guided participant selection by determining the number of participants needed to guarantee this deviation target.</p>
+<p><strong>好像只是对数据的样本数进行了一个抽取数据的分布的限制，使抽取的数据更加具有代表性。</strong></p>
+<h4 id="Preserving-Data-Representativeness"><a href="#Preserving-Data-Representativeness" class="headerlink" title="Preserving Data Representativeness"></a>Preserving Data Representativeness</h4><p>使用L1 distance去度量所有参与者与全局数据分布的偏差，对于类别X, L1-distance计算如下：</p>
+<p>$\left| \overline{X} - E[\overline{X}] \right|$，表示所有参与者的样本均值和所有clients之间样本均值的关系。</p>
+<p>由于一个客户端的样本的数量不会影响其它客户端的样本的数量，所以每一个客户端的样本的个数可以看作总体X的采样，给定置信度和置信度，我们的<strong>目标</strong>就是求出需要的参与者的数量，这样的话要选出来的代表性的样本的分布被bounded，也就是：</p>
+<p>$Pr[\overline{X}-E[\overline{X}]]&gt;\delta$，这就变成了一个随机数采样的问题，运用了<strong>Hoeffding bound</strong>去度量不同参与者采样得到的数据偏移。（技术报告中有理论的额证明和结果）。</p>
+<h4 id="Estimating-the-number-of-participants-to-cap-deviation"><a href="#Estimating-the-number-of-participants-to-cap-deviation" class="headerlink" title="Estimating the number of participants to cap deviation"></a>Estimating the number of participants to cap deviation</h4><p>即使个体的数据特征不可得，开发者也可以去指定tolerance $\epsilon$，Oort会输出满足这样的tolerance需要的参与者数目。</p>
+<p>模型要求开发者输入每一个client的最大和最小样本数，客户端的总数（为什么要客户端的总数？）。开发者也可以设一个模糊的限制（例如依据设备模型的容量来设置）</p>
+<p>开发者可以将自己的模型先部署到已经选择的参与者上面，再收集了这些参与者的结果之后，再去确认一下计算数据的代表性。</p>
+<h3 id="开发者自定义自己的数据分布"><a href="#开发者自定义自己的数据分布" class="headerlink" title="开发者自定义自己的数据分布"></a>开发者自定义自己的数据分布</h3><p>对于每一个client，根据每一个client可以提供的开发人员需要的样本的数目，每一个client的算力，每一个client上传输的数据大小，每一个client的带宽，可以计算出所有participant上最多的花费时间，我们的目标是优化这个最大时间。</p>
+<p><img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111222910741.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111222910741.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221111222910741"></p>
+<p>这样的mixed-integer linear programming (MILP) model解出来的结果很好，但是<strong>时间复杂度较高</strong>，时间复杂度很高（没说多少）。</p>
+<ul>
+<li><p>贪心的启发式算法解决时间复杂度高的问题：</p>
+<p>  <img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111223455902.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111223455902.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221111223455902"></p>
+</li>
+</ul>
+<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><p>Oort，2617行代码，和FL engine例如（PySyft和TensorFlow集成）。</p>
+<ul>
+<li>低消耗</li>
+<li>定期备份。</li>
+<li>故障恢复。</li>
+<li>Gurobi solver去解决MILP问题。</li>
+</ul>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>68个英伟达 Tesla P100的GPUs上每一轮模拟了1300个参与者，在。训练和测试阶段模拟真实的异构client系统的性能和数据，使用了一个开源的FL benchmark：</p>
+<ul>
+<li>不同的设备</li>
+<li>不同的模型</li>
+<li>不同的网络吞吐量和连接性</li>
+</ul>
+<p>手动的让不同client上的数据产生数据异构性。</p>
+<p>coordinator和clients之间的交流架构是参数服务器架构。（PySyft和真实的FL部署都是这么干的）。</p>
+<p>为了减小staggers的影响，使用了真实FL部署中使用的机制。</p>
+<p><strong>数据集和模型</strong>：</p>
+<p><img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111224714887.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111224714887.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221111224714887"></p>
+<p><strong>模型设置的一些参数</strong></p>
+<h3 id="FL-Training-Evaluation"><a href="#FL-Training-Evaluation" class="headerlink" title="FL Training Evaluation"></a>FL Training Evaluation</h3><h4 id="End-to-End-Performance"><a href="#End-to-End-Performance" class="headerlink" title="End-to-End Performance"></a>End-to-End Performance</h4><ul>
+<li>Oort improves time-to-accuracy performance</li>
+<li>Oort improves final model accuracy</li>
+</ul>
+<h4 id="Performance-Breakdown"><a href="#Performance-Breakdown" class="headerlink" title="Performance Breakdown"></a>Performance Breakdown</h4><ul>
+<li>Breakdown of time-to-accuracy efficiency</li>
+<li>Oort achieves close to upper-bound statistical performance</li>
+</ul>
+<h4 id="Sensitivity-Analysis"><a href="#Sensitivity-Analysis" class="headerlink" title="Sensitivity Analysis"></a>Sensitivity Analysis</h4><ul>
+<li>Impact of number of participants K</li>
+<li>Impact of penalty factor α on stragglers</li>
+<li>Impact of outliers</li>
+<li>Impact of noisy utility</li>
+<li>Oort can respect developer-preferred fairness</li>
+</ul>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="../../../../tags/About-Thesis/" class="">
+              About Thesis
+            </a>
+          
+            <a href="../../../../tags/About-FL/" class="">
+              About FL
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>hiyoungshen</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/" target="_blank" title="OSDI21-Oort Efficient Federated Learning via Guided Participant Selection">https://hiyoungshen.github.io/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="../../../../https:/creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="../../../../medias/14.jpg" class="lazyload placeholder" data-srcset="../../../../medias/14.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
+    </div>
+    <a href="../mobicom20-billion-scale-federated-learning-on-mobile-clients-a-submodel-design-with-tunable-privacy/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">MobiCom20-Billion-Scale Federated Learning on Mobile Clients A Submodel Design with Tunable Privacy</div>
+      </div>
+      
+      <!-- <div class="content">
+        MobiCom20-Billion-Scale Federated Learning on Mobile Clients
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="../../../../medias/7.jpg" class="lazyload placeholder" data-srcset="../../../../medias/7.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+    </div>
+    <a href="../../../10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">ICML22-FedScale-Benchmarking Model and System Performance of Federated Learning at Scale&#39;</div>
+      </div>
+      <!-- <div class="content">
+        ICML22-FedScale-Benchmarking Model and System Performance of
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          Your appreciation is what keeps me going!
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="../../../../medias/alipay.jpg" class="lazyload placeholder" data-srcset="../../../../medias/alipay.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="../../../../medias/wechat.jpg" class="lazyload placeholder" data-srcset="../../../../medias/wechat.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="../../../../js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      
+<section id="comments" style="padding: 1em; margin: 15px auto;"
+	class="animated bounceInUp">
+	<div id="vcomment" class="comment"></div>
+</section>
+<style>
+	#comments {
+		background: rgba(255,255,255,0.9);
+	}
+	#veditor {
+		background-image: url('../../../../https:/img.zcool.cn/community/01a253594c71cfa8012193a329a77f.gif');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+		background-color: rgba(255, 255, 255, 0);
+		resize: vertical;
+	}
+	#veditor:focus{
+		background-position-y: 200px;
+		transition: all 0.2s ease-in-out 0s;
+	}
+	#vcomment .vcards .vcard .vh .vhead .vtag.vvisitor {
+		background-color: #42b983;
+	}
+	.v[data-class=v] .vbtn:active, .v[data-class=v] .vbtn:hover {
+		color: #42b983;
+		border-color: #42b983;
+	}
+	#vcomment .vcards .vcard .vhead .vsys i {
+		display: none;
+	}
+	/* 底部valine链接 */
+	#vcomment .vpower {
+		display: none;
+	}
+	
+	/* 底下注释是修改 名称和邮箱和网址输入框的样式 */
+	/* #vcomment .vheader {
+		display: flex;
+		justify-content: space-around;
+	}
+	
+	#vcomment .vheader .vnick {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vmail {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	}
+
+	#vcomment .vheader .vlink {
+		width: 31%;
+		border: 2px solid #dedede;
+		padding-left: 10px;
+		padding-right: 10px;
+		border-radius: 5px
+	} */
+
+	img.vimg {
+		transition: all 1s;
+		/* 头像旋转时间为 1s */
+	}
+
+	img.vimg:hover {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
+
+	#vcomment .vcards .vcard {
+		padding: 15px 20px 0 20px;
+		border-radius: 10px;
+		margin-bottom: 15px;
+		box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+		transition: all .3s
+	}
+
+	#vcomment .vcards .vcard:hover {
+		box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+	}
+
+	#vcomment .vcards .vcard .vh .vcard {
+		border: none;
+		box-shadow: none;
+	}
+</style>
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <!-- 文章详情页右侧目录 -->
+
+  <div class="toc-aside">
+    <div class="toc-main">
+      <div class="toc-aside-title">
+        <i class="fas fa-list-ul" aria-hidden="true"></i><span>catalog</span>
+        
+          <div class="toc-open-close">catalog</div>
+        
+      </div>
+      <div class="toc-content">
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手机端目录按钮 -->
+  <div id="toc-mobile-btn">
+    <i class="fas fa-list-ul" aria-hidden="true"></i>
+  </div>
+  <!-- js在scripts目录下的的toc.ejs里面 -->
+  
+    <script>
+      if (window.innerWidth >= 992) {
+        $(".toc-aside").css({'width': 0, 'padding': 0});
+        $(".toc-content").css({'width': 0});
+        $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+        $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+      }
+    </script>
+  
+
+  <script>
+    function openBtnClickFn () {
+      let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
+      let open = eval('false' || 'true');
+      openOrCloseBtn.click(function() {
+        if (open === true) {
+          $(".toc-aside").css({'width': 0, 'padding': 0});
+          $(".toc-content").css({'width': 0});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'none'});
+          $(".main-content").css({'width': '75%', 'margin': '10px auto'});
+          open = false;
+        } else {
+          $(".toc-aside").css({'width': '300px', 'padding': '0 10px'});
+          $(".toc-content").css({'width': '300px'});
+          $(".toc-aside-title span, .toc-aside-title i").css({'display': 'inline-block'});
+          $(".main-content").css({'width': '65%', 'margin-right': '10px', 'margin-left': 'calc(35% - 350px)'});
+          open = true;
+        }
+      });
+    };
+    openBtnClickFn();
+    document.addEventListener('pjax:complete', function () {
+      openBtnClickFn();
+    })
+    
+  </script>
+
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="../../../../js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="../../../../mailto:hiyoungshen@gmail.com" class="social">
+                  
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="../../../../https:/github.com/hiyoungshen/" class="social">
+                  
+                    <i class="fa fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="../../../../tencent:/AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=253135371" class="social">
+                  
+                    <i class="fa fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2021 - 2022 <a target="_blank" rel="noopener" href="https://github.com/hiyoungshen">hiyoungshen</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>Total visits：<span id="busuanzi_value_site_pv"></span> times
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>Number of visitors：<span id="busuanzi_value_site_uv"></span> people
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="../../../../js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="../../../../js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script src="../../../../https:/cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="../../../../https:/cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="../../../../js/fancybox/jquery.fancybox.min.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="../../../../js/ribbon.min.js"></script>
+    
+
+    <script src="../../../../js/utils/index.js"></script>
+    <script src="../../../../js/app.js" data-pjax></script>
+    
+    <!-- 文章目录所需js -->
+<link href="../../../../js/tocbot/tocbot.css" rel="stylesheet">
+<script src="../../../../js/tocbot/tocbot.min.js"></script>
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -80,
+    headingsOffset: -($(window).height() * 0.4 - 45),
+    positionFixedSelector: '.toc-main',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 100) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('toc-aside')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  }
+</style> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('../../../../js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="../../../../js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="../../../../https:/cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.css">
+  <script src="../../../../https:/cdn.jsdelivr.net/npm/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="../../../../js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "Copy Success!",
+            content: "The code has been copied. Please comply with the relevant license agreement.",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <!-- 弹幕所需的css和js -->
+    
+<!-- 具体js，请前往valine/script.ejs查看 -->
+
+    <script>
+  var requiredFields = 'nick,mail';
+  requiredFields = requiredFields.split(',');
+  comment_el = '.comment';
+  let looperValine = null;
+  load_valine = function () {
+    if ($(comment_el).length) {
+      var valine = new Valine({
+        el: '#vcomment',
+        path: window.location.pathname,
+        notify: false,
+        verify: false,
+        app_id: "yGxXiiBud4j75xComTe197yA-gzGzoHsz",
+        app_key: "kzBVhr6W9sMAwEAz8pi7zrA4",
+        placeholder: "客官，说点什么吧",
+        avatar: "",
+        master: "2cc696926e2ef9ce7d58210c45875a82",   //博主邮箱md5
+        tagMeta: ["博主","小伙伴","访客"],     //标识字段名
+        friends: "",
+        metaPlaceholder: { "nick": "昵称/QQ号", "mail": "邮箱" },
+        requiredFields: requiredFields,
+        enableQQ: true,
+      });
+      function debounce(fn) {
+        var timerID = null
+        return function () {
+          var arg = arguments[0]   //获取事件
+          if (timerID) {
+            clearTimeout(timerID)
+          }
+          timerID = setTimeout(function () {
+            fn(arg)              //事件传入函数
+          }, 200)
+        }
+      }
+      //查询评论 valine.Q('*').limit(7) -- 查询所有，限制7条, 下面的的代码是查询当前页面
+      var themeDanmu = eval('false');
+      var themeLoop = eval('false');
+      var themeLooperTime = '5000' || 5000;
+      var speed = '40' || 20;
+      var isBarrager = true;
+      if (themeDanmu == true) {
+        do_barrager();
+        if ($('.danmuBox').length <= 0) {
+          $('.navbar').append('<div class="danmuBox"><div class="danmuBtn open"><span class="danmuCircle"></span><span class="danmuText">弹幕</span></div></div>');
+        }
+        $('.danmuBtn').on('click', debounce(
+          function () {
+            if ($('.danmuBtn').hasClass('open')) {
+              $('.danmuBtn').removeClass('open')
+              clearInterval(looperValine);
+              $.fn.barrager.removeAll();
+            } else {
+              $('.danmuBtn').addClass("open");
+              do_barrager();
+            }
+          }
+        ))
+      }
+      function do_barrager() {
+        isBarrager && valine.Q(window.location.pathname).find().then(function (comments) {
+          // var num = 0; // 可以记录条数，循环调用的时候只取最新的评论放入弹幕中
+          var run_once = true;
+          var looper_time = themeLooperTime;
+          var total = comments.length;
+          // var looper = null;
+          var index = 0;
+          if (total > 0) {
+            barrager();
+          } else {
+            // 当评论数为0的时候，自动关闭弹幕
+            // $('.danmuBtn').removeClass('open');
+          }
+          function barrager() {
+            if (run_once) {
+              //如果是首次执行,则设置一个定时器,并且把首次执行置为false
+              looperValine = setInterval(barrager, looper_time);
+              run_once = false;
+            }
+            var content = comments[index]._serverData.comment;
+            var email = comments[index]._serverData.mail;
+            var link = comments[index]._serverData.link;
+            var newcontent = content.substring(0, 50).replace(/<[^>]+>/g, "");
+            //发布一个弹幕
+            const item = {
+              img: `https://q1.qlogo.cn/g?b=qq&nk=${email}&s=640`, //图片 
+              info: newcontent, //文字 
+              href: link, //链接 
+              close: true, //显示关闭按钮 
+              speed: speed, //延迟,单位秒,默认6 
+              color: '#fff', //颜色,默认白色 
+              old_ie_color: '#000000', //ie低版兼容色,不能与网页背景相同,默认黑色
+            }
+            $('body').barrager(item);
+            //索引自增
+            index++;
+            //所有弹幕发布完毕，清除计时器。
+            if (index == total) {
+              clearInterval(looperValine);
+              if (themeLoop === true) {
+                setTimeout(function () {
+                  do_barrager();
+                }, 5000);
+              } else {
+                $('.danmuBtn').removeClass('open');
+              }
+              return false;
+            }
+
+          }
+        })
+      }
+    }
+  };
+  $(document).ready(load_valine);
+  document.addEventListener('pjax:send', function (e) {
+    
+  })
+  document.addEventListener('pjax:complete', function () {
+    load_valine();
+  });
+</script>
+
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="../../../../js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="../../../../https:/busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="../../../../js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>
