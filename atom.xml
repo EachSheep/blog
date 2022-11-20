@@ -48,11 +48,11 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://hiyoungshen.github.io/2022/11/16/fl/"/>
-    <id>https://hiyoungshen.github.io/2022/11/16/fl/</id>
-    <published>2022-11-16T12:00:30.951Z</published>
-    <updated>2022-11-16T14:45:15.494Z</updated>
+    <title>FL</title>
+    <link href="https://hiyoungshen.github.io/2022/11/12/fl/"/>
+    <id>https://hiyoungshen.github.io/2022/11/12/fl/</id>
+    <published>2022-11-12T04:19:00.000Z</published>
+    <updated>2022-11-20T12:50:05.534Z</updated>
     
     
       
@@ -65,15 +65,21 @@
     
     
     
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
     
   </entry>
   
   <entry>
-    <title></title>
+    <title>ICLR21-HETEROFL-COMPUTATION AND COMMUNICATION EFFICIENT FEDERATED LEARNING FOR HETEROGENEOUS CLIENTS</title>
     <link href="https://hiyoungshen.github.io/2022/11/12/iclr21-heterofl-computation-and-communication-efficient-federated-learning-for-heterogeneous-clients/"/>
     <id>https://hiyoungshen.github.io/2022/11/12/iclr21-heterofl-computation-and-communication-efficient-federated-learning-for-heterogeneous-clients/</id>
-    <published>2022-11-12T04:45:14.763Z</published>
-    <updated>2022-11-12T14:14:20.710Z</updated>
+    <published>2022-11-12T04:19:00.000Z</published>
+    <updated>2022-11-20T12:49:32.090Z</updated>
     
     
       
@@ -86,6 +92,12 @@
     
     
     
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
     
   </entry>
   
