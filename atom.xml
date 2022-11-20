@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2022-11-20T12:38:19.234Z</updated>
+  <updated>2022-11-20T13:05:19.457Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://hiyoungshen.github.io/2022/11/20/pmlr21-data-free-knowledge-distillation-for-pmlr21-heterogeneous-federated-learning/"/>
     <id>https://hiyoungshen.github.io/2022/11/20/pmlr21-data-free-knowledge-distillation-for-pmlr21-heterogeneous-federated-learning/</id>
     <published>2022-11-20T09:57:11.000Z</published>
-    <updated>2022-11-20T12:38:19.234Z</updated>
+    <updated>2022-11-20T13:05:19.457Z</updated>
     
     
       
@@ -43,7 +43,7 @@
     
     <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
     
-    <category term="About " scheme="https://hiyoungshen.github.io/tags/About/"/>
+    <category term="About Knowledge Distillation" scheme="https://hiyoungshen.github.io/tags/About-Knowledge-Distillation/"/>
     
   </entry>
   
@@ -79,7 +79,7 @@
     <link href="https://hiyoungshen.github.io/2022/11/12/iclr21-heterofl-computation-and-communication-efficient-federated-learning-for-heterogeneous-clients/"/>
     <id>https://hiyoungshen.github.io/2022/11/12/iclr21-heterofl-computation-and-communication-efficient-federated-learning-for-heterogeneous-clients/</id>
     <published>2022-11-12T04:19:00.000Z</published>
-    <updated>2022-11-20T12:49:32.090Z</updated>
+    <updated>2022-11-20T13:03:58.667Z</updated>
     
     
       
@@ -99,6 +99,8 @@
     
     <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
     
+    <category term="About Model" scheme="https://hiyoungshen.github.io/tags/About-Model/"/>
+    
   </entry>
   
   <entry>
@@ -106,7 +108,7 @@
     <link href="https://hiyoungshen.github.io/2022/11/12/mobicom20-billion-scale-federated-learning-on-mobile-clients-a-submodel-design-with-tunable-privacy/"/>
     <id>https://hiyoungshen.github.io/2022/11/12/mobicom20-billion-scale-federated-learning-on-mobile-clients-a-submodel-design-with-tunable-privacy/</id>
     <published>2022-11-12T04:19:00.000Z</published>
-    <updated>2022-11-12T14:10:30.723Z</updated>
+    <updated>2022-11-20T13:04:40.659Z</updated>
     
     
       
@@ -126,6 +128,8 @@
     
     <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
     
+    <category term="About Model" scheme="https://hiyoungshen.github.io/tags/About-Model/"/>
+    
   </entry>
   
   <entry>
@@ -133,7 +137,7 @@
     <link href="https://hiyoungshen.github.io/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/"/>
     <id>https://hiyoungshen.github.io/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/</id>
     <published>2022-11-12T04:19:00.000Z</published>
-    <updated>2022-11-12T14:22:52.547Z</updated>
+    <updated>2022-11-20T13:04:51.696Z</updated>
     
     
       
@@ -155,6 +159,8 @@
     
     <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
     
+    <category term="About Algorithm" scheme="https://hiyoungshen.github.io/tags/About-Algorithm/"/>
+    
   </entry>
   
   <entry>
@@ -162,7 +168,7 @@
     <link href="https://hiyoungshen.github.io/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/"/>
     <id>https://hiyoungshen.github.io/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/</id>
     <published>2022-10-28T12:58:29.000Z</published>
-    <updated>2022-11-12T14:30:58.576Z</updated>
+    <updated>2022-11-20T13:04:17.654Z</updated>
     
     
       
@@ -182,6 +188,8 @@
     
     <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
     
+    <category term="Benchmark" scheme="https://hiyoungshen.github.io/tags/Benchmark/"/>
+    
   </entry>
   
   <entry>
@@ -189,7 +197,7 @@
     <link href="https://hiyoungshen.github.io/2022/10/28/osdi22-automatic-reliability-testing-for-cluster-management-controllers/"/>
     <id>https://hiyoungshen.github.io/2022/10/28/osdi22-automatic-reliability-testing-for-cluster-management-controllers/</id>
     <published>2022-10-28T12:58:29.000Z</published>
-    <updated>2022-11-20T12:41:41.703Z</updated>
+    <updated>2022-11-20T13:05:09.090Z</updated>
     
     
       
@@ -208,6 +216,8 @@
     <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
     
     <category term="About Serverless" scheme="https://hiyoungshen.github.io/tags/About-Serverless/"/>
+    
+    <category term="About Bug Detection" scheme="https://hiyoungshen.github.io/tags/About-Bug-Detection/"/>
     
   </entry>
   

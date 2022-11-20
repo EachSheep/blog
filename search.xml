@@ -26,7 +26,7 @@
             
             <tag> About FL </tag>
             
-            <tag> About  </tag>
+            <tag> About Knowledge Distillation </tag>
             
         </tags>
       
@@ -82,6 +82,8 @@
             
             <tag> About FL </tag>
             
+            <tag> About Model </tag>
+            
         </tags>
       
     </entry>
@@ -108,6 +110,8 @@
             <tag> About Thesis </tag>
             
             <tag> About FL </tag>
+            
+            <tag> About Model </tag>
             
         </tags>
       
@@ -136,6 +140,8 @@
             
             <tag> About FL </tag>
             
+            <tag> About Algorithm </tag>
+            
         </tags>
       
     </entry>
@@ -163,6 +169,8 @@
             
             <tag> About FL </tag>
             
+            <tag> Benchmark </tag>
+            
         </tags>
       
     </entry>
@@ -189,6 +197,8 @@
             <tag> About Thesis </tag>
             
             <tag> About Serverless </tag>
+            
+            <tag> About Bug Detection </tag>
             
         </tags>
       
