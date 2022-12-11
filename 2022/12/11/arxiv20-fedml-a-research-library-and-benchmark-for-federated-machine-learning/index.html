@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>FL | SHEN Haiyang</title>
+  <title>arXiv20-FedML-A Research Library and Benchmark for Federated Machine Learning | SHEN Haiyang</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="../../../../favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -599,21 +599,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('../../../../medias/12.jpg')">
+  background-position: center center;position: relative;background-image:url('../../../../medias/6.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        FL
+        arXiv20-FedML-A Research Library and Benchmark for Federated Machine Learning
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2022-11-12 |
+          <i class="fas fa-calendar"></i> Published in：2022-12-11 |
         </span>
       
 
@@ -643,157 +643,219 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="FL"><a href="#FL" class="headerlink" title="FL"></a>FL</h1><h2 id="Statistical-heterogeneity"><a href="#Statistical-heterogeneity" class="headerlink" title="Statistical heterogeneity"></a>Statistical heterogeneity</h2><h3 id="Adapt-the-global-model-to-accommodate-personalized-local-models-for-non-IID-data"><a href="#Adapt-the-global-model-to-accommodate-personalized-local-models-for-non-IID-data" class="headerlink" title="Adapt the global model to accommodate personalized local models for non-IID data"></a>Adapt the global model to accommodate personalized local models for non-IID data</h3><h4 id="Meta-learning"><a href="#Meta-learning" class="headerlink" title="Meta learning"></a>Meta learning</h4><ul>
-<li><p><strong>arXiv’19</strong>-Improving federated learning personalization via model agnostic meta learning-(Yihan Jiang-uw, Jakub Konečný-Google research, Keith Rush, Sreeram Kannan-uw)</p>
+        <h1 id="arXiv20-FedML-A-Research-Library-and-Benchmark-for-Federated-Machine-Learning"><a href="#arXiv20-FedML-A-Research-Library-and-Benchmark-for-Federated-Machine-Learning" class="headerlink" title="arXiv20-FedML-A Research Library and Benchmark for Federated Machine Learning"></a>arXiv20-FedML-A Research Library and Benchmark for Federated Machine Learning</h1><p><a target="_blank" rel="noopener" href="https://fedml.ai/">FedML：an open research <strong>library</strong> and <strong>benchmark</strong></a></p>
+<p>three computing paradigms：</p>
+<ul>
+<li>on-device training for edge devices.</li>
+<li>distributed computing.</li>
+<li>single-machine simulation.</li>
+</ul>
+<h2 id="Significance（当前别人实现的框架都不行）"><a href="#Significance（当前别人实现的框架都不行）" class="headerlink" title="Significance（当前别人实现的框架都不行）"></a>Significance（当前别人实现的框架都不行）</h2><h3 id="distributed-training-in-data-centers"><a href="#distributed-training-in-data-centers" class="headerlink" title="distributed training in data centers"></a>distributed training in data centers</h3><ul>
+<li>PyTorch</li>
+<li>TensorFlow</li>
+<li>MXNet</li>
+<li>Horovod (distributed training-specialized libraries)</li>
+<li>BytePS (distributed training-specialized libraries)</li>
+</ul>
+<h3 id="simulation-oriented-FL-libraries"><a href="#simulation-oriented-FL-libraries" class="headerlink" title="simulation-oriented FL libraries"></a>simulation-oriented FL libraries</h3><ul>
+<li>TensorFlow-Federated (TFF)</li>
+<li>PySyft</li>
+<li>LEAF</li>
+</ul>
+<p>only support <strong>centralized topology-based FL algorithms</strong> with <strong>simulation</strong> <strong>in a single machine</strong></p>
+<ul>
+<li>FedAvg</li>
+<li>FedProx</li>
+</ul>
+<h3 id="production-oriented-FL-libraries"><a href="#production-oriented-FL-libraries" class="headerlink" title="production-oriented FL libraries"></a>production-oriented FL libraries</h3><ul>
+<li>FATE</li>
+<li>PaddleFL</li>
+</ul>
+<p><strong>not</strong> designed as <strong>flexible</strong> frameworks that aim to support algorithmic innovation for open FL problems</p>
+<h3 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h3><p><img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211212248490.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211212248490.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211212248490"></p>
+<h2 id="Background（当前别人实现的框架哪里不行）"><a href="#Background（当前别人实现的框架哪里不行）" class="headerlink" title="Background（当前别人实现的框架哪里不行）"></a>Background（当前别人实现的框架哪里不行）</h2><ul>
+<li><p><strong>Lack of support of diverse FL computing paradigms.</strong></p>
 </li>
-<li><p><strong>NIPS’19</strong>-Adaptive gradient-based metalearning methods-(Mikhail Khodak-CMU, Maria-Florina Balcan-CMU, Ameet Talwalkar-CMU)</p>
+<li><p><strong>Lack of support of diverse FL configurations.</strong> FL is diverse in network topology, exchanged information, and training procedures.</p>
 </li>
-<li><p><strong>NIPS’20</strong>-Personalized federated learning with theoretical guarantees: A modelagnostic meta-learning approach</p>
-</li>
-<li><p><strong>ICLR’20</strong>-Differentially private metalearning</p>
+<li><p><strong>Lack of standardized FL algorithm implementations and benchmarks.</strong></p>
+<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211212649188.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211212649188.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211212649188"></p>
 </li>
 </ul>
-<h4 id="Multi-task-learning"><a href="#Multi-task-learning" class="headerlink" title="Multi-task learning"></a>Multi-task learning</h4><ul>
-<li><p><strong>NIPS’17</strong>-MOCHA: Federated multi-task learning-(Virginia Smith-stanford, Chao-Kai Chiang-usc, Maziar Sanjabi-usc, Ameet S. Talwalkar-CMU)</p>
-</li>
-<li><p><strong>arXiv’19</strong>-Variational federated multi-task learning</p>
-</li>
-<li><p><strong>ICML’19</strong>-Semi-cyclic stochastic gradient descent</p>
-</li>
-<li><p><strong>NIPS’19</strong>-Adaptive gradient-based metalearning methods</p>
-</li>
-</ul>
-<h4 id="Transfer-learning"><a href="#Transfer-learning" class="headerlink" title="Transfer learning"></a>Transfer learning</h4><ul>
-<li><p><strong>arXiv’19</strong>-Federated evaluation of on-device personalization-(Kangkang Wang-Google, Rajiv Mathews-Google, Chloé Kiddon-Google, Hubert Eichner-Google, Françoise Beaufays-Google, Daniel Ramage-Google)</p>
-</li>
-<li><p><strong>arXiv’20</strong>-Three approaches for personalization with applications to federated learning-(Yishay Mansour-Google, Mehryar Mohri-Google, Jae Ro-Google, Ananda Theertha Suresh-Google)</p>
-</li>
-</ul>
-<h4 id="Knowledge-distillation"><a href="#Knowledge-distillation" class="headerlink" title="Knowledge distillation"></a>Knowledge distillation</h4><ul>
-<li><input disabled type="checkbox"> <strong>arXiv’19</strong>-Fedmd: Heterogenous federated learning via model distillation-(Daliang Li, Junpu Wang Harvard-Yale-Pennsylvania)</li>
-</ul>
-<h4 id="Lottery-ticket-hypothesis"><a href="#Lottery-ticket-hypothesis" class="headerlink" title="Lottery ticket hypothesis"></a>Lottery ticket hypothesis</h4><ul>
-<li><input disabled type="checkbox"> <strong>arXiv’20</strong>-Lotteryfl: Personalized and communication-efficient federated learning with lottery ticket hypothesis on non-iid datasets-(Ang Li-Duke, Jingwei Sun-Duke, Binghui Wang-Duke, Lin Duan-Duke, Sicheng Li-Alibaba, Yiran Chen-Duke, Hai Li-Duke)</li>
-</ul>
-<h3 id="Client-clustering"><a href="#Client-clustering" class="headerlink" title="Client clustering"></a>Client clustering</h3><ul>
-<li><input disabled type="checkbox"> <strong>NIPS’20</strong>-An efficient framework for clustered federated learning-()-()-Client clustering.</li>
-</ul>
-<h3 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h3><ul>
-<li><input disabled type="checkbox"> <strong>NIPS’19Workshop</strong>-Federated learning with local and global representations-(Paul Liang-CMU, Terrance Liu-CMU)</li>
-<li><input disabled type="checkbox"> <strong>arXiv’21</strong>-Fed-ensemble: Improving generalization through model ensembling in federated learning</li>
-<li><input disabled type="checkbox"> <strong>ICML’20</strong>-SCAFFOLD: Stochastic controlled averaging for federated learning</li>
-</ul>
-<h2 id="System-heterogeneity"><a href="#System-heterogeneity" class="headerlink" title="System heterogeneity"></a>System heterogeneity</h2><h3 id="Asynchronous-communication"><a href="#Asynchronous-communication" class="headerlink" title="Asynchronous communication"></a>Asynchronous communication</h3><h3 id="Active-sampling-of-clients"><a href="#Active-sampling-of-clients" class="headerlink" title="Active sampling of clients"></a>Active sampling of clients</h3><ul>
-<li><input checked disabled type="checkbox"> <strong>SysML’19</strong>-Towards federated learning at scale: System design-(Keith Bonawitz, Hubert Eichner, Wolfgang Grieskamp, Dzmitry Huba, Alex Ingerman, Vladimir Ivanov, Chloe Kiddon, Jakub Konečný, Stefano Mazzocchi, H. Brendan McMahan, Timon Van Overveldt, David Petrou, Daniel Ramage, Jason Roselander)</li>
-<li><input disabled type="checkbox"> <strong>ICC’19</strong>-Client selection for federated learning with heterogeneous resources in mobile edge-(Takayuki Nishio-Kyoto, Ryo Yonetani-Kyoto)</li>
-<li><input disabled type="checkbox"> <strong>OSDI’21</strong>-Oort: Efficient federated learning via guided participant selection</li>
-<li><input disabled type="checkbox"> <strong>NSDI’20</strong>-Sol: A federated execution engine for fast distributed computation over slow networks</li>
-</ul>
-<h2 id="Communication"><a href="#Communication" class="headerlink" title="Communication"></a>Communication</h2><h3 id="Data-compression-techniques"><a href="#Data-compression-techniques" class="headerlink" title="Data compression techniques"></a>Data compression techniques</h3><h4 id="Quantization-and-sketching"><a href="#Quantization-and-sketching" class="headerlink" title="Quantization and sketching"></a>Quantization and sketching</h4><ul>
-<li><input disabled type="checkbox"> <strong>arXiv’16</strong>-Federated learning: Strategies for improving communication efficiency-(Jakub Konečný-Google, H. Brendan McMahan-Google, Felix X. Yu-Google, Peter Richtárik-KAUST, Ananda Theertha Suresh-Google, Dave Bacon-Google)</li>
-<li><input disabled type="checkbox"> <strong>NIPS’17</strong>-Qsgd: Communication-efficient sgd via gradient quantization and encoding-(Dan Alistarh-ETH, Demjan Grubic-Eth&amp;Google, Jerry Z. Li-MIT, Ryota Tomioka-Microsoft Research, Milan Vojnovic-London School of Economics)</li>
-<li><input disabled type="checkbox"> <strong>NIPS’19</strong>-Communication efficient distributed sgd with sketching-(Nikita Ivkin-Amzaon, Daniel Rothchild-UCB, Enayat UIIah-JHU, Vladimir Braverman-JHU, Ion Stoica-UCB, Raman Arora-JHU)</li>
-<li><input disabled type="checkbox"> <strong>arXiv’19</strong>-Error feedback fixes signsgd and other gradient compression schemes</li>
-<li><input disabled type="checkbox"> <strong>arXiv’16</strong>-Federated learning: Strategies for improving communication efficiency</li>
-<li><input disabled type="checkbox"> <strong>arXiv’18</strong>-Expanding the reach of federated learning by reducing client resource requirements</li>
-<li><input disabled type="checkbox"> <strong>NIPS’18</strong>-ATOMO: Communication-efficient learning via atomic sparsification</li>
-<li><input disabled type="checkbox"> <strong>PISIT’18</strong>-Gradient coding using the stochastic block model</li>
-</ul>
-<h3 id="Local-training"><a href="#Local-training" class="headerlink" title="Local training"></a>Local training</h3><ul>
-<li><p><strong>ICAIS’17</strong>-Communication-efficient learning of deep networks from decentralized data</p>
-</li>
-<li><p><strong>ICLR’19</strong>-Local SGD converges fast and communicates little</p>
-</li>
-<li><p><input disabled type="checkbox">  CoCoA: A general framework for communication-efficient distributed optimization</p>
-</li>
-<li><p><strong>NSDI’20</strong>-Sol: A federated execution engine for fast distributed computation over slow networks</p>
-</li>
-</ul>
-<h3 id="Split-learning"><a href="#Split-learning" class="headerlink" title="Split learning"></a>Split learning</h3><ul>
-<li><input disabled type="checkbox"> <strong>arXiv’20</strong>-Splitfed: When federated learning meets split learning-(Chandra Thapa-Lehigh University, M.A.P. Chamikara-Lehigh University, Seyit Camtepe-Lehigh University, Lichao Sun-Lehigh University)</li>
-</ul>
-<h3 id="Decentralized-training"><a href="#Decentralized-training" class="headerlink" title="Decentralized training"></a>Decentralized training</h3><ul>
-<li><input disabled type="checkbox"> <strong>ICLR’19</strong>-Anytime Minibatch: Exploiting stragglers in online distributed optimization</li>
-<li><input disabled type="checkbox"> <strong>NIPS’19</strong>-Robust and communication-efficient collaborative learning</li>
-</ul>
-<h3 id="Asynchronous-and-synchronous"><a href="#Asynchronous-and-synchronous" class="headerlink" title="Asynchronous and synchronous"></a>Asynchronous and synchronous</h3><ul>
-<li><input disabled type="checkbox"> <strong>NIPS’15</strong>-Deep learning with elastic averaging SGD</li>
-<li><input disabled type="checkbox"> <strong>NIPS’11</strong>:HOGWILD!: A lock-free approach to parallelizing stochastic gradient descent</li>
-</ul>
-<h2 id="Data-privacy"><a href="#Data-privacy" class="headerlink" title="Data privacy"></a>Data privacy</h2><h3 id="Break-privacy"><a href="#Break-privacy" class="headerlink" title="Break privacy"></a>Break privacy</h3><ul>
-<li><input disabled type="checkbox"> <strong>NIPS’20</strong>-Inverting gradients - how easy is it to break privacy in federated learning</li>
-<li><input disabled type="checkbox"> <strong>NIPS’20</strong>-Attack of the tails: Yes, you really can backdoor federated learning</li>
-<li><input disabled type="checkbox"> <strong>arXiv’19</strong>-Can you really backdoor federated learning?</li>
-</ul>
-<h3 id="Differentially-private"><a href="#Differentially-private" class="headerlink" title="Differentially private"></a>Differentially private</h3><ul>
-<li><p><strong>PCCCS’17</strong>-Practical secure aggregation for privacy-preserving machine learning</p>
-</li>
-<li><p><strong>NIPS’17</strong>-Differentially private federated learning: A client level perspective</p>
-</li>
-<li><p><strong>ICLR’18</strong>-Learning differentially private recurrent language models</p>
-</li>
-<li><p><strong>MobiCom’20</strong>-Billion-Scale Federated Learning on Mobile Clients: A Submodel Design with Tunable Privacy</p>
-</li>
-</ul>
-<h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><ul>
-<li><p><strong>NIPS’17</strong>-“Can decentralized algorithms outperform centralized algorithms? A case study for decentralized parallel stochastic gradient descent</p>
-</li>
-<li><p><strong>arXiv’18</strong>-Communication-efficient distributed strongly convex stochastic optimization: Non-asymptotic rates</p>
-</li>
-<li><p><strong>SP’19</strong>-Exploiting unintended feature leakage in collaborative learning</p>
-</li>
-<li><p><strong>NIPS’19</strong>-Deep leakage from gradients</p>
-</li>
-<li><p><strong>arXiv’20</strong>-idlg: Improved deep leakage from gradients</p>
-</li>
-<li><p><strong>arXiv’20</strong>-Threats to federated learning: A survey</p>
-</li>
-<li><p><strong>arXiv’21</strong>-Practical and private (deep) learning without sampling or shuffling</p>
-</li>
-</ul>
-<h2 id="Scales"><a href="#Scales" class="headerlink" title="Scales"></a>Scales</h2><ul>
-<li><input disabled type="checkbox"> <strong>arXiv’18</strong>-Applied federated learning: Improving Google keyboard query suggestions.</li>
-</ul>
-<h2 id="FL定制"><a href="#FL定制" class="headerlink" title="FL定制"></a>FL定制</h2><ul>
-<li><input checked disabled type="checkbox"> <strong>ICLR’21</strong>-HETEROFL:  computation and communication efficient federated learning for heterogeneous clients-(Enmao Diao-Duke, Jie Ding-UMN, Vahid Tarokh-Duke)-<a target="_blank" rel="noopener" href="https://github.com/dem123456789/HeteroFL-Computation-and-Communication-Efficient-Federated-Learning-for-Heterogeneous-Clients">Code</a></li>
-<li><input checked disabled type="checkbox"> <strong>MobiCom’20</strong>-Billion-Scale Federated Learning on Mobile Clients: A Submodel Design with Tunable Privacy</li>
-</ul>
-<h2 id="FL系统"><a href="#FL系统" class="headerlink" title="FL系统"></a>FL系统</h2><h4 id="Benchmark"><a href="#Benchmark" class="headerlink" title="Benchmark"></a>Benchmark</h4><ul>
-<li><input disabled type="checkbox"> <strong>NIPS’19</strong>-Leaf: A benchmark for federated settings-()-<a target="_blank" rel="noopener" href="https://leaf.cmu.edu/">Data</a></li>
-<li><input disabled type="checkbox"> <strong>TensorFlow Federated (TFF)</strong>- “TensorFlow federated: Machine learning on decentralized data.”-()-[Data](<a target="_blank" rel="noopener" href="https://www.tensorflow/">https://www.tensorflow</a> .org/federated)</li>
-<li><input disabled type="checkbox"> <strong>arXiv’20</strong>-FedML: A research library and benchmark for federated machine learning</li>
-<li><input disabled type="checkbox"> <strong>arXiv’21</strong>-Flower: A friendly federated learning framework</li>
-<li><input disabled type="checkbox"> <strong>MLSys’20</strong>-Mlperf training benchmark</li>
-<li><input disabled type="checkbox"> PySyft (pys)</li>
-<li><input checked disabled type="checkbox"> <strong>ICML22’</strong>-FedScale: Benchmarking Model and System Performance of Federated Learning at Scale</li>
-</ul>
-<h4 id="Others-1"><a href="#Others-1" class="headerlink" title="Others"></a>Others</h4><ul>
-<li><input disabled type="checkbox"> <strong>MLSys’20</strong>-Federated optimization in heterogeneous networks-()-<a href>FedProx</a></li>
-<li><input disabled type="checkbox"> <strong>arXiv’20</strong>-Adaptive federated optimization-()-<a href>FedYoGi</a></li>
-<li><input disabled type="checkbox"> <strong>OSDI’21</strong>-Oort: Efficient federated learning via guided participant selection</li>
-</ul>
-<h2 id="Summarize"><a href="#Summarize" class="headerlink" title="Summarize"></a>Summarize</h2><ul>
-<li><input checked disabled type="checkbox"> <strong>IEEE Signal Processing Magazine’20</strong>-Federated learning: Challenges, methods, and future directions-(Tian Li-CMU, Anit Kumar Sahu, Ameet Talwalkar, Virginia Smith)</li>
-<li><input disabled type="checkbox"> <strong>arXiv’21</strong>-Advances and Open Problems in Federated Learning-()</li>
-<li><input disabled type="checkbox"> <strong>ACM Computing Surveys (CSUR)’19</strong>-Demystifying parallel and distributed deep learning: An in-depth concurrency analysis</li>
-</ul>
-<h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><ul>
-<li><input disabled type="checkbox"> <strong>arXiv’18</strong>-Federated learning for mobile keyboard prediction</li>
-<li><input disabled type="checkbox"> <strong>arXiv’18</strong>-LoAdaBoost: Lossbased adaboost federated machine learning on medical data</li>
-</ul>
-<h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems"></a>Problems</h2><h3 id="Novel-models-of-asynchrony"><a href="#Novel-models-of-asynchrony" class="headerlink" title="Novel models of asynchrony"></a>Novel models of asynchrony</h3><p>bulk synchronous approaches and asynchronous approaches, it is worth studying the effects of this more realistic device-centric communication scheme</p>
-<h3 id="Extreme-communication-schemes"><a href="#Extreme-communication-schemes" class="headerlink" title="Extreme communication schemes"></a>Extreme communication schemes</h3><p>optimization methods used for machine learning can tolerate a lack of precision. this error can, in fact, help with generalization. </p>
-<h3 id="Communication-reduction-and-the-Pareto-frontier"><a href="#Communication-reduction-and-the-Pareto-frontier" class="headerlink" title="Communication reduction and the Pareto frontier"></a>Communication reduction and the Pareto frontier</h3><p>how these techniques such as local updating and model compression compose with one another and to systematically analyze the tradeoff between accuracy and communication for each approach. In particular, the most useful techniques will demonstrate improvements at the Pareto frontier.</p>
-<h3 id="Heterogeneity-diagnostics"><a href="#Heterogeneity-diagnostics" class="headerlink" title="Heterogeneity diagnostics"></a>Heterogeneity diagnostics</h3><p>quantify statistical heterogeneity through metrics such as local dissimilarity, however these metrics cannot be easily calculated over the federated network before training occurs</p>
-<h3 id="Granular-privacy-constraints"><a href="#Granular-privacy-constraints" class="headerlink" title="Granular privacy constraints"></a>Granular privacy constraints</h3><h3 id="Beyond-supervised-learning"><a href="#Beyond-supervised-learning" class="headerlink" title="Beyond supervised learning"></a>Beyond supervised learning</h3><h3 id="Productionizing-federated-learning"><a href="#Productionizing-federated-learning" class="headerlink" title="Productionizing federated learning"></a>Productionizing federated learning</h3><ul>
-<li><input disabled type="checkbox"> concept drift(when the underlying data-generation model changes over time)</li>
-<li><input disabled type="checkbox"> diurnal variations(when the devices exhibit different behavior at different times of the day or week)<ul>
-<li><input disabled type="checkbox"> <strong>ICML19’</strong>-Semi-cyclic stochastic gradient descent</li>
+<h2 id="FedML（我的框架行）"><a href="#FedML（我的框架行）" class="headerlink" title="FedML（我的框架行）"></a>FedML（我的框架行）</h2><p>前面四点是针对当前的问题来说的。</p>
+<ul>
+<li><p>(i) Support of diverse FL computing paradigms.</p>
+<ul>
+<li><p>on-device training for edge devices including smartphones and Internet of Things (IoT).</p>
+<ul>
+<li>FedML-Mobile: Android smartphones</li>
+<li>FedML-IoT: Raspberry PI 4 and NVIDIA Jetson Nano</li>
+<li><strong>smoothly transplant</strong> the distributed computing code <strong>to the FedML-Mobile and FedML-IoT platforms</strong></li>
 </ul>
 </li>
-<li><input disabled type="checkbox"> cold-start problems(when new devices enter the network)</li>
+<li><p>distributed computing.</p>
+</li>
+<li><p>single-machine simulation to meet algorithmic and system-level research requirements under different system deployment scenarios.</p>
+</li>
 </ul>
-<h3 id="Benchmarks"><a href="#Benchmarks" class="headerlink" title="Benchmarks"></a>Benchmarks</h3>
+</li>
+<li><p>(ii) Support of diverse FL configurations.</p>
+<ul>
+<li>a worker/client-oriented programming interface to enable diverse network topologies.</li>
+</ul>
+</li>
+<li><p>(iii) Standardized FL algorithm implementations.</p>
+<ul>
+<li>FedML includes standardized implementations of status quo FL algorithms.</li>
+</ul>
+</li>
+<li><p>(iv) Standardized FL benchmarks.</p>
+<ul>
+<li>FedML provides standardized benchmarks with well-defined evaluation metrics, multiple synthetic and real-world non-I.I.D. datasets, as well as verified baseline results to facilitate fair performance comparison.</li>
+</ul>
+</li>
+<li><p>(v) Fully open and evolving.</p>
+</li>
+</ul>
+<h3 id="FedML-Library"><a href="#FedML-Library" class="headerlink" title="FedML Library"></a>FedML Library</h3><p><img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211213555125.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211213555125.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211213555125"></p>
+<ul>
+<li><p>FedML-API：high-level API</p>
+<ul>
+<li>FedML-API： new algorithms in distributed version can be easily implemented by adopting the <strong>client-oriented programming interface</strong>.<ul>
+<li><strong>is essential for scenarios</strong> in which <strong>large DNN training cannot be handled by standalone simulation due to GPU memory and training time constraints.</strong></li>
+<li><strong>separates</strong> the implementations of <strong>models, datasets, and algorithms</strong>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>FedML-core：low-level API</p>
+<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211220013821.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211220013821.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211220013821"></p>
+<ul>
+<li>The distributed communication module is responsible for low-level communication among different workers/clients （自底向上分别为）.<ul>
+<li><strong>The communication backend is based on MPI (message passing interface).</strong>[MPI，OpenMPI 与深度学习](<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158584571">MPI，OpenMPI 与深度学习 - 知乎 (zhihu.com)</a>)</li>
+<li><strong>TopologyManager supports a variety of network topologies that can be used in many existing FL algorithms.</strong></li>
+<li></li>
+<li><strong>security/privacy-related functions are also supported?</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="FedML-Library-Programming-Interface（我的框架怎么用）"><a href="#FedML-Library-Programming-Interface（我的框架怎么用）" class="headerlink" title="FedML Library: Programming Interface（我的框架怎么用）"></a>FedML Library: Programming Interface（我的框架怎么用）</h2><p>总结</p>
+<ul>
+<li><p>用的编程模式是Worker/client-oriented programming，可以通过集成WorkerManager实现自定义的Worker上跑的代码。</p>
+</li>
+<li><p>可以自定义不同的Worker之间发送的消息。</p>
+</li>
+<li><p>每一个Worker可以通过TopologyManager获取neighbour的worker ID</p>
+</li>
+<li><p><strong>Trainer and coordinator</strong>这种不是必要的东西不帮用户去实现，让用户自己去实现。</p>
+</li>
+<li><p>保护隐私方面：</p>
+<ul>
+<li><p>提供了一些常见<strong>加密原语</strong>的低层级的API的实现。</p>
+</li>
+<li><p><strong>plan to</strong> include an implementation of <strong>Lagrange Coded Computing (LCC)</strong>.</p>
+</li>
+<li><p><strong>a sample implementation</strong> of the <strong>secure aggregation algorithm</strong>.</p>
+</li>
+<li><p>To <strong>accelerate generating benchmark results on new types of adversarial attacks</strong> in FL, we include the latest robust aggregation methods presented in literature, <strong>Our APIs are easily extendable to support newly developed types of robust aggregation methods</strong>.</p>
+<p>  <strong>most of the existing attacks are highly task-specific</strong>. Thus, it is challenging to provide general adversarial attack APIs. Support the backdoor with model replacement attack presented in [20] and the edge-case backdoor attack presented in [118] to <strong>provide a reference for researchers to develop new attacks</strong>.</p>
+<ul>
+<li>(i) norm difference clipping; weak differential private (DP)</li>
+<li>(ii) RFA (geometric median)</li>
+<li>(iii) KRUM and (iv) MULTIKRUM</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>具体的介绍：</p>
+<ul>
+<li><p>FedML-API：high-level API：<strong>Worker/client-oriented programming</strong>.</p>
+<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211225128831.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211225128831.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211225128831"></p>
+<ul>
+<li>之前的框架例如torch.distributed（the standard distributed training library）是左边的例子：需要在一个客户端上写完整的训练过程，不够灵活。</li>
+<li>我们的方法右边的例子：只需要聚焦于每个客户端上具体是怎么做的，较为灵活。可以通过继承WorkerMananger类实现register_message_receive_handlers等方法去实现。</li>
+</ul>
+</li>
+<li><p><strong>Message definition beyond gradient and model.</strong> （可以传递除了梯度和模型之外的任何<strong>自定义</strong>的消息）</p>
+</li>
+<li><p><strong>Topology management.</strong></p>
+<ul>
+<li>FedML provides TopologyManager to manage the topology and allows users to send messages to arbitrary neighbors during training.</li>
+<li>after the initial setting of TopologyManager is completed, for each trainer in the network, <strong>the neighborhood worker ID can be queried via the TopologyManager.</strong></li>
+</ul>
+</li>
+<li><p>**Trainer and coordinator.**（给点样例，让用户自己去实现）</p>
+<ul>
+<li>For the trainer and coordinator, FedML does not over-design. Rather, it gives the implementation completely to the developers, reflecting the flexibility of our framework.</li>
+</ul>
+</li>
+<li><p><strong>Privacy, security, and robustness.</strong></p>
+<ul>
+<li><p>we include <strong>low-level APIs</strong> that <strong>implement common cryptographic primitives</strong> such as secrete sharing, key agreement, digital signature, and public key infrastructure.</p>
+</li>
+<li><p><strong>plan to</strong> include an implementation of <strong>Lagrange Coded Computing (LCC)</strong>.</p>
+</li>
+<li><p><strong>a sample implementation</strong> of the <strong>secure aggregation algorithm</strong>.</p>
+</li>
+<li><p>To <strong>accelerate generating benchmark results on new types of adversarial attacks</strong> in FL, we include the latest robust aggregation methods presented in literature, <strong>Our APIs are easily extendable to support newly developed types of robust aggregation methods</strong>.</p>
+<p>  <strong>most of the existing attacks are highly task-specific</strong>. Thus, it is challenging to provide general adversarial attack APIs. Support the backdoor with model replacement attack presented in [20] and the edge-case backdoor attack presented in [118] to <strong>provide a reference for researchers to develop new attacks</strong>.</p>
+<ul>
+<li>(i) norm difference clipping; weak differential private (DP)</li>
+<li>(ii) RFA (geometric median)</li>
+<li>(iii) KRUM and (iv) MULTIKRUM</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="FedML-Benchmark-Algorithms-Models-and-Datasets-我用我的框架实现了哪些算法、运用了哪些模型、提供了哪些数据集"><a href="#FedML-Benchmark-Algorithms-Models-and-Datasets-我用我的框架实现了哪些算法、运用了哪些模型、提供了哪些数据集" class="headerlink" title="FedML Benchmark: Algorithms, Models, and Datasets (我用我的框架实现了哪些算法、运用了哪些模型、提供了哪些数据集)"></a>FedML Benchmark: Algorithms, Models, and Datasets (我用我的框架实现了哪些算法、运用了哪些模型、提供了哪些数据集)</h2><h3 id="Algorithms-Federated-Optimizer（当前用此框架实现的算法）"><a href="#Algorithms-Federated-Optimizer（当前用此框架实现的算法）" class="headerlink" title="Algorithms: Federated Optimizer（当前用此框架实现的算法）"></a>Algorithms: Federated Optimizer（当前用此框架实现的算法）</h3><ul>
+<li>Federated Averaging (FedAvg)</li>
+<li>Decentralized FL</li>
+<li>Vertical Federated Learning (VFL)</li>
+<li>Split learning</li>
+<li>Federated Neural Architecture Search (FedNAS)</li>
+<li>Turbo-Aggregate</li>
+<li><strong>will keep following the latest algorithm</strong> to be published at top-tier machine learning conferences</li>
+<li>will continuously add new FL algorithms such as：<ul>
+<li>Adaptive Federated Optimizer</li>
+<li>FedNova</li>
+<li>FedProx</li>
+<li>FedMA</li>
+</ul>
+</li>
+</ul>
+<h3 id="Models-and-Datasets（当前此框架提供的模型和数据集）"><a href="#Models-and-Datasets（当前此框架提供的模型和数据集）" class="headerlink" title="Models and Datasets（当前此框架提供的模型和数据集）"></a>Models and Datasets（当前此框架提供的模型和数据集）</h3><ul>
+<li><p>总结了过去两年（19-20）顶会上用的non-I.I.D.的数据集和模型:</p>
+<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211232944169.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211232944169.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211232944169"></p>
+</li>
+<li><p>对模型做了一个分类：</p>
+<ul>
+<li><p>linear models (convex optimization)</p>
+<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211233126326.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211233126326.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211233126326"></p>
+</li>
+<li><p>lightweight shallow neural networks (non-convex optimization)</p>
+<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211233139976.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211233139976.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211233139976"></p>
+</li>
+<li><p>deep neural networks (non-convex optimization)</p>
+<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211233407833.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211233407833.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211233407833"></p>
+<p>  Given the resource constraints of edge devices, large DNN models are usually trained under the cross-organization FL (also called cross-silo FL) setting.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Experiments（我们增加新的benchmark的时候还会给大家提供一个能训练成什么效果的参考）"><a href="#Experiments（我们增加新的benchmark的时候还会给大家提供一个能训练成什么效果的参考）" class="headerlink" title="Experiments（我们增加新的benchmark的时候还会给大家提供一个能训练成什么效果的参考）"></a>Experiments（我们增加新的benchmark的时候还会给大家提供一个能训练成什么效果的参考）</h2><p>例如使用ResNet-56和MobileNet去测试的结果<strong>精度随着epoch的变化</strong>如下。</p>
+<p><img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211234055821.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211234055821.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211234055821"></p>
+<p>单GPU模拟和多GPU模拟的区别：</p>
+<p><img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211234358774.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211234358774.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211234358774"></p>
+<ul>
+<li>Table reveals that when training large CNNs, <strong>the standalone simulation is about 8 times slower than distributed computing with 10 parallel workers</strong>. </li>
+<li>Therefore, <strong>when training large DNNs, we suggest using FedML’s distributed computing paradigm, which is not supported by existing FL libraries such as PySyft [28], LEAF [40], and TTF [39]</strong>. </li>
+<li>Moreover, <strong>FedML supports multiprocessing in a single GPU card</strong> which enables FedML to run a large number of training workers by using only a few GPU cards. As an example, when training ResNet on CIFAR-10, FedML can run 112 workers in a server with 8 GPUs.</li>
+</ul>
+
       </div>
       <div class="post-tags-categories">
         
@@ -807,6 +869,10 @@
               About FL
             </a>
           
+            <a href="../../../../tags/Benchmark/" class="">
+              Benchmark
+            </a>
+          
         </div>
         
       </div>
@@ -818,7 +884,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2022/11/12/fl/" target="_blank" title="FL">https://hiyoungshen.github.io/2022/11/12/fl/</a>
+    <a href="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/" target="_blank" title="arXiv20-FedML-A Research Library and Benchmark for Federated Machine Learning">https://hiyoungshen.github.io/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -836,39 +902,21 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="../../../../medias/4.jpg" class="lazyload placeholder" data-srcset="../../../../medias/4.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-    </div>
-    <a href="../../20/pmlr21-data-free-knowledge-distillation-for-heterogeneous-federated-learning/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">Data-Free Knowledge Distillation for Heterogeneous Federated Learning</div>
-      </div>
-      
-      <!-- <div class="content">
-        PMLR21-Data-Free-Knowledge-Distillation-for-Heterogeneous-Fe
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="../../../../medias/5.jpg" class="lazyload placeholder" data-srcset="../../../../medias/5.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="../../../../medias/4.jpg" class="lazyload placeholder" data-srcset="../../../../medias/4.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
     </div>
-    <a href="../iclr21-heterofl-computation-and-communication-efficient-federated-learning-for-heterogeneous-clients/" class="post-nav-link">
+    <a href="../../../11/20/pmlr21-data-free-knowledge-distillation-for-heterogeneous-federated-learning/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">ICLR21-HETEROFL-COMPUTATION AND COMMUNICATION EFFICIENT FEDERATED LEARNING FOR HETEROGENEOUS CLIENTS</div>
+        <div class="title-text">Data-Free Knowledge Distillation for Heterogeneous Federated Learning</div>
       </div>
       <!-- <div class="content">
-        ICLR21-HETEROFL-COMPUTATION AND COMMUNICATION EFFICIENT FEDE
+        PMLR21-Data-Free-Knowledge-Distillation-for-Heterogeneous-Fe
       </div> -->
     </a>
   </div>
