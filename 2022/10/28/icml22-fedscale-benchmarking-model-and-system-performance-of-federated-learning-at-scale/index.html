@@ -643,85 +643,196 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="ICML22-FedScale-Benchmarking-Model-and-System-Performance-of-Federated-Learning-at-Scale"><a href="#ICML22-FedScale-Benchmarking-Model-and-System-Performance-of-Federated-Learning-at-Scale" class="headerlink" title="ICML22-FedScale-Benchmarking Model and System Performance of Federated Learning at Scale"></a>ICML22-FedScale-Benchmarking Model and System Performance of Federated Learning at Scale</h1><ul>
-<li>不和大家卷算法，去卷系统去。</li>
-<li>做了一个可以模拟FL任务的系统。</li>
-<li>使用真实的数据集来做测评。</li>
+        <h1 id="ICML22-FedScale-Benchmarking-Model-and-System-Performance-of-Federated-Learning-at-Scale"><a href="#ICML22-FedScale-Benchmarking-Model-and-System-Performance-of-Federated-Learning-at-Scale" class="headerlink" title="ICML22-FedScale-Benchmarking Model and System Performance of Federated Learning at Scale"></a>ICML22-FedScale-Benchmarking Model and System Performance of Federated Learning at Scale</h1><p>这篇文章开始做了一个empirial  study，发现了当前benchmark上存在的一些问题（绘制了一些统计分析的图，得到了一些结论），然后根据初步得到的结论做了自己的一个平台。</p>
+<ul>
+<li>a federated learning (FL) benchmarking suite. <a target="_blank" rel="noopener" href="http://fedscale.ai/">官网</a><ul>
+<li>realistic datasets, Each dataset comes with a unified evaluation protocol using real-world data splits and evaluation metrics.<ul>
+<li>20个真实的数据集（小规模、中等规模、大规模）（图像分类、目标检测、单词于此、语音识别、强化学习）</li>
+<li>根据真实世界的情况（设备的system speed、connectivity和availability对数据集进行了划分和模拟）</li>
 </ul>
-<h2 id="a-federated-learning-FL-benchmarking-suite"><a href="#a-federated-learning-FL-benchmarking-suite" class="headerlink" title="a federated learning (FL) benchmarking suite"></a>a federated learning (FL) benchmarking suite</h2><ol>
-<li><strong>realistic datasets</strong>（20）（ranging from image classification and object detection to language modeling and speech recognition）。Each dataset comes with a unified evaluation protocol <strong>using real-world data splits and evaluation metrics</strong>。</li>
-<li><strong>a scalable and extensible runtime</strong>。API to implement FL algorithms，deploy them at scale across diverse hardware and software backends, and evaluate them at scale。<ol>
+</li>
+<li><strong>automated evaluation platform</strong>，Fedscale Runtime.<ul>
 <li>mobile backend：enable on-device FL evaluation</li>
-<li>a cluster backend： benchmark various practical FL metrics</li>
-</ol>
+<li>cluster backend： benchmark various practical FL metrics</li>
+</ul>
 </li>
 <li><strong>systematic experiments</strong>（some implications）：highlight the pressing need for co-optimizing system and statistical efficiency, especially in tackling system stragglers, accuracy bias, and device energy trade-offs</li>
-</ol>
-<h2 id="Existing-FL-benchmarks-can-be-misleading"><a href="#Existing-FL-benchmarks-can-be-misleading" class="headerlink" title="Existing FL benchmarks can be misleading"></a>Existing FL benchmarks can be misleading</h2><ol>
-<li>A lot of problems</li>
-</ol>
-<p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
-<ol start="2">
-<li>Figure 2: <ol>
-<li>statistical performance becomes worse when encountering realistic client behavior.</li>
-<li>FL training with hundreds of participants each round performs better than that with tens of participants</li>
-</ol>
+</ul>
 </li>
-</ol>
-<h2 id="Realistic-FL-Workloads"><a href="#Realistic-FL-Workloads" class="headerlink" title="Realistic FL Workloads"></a>Realistic FL Workloads</h2><p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667052732044-2.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667052732044-2.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
-<h3 id="Realistic-data-and-partitions"><a href="#Realistic-data-and-partitions" class="headerlink" title="Realistic data and partitions"></a>Realistic data and partitions</h3><p><strong>how to generate data?</strong> Following the practical FL deployments (Yang et al., 2018), we assign the clients of each dataset into the training, validation and testing groups. <strong>A high statistical deviation</strong> (e.g., wide distribution of the density) across clients <strong>not only in the quantity of samples</strong> (Figure 3(a)) <strong>but also in the data distribution</strong> (Figure 3(b)).</p>
-<p><strong>hundreds to millions of clients</strong></p>
-<h3 id="Client-device-system-speed-is-heterogeneous"><a href="#Client-device-system-speed-is-heterogeneous" class="headerlink" title="Client device system speed is heterogeneous"></a>Client device system speed is heterogeneous</h3><ol>
-<li>Client device system speed is heterogeneous<ol>
-<li>system trace of different clients: <strong>AI Benchmark (Ignatov et al.)</strong> and <strong>MobiPerf Measurements (mob)</strong> on mobiles.</li>
-<li><strong>AI Benchmark</strong> provides the <strong>training and inference speed of diverse models</strong> (e.g., MobileNet) across a wide range of device models (e.g., Huawei P40 and Samsung Galaxy S20)</li>
-<li><strong>MobiPerf</strong> has collected the available <strong>cloud-to-edge network throughput</strong> of over <strong>100k world-wide mobile clients</strong></li>
-</ol>
+</ul>
+<h2 id="Background（当前的FL-Benchmark存在各种各样的问题）"><a href="#Background（当前的FL-Benchmark存在各种各样的问题）" class="headerlink" title="Background（当前的FL Benchmark存在各种各样的问题）"></a>Background（当前的FL Benchmark存在各种各样的问题）</h2><h3 id="总结当前FL的Benchmark存在的各种各样的问题"><a href="#总结当前FL的Benchmark存在的各种各样的问题" class="headerlink" title="总结当前FL的Benchmark存在的各种各样的问题"></a>总结当前FL的Benchmark存在的各种各样的问题</h3><p>具体的比较见<a href>附件C</a></p>
+<p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212134351748.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212134351748.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<ul>
+<li>当前的benchmark在这些方面做的都不是很好：data heterogeneity、device heterogeneity、heterogeneous connectivity、availability conditions、multiple scales (robustness)、broad variety of ML tasks</li>
+<li>[19-LEAF](Caldas et al., 2019)，数据集CIFAR包含合成的数据集，这些数据集通常都是从经典的ML benchmark或者是使用模拟的FL环境例如TFF和PySyft生成的。</li>
+<li><a href>20-FedML</a>和<a href>21-Flower</a>：当前的FL Benchmark忽略system speed, connectivity和availability.</li>
+<li>当前benchmark的数据集都是小规模的，不支持大规模的数据集。</li>
+<li>缺少user-friendly的APIs</li>
+</ul>
+<h3 id="当前的FL的benchmark缺少真实世界的数据和系统行为、且并不是大规模的数据集导致的问题初探"><a href="#当前的FL的benchmark缺少真实世界的数据和系统行为、且并不是大规模的数据集导致的问题初探" class="headerlink" title="当前的FL的benchmark缺少真实世界的数据和系统行为、且并不是大规模的数据集导致的问题初探"></a>当前的FL的benchmark缺少真实世界的数据和系统行为、且并不是大规模的数据集导致的问题初探</h3><p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212141014692.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212141014692.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221212141014692"></p>
+<ul>
+<li>2(a)展示了，在遇见真实设备行为的时候、statistical performance会变差。</li>
+<li>2(b)展示了，在参与的客户端不是很多的性能表现劣于参与客户端很多时候的性能表现。</li>
+</ul>
+<p>因此，当前的benchmark存在问题，我们要解决这样的一个问题。</p>
+<h2 id="FedScale-Dataset-Realistic-FL-Workloads（我们提出的数据集）"><a href="#FedScale-Dataset-Realistic-FL-Workloads（我们提出的数据集）" class="headerlink" title="FedScale Dataset: Realistic FL Workloads（我们提出的数据集）"></a>FedScale Dataset: Realistic FL Workloads（我们提出的数据集）</h2><h3 id="为了解决数据异构性的问题，在搜集的数据集的方法、数据集在不同clients上的划分做了创新。"><a href="#为了解决数据异构性的问题，在搜集的数据集的方法、数据集在不同clients上的划分做了创新。" class="headerlink" title="为了解决数据异构性的问题，在搜集的数据集的方法、数据集在不同clients上的划分做了创新。"></a>为了解决数据异构性的问题，在搜集的数据集的方法、数据集在不同clients上的划分做了创新。</h3><ul>
+<li>提出收集数据集的方法（其实就是收集别人的数据集，做清洗和整理），然后提供了一组API可以比较方便的去利用这个数据集（使用自定义的数据集、使用数据集的某个分布），例如：<ul>
+<li>Puffer dataset (Yan et al., 2020) is from FL video streaming deployed to edge users over the Internet. The raw data of FedScale datasets are collected from different sources and stored in various formats. We clean up the raw data, partition them into new FL datasets, streamline new datasets into consistent formats, and categorize them into different FL use cases.</li>
+</ul>
 </li>
-<li>Client device availability is dynamic: <strong>a large-scale user behavior dataset</strong>: 136k users (Yang et al., 2021). It includes 180 million trace items of client devices (e.g., battery charge or screen lock) over a week.</li>
-</ol>
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><p><strong>customize their dataset:</strong> standardized APIs, a Python package, for the user to easily leverage these datasets</p>
-<h3 id="Mobile-Backend"><a href="#Mobile-Backend" class="headerlink" title="Mobile Backend"></a>Mobile Backend</h3><p>enable ondevice FL evaluation</p>
-<p>FedScale mobile backend (Singapuram et al., 2022) is built atop the Termux app (ter),</p>
-<h3 id="Cluster-Backend"><a href="#Cluster-Backend" class="headerlink" title="Cluster Backend"></a>Cluster Backend</h3><h4 id="deployment-mode"><a href="#deployment-mode" class="headerlink" title="deployment mode:"></a>deployment mode:</h4><p><strong>acts as the cloud aggregator</strong> and orchestrates FL executions across real devices</p>
-<h4 id="simulation-mode"><a href="#simulation-mode" class="headerlink" title="simulation mode"></a>simulation mode</h4><p>providing various <strong>practical FL metrics</strong> by emulating realistic FL behaviors, such as <strong>computation/communication cost, latency and wall clock time</strong>. the first platform that enables FL benchmarking with practical FL runtime on GPUs/CPUs</p>
+</ul>
+<p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667052732044-2.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667052732044-2.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<ul>
+<li><p>收集数据集的时候要求收集带有client information的数据集，使用独特的客户端标识去划分数据集。</p>
+<ul>
+<li><p>例如，OpenImage是一个vision的数据集，不同的手机用户上传他们自己的图片，作为公共用途，就可以使用OpenImage数据集的AuthorProfileUrl这个属性去把数据映射到每一个client，通过这样的操作我们就可以得到<strong>真实世界的数据的分布</strong>。</p>
+<p>  <strong>真实世界的数据的分布（PDF-Probability Density Function）：</strong></p>
+<ul>
+<li>不同clients样本数的分布 Figure (a)：每一个数据集都存在在clients上分布严重不均匀的问题。</li>
+<li>数据的分布 Figure (b)：数据集中，数据集本身（比如类别等）分布也是非常不均匀的。</li>
+</ul>
+  <figure class="half">
+          <img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212154712574.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212154712574.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" width="500">
+          <img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212154752591.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212154752591.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" width="500">
+      </figure></li>
+</ul>
+</li>
+<li><p>根据<a href="arxiv.org/abs/1812.02903">Yang et al., 2018</a>等人的实际的FL的部署，将收集到的数据集根据收集数据时得到的数据的分布（在4个真实世界的数据集video (Charades)、audio (Google Speech)、image (OpenImage)、text (Reddit)上得到的分布，每个数据集都有小至几百多至百万的客户端和百万的数据点），在每一个client上将比如OpenImage数据集划分为训练集、测试集和验证集。</p>
+</li>
+<li><p>将数据集划分成小、中、大等不同的规模。一些数据集可以稍微改改（比如目标检测的数据集可以改一下作为分类的数据集），拓展了任务范围。</p>
+</li>
+</ul>
+<h3 id="为了解决设备异构性的问题，"><a href="#为了解决设备异构性的问题，" class="headerlink" title="为了解决设备异构性的问题，"></a>为了解决设备异构性的问题，</h3><p><strong>使用<a href>AI Benchmark, Ignatov et al.</a>和<a href>MobiPerf Measurements, mob</a>去获取了不同clints的运行轨迹。</strong></p>
+<ul>
+<li>AI Benchmark：<strong>不同模型</strong>在<strong>不同设备</strong>的训练和推理的速度。</li>
+<li>MobiPerf：<strong>云端</strong>到<strong>设备</strong>的网络吞吐量（超过100k的收集）。</li>
+</ul>
+<p>可以看到，不同设备的算力和网络的带宽有显著的不同。</p>
+<p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212161006092-1670832614889-1.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212161006092-1670832614889-1.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221212161006092"></p>
+<p>根据真实的部署<a href>Bonawitz et al., 2019</a>和<a href>Yang et al., 2018</a>，选择了<strong>内存&gt;2GB</strong>且<strong>连接WIFI</strong>的设备。</p>
+<p><strong>根据<a href>Yang et al., 2021</a>等人的136k用户一周180 million的行为数据集（例如电池充电情况和屏幕锁屏情况），观察到设备的availability有很大的不同</strong>：</p>
+<p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212161556429.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212161556429.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221212161556429"></p>
+<ul>
+<li>日夜变化时的设备量。5 (a)，可能会导致statistical performance下降<a href>Eichner et al., 2019</a>。</li>
+<li>每一个可用的设备的可用时间也存在问题。5 (b)</li>
+</ul>
+<h2 id="FedScale-Runtime-Evaluation-Platform（我们是怎么做我们的runtime的？）"><a href="#FedScale-Runtime-Evaluation-Platform（我们是怎么做我们的runtime的？）" class="headerlink" title="FedScale Runtime: Evaluation Platform（我们是怎么做我们的runtime的？）"></a>FedScale Runtime: Evaluation Platform（我们是怎么做我们的runtime的？）</h2><h3 id="Mobile-Backend（手机上的backend）"><a href="#Mobile-Backend（手机上的backend）" class="headerlink" title="Mobile Backend（手机上的backend）"></a>Mobile Backend（手机上的backend）</h3><p>FedScale mobile backend (Singapuram et al., 2022) is <strong>built atop the Termux app</strong> (ter)(一个支持linux环境的安卓终端)。</p>
+<ul>
+<li>例如：</li>
+</ul>
+<p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212221929723.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212221929723.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221212221929723"></p>
+<ul>
+<li>这样实现的好处是开发者不用更改他们写的Python程序（例如Pytorch代码），程序的full-operator set（例如Pytorch程序的完整的操作符）也都可以使用，原本在server的GPUs/CPUs上实现的模型和算法也能够使用FedScale Runtime。</li>
+<li>We are currently implementing the <strong>Google Remote Procedure Call (gRPC)</strong> for distributed mobile devices <strong>to interface with FedScale Runtime cloud server</strong>.</li>
+</ul>
+<h3 id="Cluster-Backend（集群上的backend）"><a href="#Cluster-Backend（集群上的backend）" class="headerlink" title="Cluster Backend（集群上的backend）"></a>Cluster Backend（集群上的backend）</h3><p>集群上的backend支持<strong>真实的部署</strong>和<strong>集群内部的模拟</strong>。</p>
+<h4 id="Deployment-mode-真实的部署"><a href="#Deployment-mode-真实的部署" class="headerlink" title="Deployment mode (真实的部署)"></a>Deployment mode (真实的部署)</h4><ul>
+<li>acts as the <strong>cloud aggregator</strong> and orchestrates FL executions across real devices.</li>
+</ul>
+<h4 id="Simulation-mode-模拟模式"><a href="#Simulation-mode-模拟模式" class="headerlink" title="Simulation mode (模拟模式)"></a>Simulation mode (模拟模式)</h4><ul>
+<li>Providing various <strong>practical FL metrics</strong> by emulating realistic FL behaviors, such as <strong>computation/communication cost, latency and wall clock time</strong>. </li>
+<li>第一个在GPUs/CPUs上使用实际的FL benchmarking进行模拟的平台。</li>
+<li>在真实的部署模式和模拟模式之间只需要改一点点代码就可以跑了。</li>
+</ul>
+<p>模拟模式的系统架构图如下所示：</p>
+<p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212232807520.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212232807520.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221212232807520"></p>
 <ol>
-<li><p><strong>Aggregator Simulator</strong>: </p>
-<p>Once receiving new events, the event monitor activates the <strong>handler</strong> (e.g., aggregation handler to perform model aggregation), or the <strong>gRPC</strong> communicator to send/receive messages. The communicator <strong>records the size (cost)</strong> of every network traffic, and its <strong>runtime latency in FL wall-clock time ( traffic_size / client_bandwidth )</strong></p>
+<li><strong>Aggregator Simulator</strong>: <ul>
+<li>It acts as the aggregator in practical FL, which selects participants, distributes execution profiles (e.g., model weight), and handles result (e.g., model updates) aggregation.</li>
+<li>In each round, its client manager uses the client behavior trace to monitor whether a client is available;</li>
+<li>then it selects the specified number of clients to participate that round.</li>
+<li>Once receiving new events, the event monitor activates the <strong>handler</strong> (e.g., <strong>aggregation handle</strong>r to perform model aggregation), or the <strong>gRPC communicator</strong> to send/receive messages. <strong>The communicator records the size (cost) of every network traffic, and its runtime latency in FL wall-clock time ( traffic_size / client_bandwidth )</strong></li>
+</ul>
 </li>
-<li><p><strong>Client Simulator</strong>: </p>
-<p>FedScale data loader loads the federated dataset of that client and feeds this data to the compute engine to run real training/testing. <strong>The computation latency</strong>: #_processed_sample × latency_per_sample. <strong>The communication latency</strong> ( traffic_size client_bandwidth ). The device monitor will terminate the simulation of a client if the current FL runtime exceeds his available slot.</p>
+<li><strong>Client Simulator</strong>: <ul>
+<li>It works as the FL client. </li>
+<li>FedScale data loader loads the federated dataset of that client and feeds this data to the compute engine to run real training/testing.</li>
+<li><strong>The computation latency</strong>: #_processed_sample × latency_per_sample. <strong>The communication latency</strong> ( traffic_size client_bandwidth ). </li>
+<li><strong>The device monitor</strong> will terminate the simulation of a client if the current FL runtime exceeds his available slot.(e.g.,client drops out), indicated by the availability trace.</li>
+</ul>
 </li>
-<li><p><strong>Resource Manager</strong>: </p>
-<p>when the number of participants/round exceeds the resource capacity (e.g., simulating thousands of clients on a few GPUs), the resource manager queues the overcommitted tasks of clients and schedules new client simulation from this queue once resource becomes available. This queuing will not affect the simulated FL runtime. </p>
+<li><strong>Resource Manager</strong>: <ul>
+<li>It <strong>orchestrates the available physical resource for evaluation</strong> to maximize the resource utilization. For example, when the number of participants/round exceeds the resource capacity (e.g., simulating thousands of clients on a few GPUs), the resource manager queues the overcommitted tasks of clients and schedules new client simulation from this queue once resource becomes available. T<strong>his queuing will not affect the simulated FL runtime, as this runtime is controlled by a global virtual clock, and the event monitor will manage events in the correct runtime order.</strong></li>
+</ul>
 </li>
 </ol>
-<p><strong>automated FL simulation</strong>:</p>
+<p><strong>Note that capturing runtime performance (e.g., wall clock time) is rather slow and expensive in practical FL</strong> – each mobile device takes several minutes to train a round – but <strong>our simulator enables fast-forward simulation, as training on CPUs/GPUs takes only a few seconds per round, while providing simulated runtime using realistic traces.</strong></p>
+<h5 id="Automated-FL-simulation（我们的Runtime还可以自动化的模拟执行）"><a href="#Automated-FL-simulation（我们的Runtime还可以自动化的模拟执行）" class="headerlink" title="Automated FL simulation（我们的Runtime还可以自动化的模拟执行）"></a>Automated FL simulation（我们的Runtime还可以自动化的模拟执行）</h5><p>默认使用之前提到的真实用户的trace去做模拟，开发者想指定自定义的模拟也可以（指定developer-specified profile from the mobile bacjend）</p>
 <ol>
-<li>Task submission</li>
-<li>FL simulation</li>
-<li>Metrics output</li>
+<li>Task submission. FL的开发者指定配置文件（例如模型和数据集、训练还是测试），resource manager会初始化aggregator和client simulator。</li>
+<li>FL simulation. 执行经典的FL流程。每一个轮次，aggregator选择参与者，同时resource manager将客户端的配置分发到client simulator上，每个client完成之后，client simulator把模型更新发送给aggregator，然后进行模型的聚合。</li>
+<li>Metrics output. 训练的时候 ，开发者就可以查看评价指标（Figure 8中列出的指标）。</li>
 </ol>
-<p><strong>FedScale Runtime is scalable and efficient</strong></p>
-<h2 id="Other-flexible-APIs"><a href="#Other-flexible-APIs" class="headerlink" title="Other flexible APIs"></a>Other flexible APIs</h2><h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>10 NVIDIA Tesla P100 GPUs in our evaluations, collects updates from the first N completed participants out of 1.3N participants to mitigate system stragglers in each round.</p>
-<ol>
-<li><p><strong>the performance of existing benchmarks</strong> and <strong>FedScale</strong> are <strong>quite close</strong> in the same settings if we <strong>turn off the optional system traces</strong> in FedScale. (underlying training and FL protocols in evaluations are the same)</p>
+<h5 id="FedScale-Runtime-is-easily-deployable-and-extensible-with-plugins（我们的Runtime还易于部署、可拓展性好）"><a href="#FedScale-Runtime-is-easily-deployable-and-extensible-with-plugins（我们的Runtime还易于部署、可拓展性好）" class="headerlink" title="FedScale Runtime is easily deployable and extensible with plugins（我们的Runtime还易于部署、可拓展性好）"></a>FedScale Runtime is easily deployable and extensible with plugins（我们的Runtime还易于部署、可拓展性好）</h5><ol>
+<li><p>FedScale Runtime provides flexible APIs, which can accommodate with different execution backends (e.g., PyTorch) by design, for the developer to quickly benchmark new plugins.</p>
+<p> 例如提供的一些API：</p>
+<p> <img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212234807507.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212234807507.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221212234807507"></p>
 </li>
-<li><p>Benchmarking FL statistical efficiency. (<strong>IID data vs. Non-IID data</strong>)</p>
+<li><p>Figure 9 dictates an example showing how these APIs help to benchmark a new design of local client training with a few lines of code by inheriting the base Client module.</p>
+</li>
+</ol>
+<p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212234901369.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221212234901369.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221212234901369"></p>
+<ol start="3">
+<li>FedScale Runtime can <strong>embrace new realistic (statistical client or system behavior) datasets</strong> with the built-in APIs. For example, the developer can import his own dataset of the client availability with the API (load_client_availability), and FedScale Runtime will automatically enforce this trace during evaluations. </li>
+</ol>
+<p>We provide more examples and a comparison with other frameworks, in <strong>Appendix D to show the ease of evaluating various today’s FL work in FedScale</strong>. 附录D展示了当今的FL的工作怎么稍微修改一下就用到我们的框架上。</p>
+<h5 id="FedScale-Runtime-is-scalable-and-efficient（我们的Runtime可拓展性强、高效）"><a href="#FedScale-Runtime-is-scalable-and-efficient（我们的Runtime可拓展性强、高效）" class="headerlink" title="FedScale Runtime is scalable and efficient（我们的Runtime可拓展性强、高效）"></a>FedScale Runtime is scalable and efficient（我们的Runtime可拓展性强、高效）</h5><ul>
+<li>模拟模式可以进行大规模的模拟，In the simulation mode, FedScale Runtime can perform large-scale simulations (thousands of clients per round) in both standalone (single CPU/GPU) and distributed (multiple machines) settings<ul>
+<li>使用了<a href>GPU共享技术, Yu &amp; Chowdhury, 2020</a>，这样的话多个client simulator可以在一个GPU上。</li>
+<li>resource管理器监控了机器资源的使用，overcommitted execution requests会进入队列，在不同的机器上自适应的分配达到负载聚恒，根据client的虚拟时钟去模拟。</li>
+</ul>
+</li>
+<li>分布式的模拟支持大规模的模拟（21-FedJax就不支持），FedScale Runtime最小化了overhead (e.g., frequent data serialization) in the fleet training of FL clients. <strong>和FedML以及Flower相比，更高效的支持大面积的评测。</strong></li>
+</ul>
+<h2 id="Experiments（我们测试了，确实比别人好）"><a href="#Experiments（我们测试了，确实比别人好）" class="headerlink" title="Experiments（我们测试了，确实比别人好）"></a>Experiments（我们测试了，确实比别人好）</h2><ul>
+<li><strong>10 NVIDIA Tesla P100 GPUs</strong> in our evaluations, <strong>collects updates from the first N（默认100） completed participants out of 1.3N participants to mitigate system stragglers in each round.</strong>  （和(Bonawitz et al., 2019; Yang et al., 2018)的真实场景的训练一致），细节见<strong>附件A</strong>。</li>
+</ul>
+<h3 id="Statistical-efficiency的实验的结果"><a href="#Statistical-efficiency的实验的结果" class="headerlink" title="Statistical efficiency的实验的结果"></a>Statistical efficiency的实验的结果</h3><ol>
+<li><p>不使用可选的system traces的时候，和以前的benchmark有类似的性能。<strong>the performance of existing benchmarks</strong> and <strong>FedScale</strong> are <strong>quite close</strong> in the same settings if we <strong>turn off the optional system traces</strong> in FedScale. (Because underlying training and FL protocols in evaluations are the same)。</p>
+</li>
+<li><p>Benchmarking FL statistical efficiency. (<strong>IID data vs. Non-IID data</strong>)。使用了当前最好的优化方式（FedAvg、FedProx和FedYoGi），在有数据异构性和没有数据异构性的时候做了实验</p>
 <p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667055455629-4.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667055455629-4.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
-</li>
-<li><p>Benchmarking FL system efficiency</p>
-<p>(1). FedScale Runtime enables fast-forward evaluations of the practical FL wall-clock time with fewer evaluation hours. Taking different number of local steps K in local SGD as an example (McMahan et al., 2017), Figure 12(a) and Table 12(b) illustrate that FedScale can evaluate this impact of K on practical FL runtime in a few hours.</p>
-<p>(2). FedScale Runtime can dictate the FL execution cost by using realistic system traces.</p>
-<p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667055708884-6.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667055708884-6.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
-</li>
-<li><p>Benchmarking FL privacy and security</p>
-<p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667055979760-8.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667055979760-8.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
-<p>privacy: DP-SGD (Geyer et al., 2017;Kairouz et al., 2021a): </p>
+<p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221213000524191.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221213000524191.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221213000524191"></p>
+<ul>
+<li>非IID的实验组相同轮次的精度性能没有IID的好。</li>
+<li>不同的任务不同的优化方向可能也不太一样。（FedYoGi performs the best on OpenImage, but it is inferior to FedAvg on Google Speech.）</li>
+<li>现在的benchmark可能会嘀咕当前一些FL方法的结果。（Figure 11c）</li>
+</ul>
+<p><strong>FedScale可以支持100个参与者，FedML一次只能支持30个参与者。</strong></p>
 </li>
 </ol>
-<p>​        FL security: backdoor attacks (Sun et al., 2019; Wang et al., 2020), </p>
-<h2 id="Implications"><a href="#Implications" class="headerlink" title="Implications"></a>Implications</h2><ol>
+<h3 id="System-efficiency的实验的结果"><a href="#System-efficiency的实验的结果" class="headerlink" title="System efficiency的实验的结果"></a>System efficiency的实验的结果</h3><p>(1). <strong>FedScale Runtime enables fast-forward evaluations of the practical FL wall-clock time with fewer evaluation hours</strong>. Taking different number of local steps K in local SGD as an example (McMahan et al., 2017), <strong>Figure 12(a)</strong> and <strong>Table 12(b)</strong> illustrate that FedScale can evaluate this impact of K on practical FL runtime in a few hours.</p>
+<p>(2). FedScale Runtime can <strong>dictate the FL execution cost by using realistic system traces</strong>.</p>
+<p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667055708884-6.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667055708884-6.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<ul>
+<li>Figure 12 (a)、(b)显示Fedscale可以在数个小时内就跑完结果。</li>
+<li>Figure 12 (c)显示Fedscale可以显示通信开销。</li>
+</ul>
+<p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221213001425357.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221213001425357.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221213001425357"></p>
+<ul>
+<li>Figure 15显示了单个客户端的完成模拟的时间，这可以帮助开发者去做accuracy-cost的取舍。</li>
+</ul>
+<h3 id="Benchmarking-FL-privacy-and-security"><a href="#Benchmarking-FL-privacy-and-security" class="headerlink" title="Benchmarking FL privacy and security"></a>Benchmarking FL privacy and security</h3><p><img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667055979760-8.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/123-1667055979760-8.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
+<ul>
+<li><p>FedScale可以帮助评测数据和设备的efficiency，以便于隐私和安全优化。</p>
+</li>
+<li><p>例如保护隐私的实验（测试了差分隐私）：</p>
+<ul>
+<li>例如：DP-SGD (Geyer et al., 2017;Kairouz et al., 2021a):使用差分隐私保护client的隐私，我们采取不同的privacy target $\sigma$和每个round不同数量的参与者(N)。</li>
+<li>Figure 13显示，参与者的数量（N）可能会误导隐私的评测：for σ=0.01, while we notice great performance degradation (12.8%) in the final model accuracy when N =30, this enhancement is viable in practical FL (N =100) with decent accuracy drop (4.6%)</li>
+</ul>
+</li>
+<li><p>安全的实验（再OpenImage数据集上测试了backdoor attack, where corrupted clients flip their ground-truth labels to poison the training. ）：</p>
+<ul>
+<li>backdoor attacks (Sun et al., 2019; Wang et al., 2020), 测试了两组，one without security enhancement, while the other clips the model updates as (Sun et al., 2019).</li>
+</ul>
+<p>  <img src="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221213002523695.png" class="lazyload placeholder" data-srcset="/2022/10/28/icml22-fedscale-benchmarking-model-and-system-performance-of-federated-learning-at-scale/image-20221213002523695.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221213002523695"></p>
+<ul>
+<li>As shown in Figure 14, while state-of-the-art optimizations report this can mitigate the attacks without hurting the overall performance on their synthesized datasets, <strong>large accuracy drops can occur in more practical FL settings</strong>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Implications（我们实验得到的启发）"><a href="#Implications（我们实验得到的启发）" class="headerlink" title="Implications（我们实验得到的启发）"></a>Implications（我们实验得到的启发）</h2><ol>
 <li>Heterogeneity-aware co-optimizations of communication and computation</li>
 <li>Co-optimizations of statistical and system efficiency</li>
 <li>FL design-decisions considering mobile environment</li>
