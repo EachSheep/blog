@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>arXiv20-FedML-A Research Library and Benchmark for Federated Machine Learning | SHEN Haiyang</title>
+  <title>arXiv20-FLOWER: A FRIENDLY FEDERATED LEARNING FRAMEWORK | SHEN Haiyang</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="../../../../favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -599,21 +599,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('../../../../medias/6.jpg')">
+  background-position: center center;position: relative;background-image:url('../../../../medias/4.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        arXiv20-FedML-A Research Library and Benchmark for Federated Machine Learning
+        arXiv20-FLOWER: A FRIENDLY FEDERATED LEARNING FRAMEWORK
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2022-12-11 |
+          <i class="fas fa-calendar"></i> Published in：2022-12-17 |
         </span>
       
 
@@ -643,219 +643,168 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="arXiv20-FedML-A-Research-Library-and-Benchmark-for-Federated-Machine-Learning"><a href="#arXiv20-FedML-A-Research-Library-and-Benchmark-for-Federated-Machine-Learning" class="headerlink" title="arXiv20-FedML-A Research Library and Benchmark for Federated Machine Learning"></a>arXiv20-FedML-A Research Library and Benchmark for Federated Machine Learning</h1><p><a target="_blank" rel="noopener" href="https://fedml.ai/">FedML：an open research <strong>library</strong> and <strong>benchmark</strong></a></p>
-<p>three computing paradigms：</p>
+        <h1 id="arXiv20-FLOWER-A-FRIENDLY-FEDERATED-LEARNING-FRAMEWORK"><a href="#arXiv20-FLOWER-A-FRIENDLY-FEDERATED-LEARNING-FRAMEWORK" class="headerlink" title="arXiv20-FLOWER-A-FRIENDLY-FEDERATED-LEARNING-FRAMEWORK"></a>arXiv20-FLOWER-A-FRIENDLY-FEDERATED-LEARNING-FRAMEWORK</h1><p><img src="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221217221517671.png" class="lazyload placeholder" data-srcset="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221217221517671.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221217221517671"></p>
+<p><strong>解决的问题</strong>：Although there are a number of research frameworks available to simulate FL algorithms, they do not support <strong>the study of scalable FL workloads</strong> on <strong>heterogeneous edge devices</strong>.</p>
 <ul>
-<li>on-device training for edge devices.</li>
-<li>distributed computing.</li>
-<li>single-machine simulation.</li>
+<li>FL workloads的可拓展问题。</li>
+<li>异构的边缘设备问题。</li>
 </ul>
-<h2 id="Significance（当前别人实现的框架都不行）"><a href="#Significance（当前别人实现的框架都不行）" class="headerlink" title="Significance（当前别人实现的框架都不行）"></a>Significance（当前别人实现的框架都不行）</h2><h3 id="distributed-training-in-data-centers"><a href="#distributed-training-in-data-centers" class="headerlink" title="distributed training in data centers"></a>distributed training in data centers</h3><ul>
-<li>PyTorch</li>
-<li>TensorFlow</li>
-<li>MXNet</li>
-<li>Horovod (distributed training-specialized libraries)</li>
-<li>BytePS (distributed training-specialized libraries)</li>
+<p><strong>实验的结果</strong>：Our experiments show Flower can perform FL experiments <strong>up to 15M in client size using only a pair of high-end GPUs</strong>. Researchers can then seamlessly migrate experiments to real devices to examine other parts of the design space.</p>
+<ul>
+<li>仅使用一对高性能的GPU，Flowers可以模拟出15M的client size。</li>
 </ul>
-<h3 id="simulation-oriented-FL-libraries"><a href="#simulation-oriented-FL-libraries" class="headerlink" title="simulation-oriented FL libraries"></a>simulation-oriented FL libraries</h3><ul>
-<li>TensorFlow-Federated (TFF)</li>
-<li>PySyft</li>
-<li>LEAF</li>
+<h2 id="Background（当前的框架存在问题）"><a href="#Background（当前的框架存在问题）" class="headerlink" title="Background（当前的框架存在问题）"></a>Background（当前的框架存在问题）</h2><h3 id="当前的框架存在问题："><a href="#当前的框架存在问题：" class="headerlink" title="当前的框架存在问题："></a><strong>当前的框架存在问题</strong>：</h3><ul>
+<li><p>TFF、PySyft和LEAF这些框架支持FL算法的小规模的模拟实验，但不支持在<strong>边缘设备上的真实的联邦学习</strong>。</p>
+</li>
+<li><p>当前的研究很少使用超过100个clients的，即使使用了超过100个，也依赖于模拟而不是实际的实现。<strong>工业上的clients的规模十分的巨大。</strong></p>
+<p>  <img src="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221217224332105.png" class="lazyload placeholder" data-srcset="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221217224332105.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221217224332105"></p>
+<ul>
+<li>图片显示Flower比FedScale的规模大。</li>
 </ul>
-<p>only support <strong>centralized topology-based FL algorithms</strong> with <strong>simulation</strong> <strong>in a single machine</strong></p>
+</li>
+</ul>
+<h3 id="Flower（Flower的优点）"><a href="#Flower（Flower的优点）" class="headerlink" title="Flower（Flower的优点）"></a>Flower（Flower的优点）</h3><p>针对这两个问题，<strong>Flower</strong>：</p>
+<ul>
+<li><strong>在云环境下模拟了真实的设备场景</strong>。Flower provides builtin tools to simulate many of these challenging conditions in a cloud environment and allows for a realistic evaluation of FL algorithms.</li>
+<li><strong>scalability考虑的非常好，支持大面积的训练和评测</strong>。Flower is designed with scalability in mind and enables large-cohort research that leverages both a large number of connected clients and a large number of clients training concurrently.</li>
+</ul>
+<p>具体的说，Flower：</p>
+<ul>
+<li>支持<strong>真实的设备</strong>、<strong>单节点</strong>和<strong>多节点的计算集群</strong>。（clients的规模可以模拟的很大）</li>
+<li><strong>Flower可拓展性好，能够支持新的算法、训练方法和通信代理，模拟和真实设备之间的迁移很丝滑</strong>。</li>
+<li>clients上支持各种各样的ML框架。</li>
+<li>做了算法和系统的实验，验证了Flower可以将规模拓展到 15million。</li>
+</ul>
+<p>Flower预先实现的一些算法：</p>
+<p><img src="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221217225255713.png" class="lazyload placeholder" data-srcset="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221217225255713.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221217225255713"></p>
+<h2 id="Flower（Flower的架构）"><a href="#Flower（Flower的架构）" class="headerlink" title="Flower（Flower的架构）"></a>Flower（Flower的架构）</h2><p><img src="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221217225322970.png" class="lazyload placeholder" data-srcset="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221217225322970.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221217225322970"></p>
+<ul>
+<li><p>在Server上给一个Stategy指示Server怎么做：client selection、configuration和parameter update aggregation等等。</p>
+</li>
+<li><p>Client分为真实的Edge Client和模拟出的Virtual Client，真实的Client和Client Manager之间通过Client Manager连接。</p>
+</li>
+<li><p>Client Manager管理着一系列的Client Proxy，这是Client Manager和Client之间存在的一层中间层，抽象掉Client上使用的不同的ML框架。</p>
+</li>
+<li><p>Server端包括的components：Client Manager、FL loop和一个用户自定义的Strategy。<strong>服务器端的components</strong>从ClientManager采样clients，<strong>ClientManager</strong>管理着一系列的ClientProxy对象，每一个<strong>ClientProxy对象</strong>表示一个连接到服务器的客户端，这些ClientProxy负责服务器和Clients之间的消息的传递。<strong>FL loop</strong>在FL process的heart，负责协调整个学习的过程。<strong>FL Process</strong>不负责配置、算法，这些<strong>由Stategy负责</strong>。FL loop要求Stategy配置下一轮次的FL，把这些配置发送给对应的clients，接受这些clients的更新，并把聚合的结果返回给Strategy。</p>
+</li>
+</ul>
+<h3 id="Virtual-Client-Engine（核心框架上的一个组件）"><a href="#Virtual-Client-Engine（核心框架上的一个组件）" class="headerlink" title="Virtual Client Engine（核心框架上的一个组件）"></a>Virtual Client Engine（核心框架上的一个组件）</h3><p>a tool that enables the virtualization of Flower Clients to maximise utilization of the available hardware。</p>
+<h3 id="Edge-Client-Engine（核心框架上的一个组件）"><a href="#Edge-Client-Engine（核心框架上的一个组件）" class="headerlink" title="Edge Client Engine（核心框架上的一个组件）"></a>Edge Client Engine（核心框架上的一个组件）</h3><ul>
+<li>Raspberry Pi或者NVIDIA Jetson这样的设备可以直接当做Flower Clients.</li>
+<li>手机这种commodity设备由更严格的、受限的、有时专有的软件栈。为了解决这个问题：<strong>Flower提供了一个low-level的集成（直接处理在Client上的Flower Protocol）</strong>。<strong>没太看懂为什么这样可以解决这样的问题</strong>。</li>
+</ul>
+<h3 id="Secure-Aggregation（Flower为保护隐私实现的算法）"><a href="#Secure-Aggregation（Flower为保护隐私实现的算法）" class="headerlink" title="Secure Aggregation（Flower为保护隐私实现的算法）"></a>Secure Aggregation（Flower为保护隐私实现的算法）</h3><ul>
+<li>实现了SecAgg、SecAgg+。</li>
+<li>安全聚合的计算和任何特殊的软件和ML framework无关，对client的dropouts十分的鲁棒、通信和计算的理论瓶颈都很低。</li>
+</ul>
+<h3 id="FL-Framework-Comparison（和其它FL框架的比较）"><a href="#FL-Framework-Comparison（和其它FL框架的比较）" class="headerlink" title="FL Framework Comparison（和其它FL框架的比较）"></a>FL Framework Comparison（和其它FL框架的比较）</h3><p><img src="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221217232626708.png" class="lazyload placeholder" data-srcset="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221217232626708.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221217232626708"></p>
+<ul>
+<li>Single-node simulation: 都支持单节点的模拟。</li>
+<li>Multi-node execution: Syft和Flower支持多机器的模拟。FedScale支持多机器的模拟，但不支持实际环境中的部署。TFF计划支持。</li>
+<li>Scalability: TFF和LEAF截止写文的时候，只支持单节点，FedScale支持多节点，但是只拓展到了100个并行的clients，Syft支持网络间的通信，但是只能通过连接作为服务器持有数据的clients，限制了scalability。</li>
+<li>Heterogeneous clients：Flower支持通过language-agnostic和communication-agnostic实现异构client pool。TFF和Syft需要framework-provided client runtime，FedScale和LEAF集中于Python实现的模拟。</li>
+<li>ML framework-agnostic：可以用各种各样的ML framework。TFF和TensorFlow结合，experimentally支持JAX，LEAF也依赖于TensorFlow，Syft和Pytorch以及Keras关系密切。</li>
+<li>Language-agnostic：Flower通过使用protocol-level的集成支持多种语言，其它的框架都只支持python。</li>
+<li>Baselines：LEAF和FedScale支持大量的Baseline，TFF提供了使用相同的数据集建立baseline的库，Flower当前实现了一些主流的FL Method和ML benchmark。</li>
+</ul>
+<h2 id="IMPLEMENTATION（各个部件如何实现）"><a href="#IMPLEMENTATION（各个部件如何实现）" class="headerlink" title="IMPLEMENTATION（各个部件如何实现）"></a>IMPLEMENTATION（各个部件如何实现）</h2><p>Flower has an extensive implementation of FL averaging algorithms, a robust communication stack, and various examples of deploying Flower on real and simulated clients.</p>
+<h3 id="Communication-stack（通信栈是如何实现的）"><a href="#Communication-stack（通信栈是如何实现的）" class="headerlink" title="Communication stack（通信栈是如何实现的）"></a>Communication stack（通信栈是如何实现的）</h3><ul>
+<li>当前的通信协议使用bi-directional <strong>gRPC</strong>实现。</li>
+<li><strong>为什么这么实现</strong>：高校的二进制序列化格式在低带宽的手机连接中尤其重要。Bi-directional streaming允许多个message之间的交换，而不会由于重新建立连接导致额外的overhead。</li>
+</ul>
+<h3 id="Serialization（序列化是如何实现的）"><a href="#Serialization（序列化是如何实现的）" class="headerlink" title="Serialization（序列化是如何实现的）"></a>Serialization（序列化是如何实现的）</h3><ul>
+<li>Flower的clients接受源字节序列，然后deserialize指令，然后执行指令。得到的结果序列化发送给server，message的格式和语言无关。</li>
+<li><strong>为什么这样实现：</strong>用户可以自定义传输信息的方法。</li>
+</ul>
+<h3 id="Alternative-communication-stacks（可替代的通信栈）"><a href="#Alternative-communication-stacks（可替代的通信栈）" class="headerlink" title="Alternative communication stacks（可替代的通信栈）"></a>Alternative communication stacks（可替代的通信栈）</h3><ul>
+<li>尽管message暂时是用gRPC实现的，但实际上用户可以自定义通信的方法。Flower内部的实现使用了模块化的抽象，因此用户可以自定义gRPC。</li>
+</ul>
+<h3 id="ClientProxy（客户端代理）"><a href="#ClientProxy（客户端代理）" class="headerlink" title="ClientProxy（客户端代理）"></a>ClientProxy（客户端代理）</h3><ul>
+<li>每一个ClientProxy代表一个单独的client，offline的或者不满足要求的client没有ClientProxy。所有SeverSide的逻辑都是依据ClientProxy来实现的。</li>
+<li>ClientProxy知识一个抽象的接口，而不是一个实现，因此ClientProxy的实现可以自定义。</li>
+</ul>
+<h3 id="Virtual-Client-Engine-VCE"><a href="#Virtual-Client-Engine-VCE" class="headerlink" title="Virtual Client Engine (VCE)"></a>Virtual Client Engine (VCE)</h3><ul>
+<li>VCE为每一个Client创建一个ClientProxy，但是推迟了实际的Client Object的实例化（包括本地模型和数据）直到需要去执行任务的时候才会去实例化，这样避免了大量的资源的浪费。</li>
+<li>VCE在Ray(Moritz et al., 2018)的框架基础上实现，Ray可以序列化client-side的序列化执行，因此可以在通用硬件上做大规模的实现。</li>
+</ul>
+<h2 id="FRAMEWORK-EVALUATION（框架的实测结果如何）"><a href="#FRAMEWORK-EVALUATION（框架的实测结果如何）" class="headerlink" title="FRAMEWORK EVALUATION（框架的实测结果如何）"></a>FRAMEWORK EVALUATION（框架的实测结果如何）</h2><ul>
+<li><strong>Scalability</strong>: We show that Flower can (a) efficiently make use of available resources in single-machine simulations and (b) run experiments with millions of clients whilst sampling thousands in each training.</li>
+<li><strong>Heterogeneity</strong>: We show that Flower can be deployed in real, heterogeneous devices commonly found in crossdevice scenario and how it can be used to measure system statistics.</li>
+<li><strong>Realism</strong>: We show through a case study how Flower can throw light on the performance of FL under heterogeneous clients with different computational and network capabilities.</li>
+<li><strong>Privacy</strong>: Finally, we show how our implementation of Secure Aggregation matches the expected theoretical overhead as expected.</li>
+</ul>
+<h3 id="Large-Scale-Experiment（验证可以大规模实验）"><a href="#Large-Scale-Experiment（验证可以大规模实验）" class="headerlink" title="Large-Scale Experiment（验证可以大规模实验）"></a>Large-Scale Experiment（验证可以大规模实验）</h3><ul>
+<li>任务：五分类任务，使用Amazon Book Review预测User的评分。</li>
+<li>模型：finetune了一个Transformer network（DistilBERT model）</li>
+<li>数据集：Amazon Book Review Dataset：51M reviews、15Musers。</li>
+<li>训练过程中采样的Clients的数量，测试过程中使用两块V100，22-Cores的Intel Xeon Gold 6152(2.10GHz)的CPU。</li>
+<li><img src="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221218001939134.png" class="lazyload placeholder" data-srcset="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221218001939134.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221218001939134"><ul>
+<li>10-500的收敛都很快，1000的收敛很慢，作者说可能是因为数据的不平衡分布。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Single-Machine-Experiments（验证可以帮助研究者快速实现idea，跑得快）"><a href="#Single-Machine-Experiments（验证可以帮助研究者快速实现idea，跑得快）" class="headerlink" title="Single Machine Experiments（验证可以帮助研究者快速实现idea，跑得快）"></a>Single Machine Experiments（验证可以帮助研究者快速实现idea，跑得快）</h3><p>为了证明Flower可以帮助research，能够快速的给出新的idea的结果，Flower needs to be fast at providing reliable results when experimenting new ideas, e.g. a new aggregation strategy。</p>
+<ul>
+<li>和不同的框架做了个端到端的比较：FedScale，TFF，FedJax和原先的LEAF。</li>
+<li>三个FL的设置(Caldas et al., 2018)：FEMNIST数据集。<ul>
+<li>number of clients (c) and local epochs per round change (l) 变化的时候，轮次和客户端的数量控制在2000和179.</li>
+</ul>
+</li>
+<li>设备：Intel Xeon E5-2680 CPU (2.40GHz) equipped with two NVIDIA RTX2080 GPUs and 20GB of RAM</li>
+</ul>
+<p><img src="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221218002728311.png" class="lazyload placeholder" data-srcset="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221218002728311.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221218002728311"></p>
+<ul>
+<li>c=3,l=1的时候，the overhead of having a multi-task system, like the Virtual Client Engine (VCE), causes Flower to sightly under-perform in comparison to loop-based simulators, like LEAF.</li>
+<li>l增加，c增加的时候，这个系统的好处就体现出来了，速度更快。</li>
+<li>VCE允许给每一个client指定分配的GPU memory：<ul>
+<li>The VCE allows us to specify the amount of GPU memory we want to associate with each client, this allows for more efficient data and model loading of different clients on the same GPU, making the overall training considerably faster.</li>
+</ul>
+</li>
+<li>FedJax在l很小的时候很高效，当通讯成为瓶颈、FedJax的性能稍微下降，FedScale的表现则一直都不是很好。</li>
+</ul>
+<h3 id="Flower-enables-FL-evaluation-on-real-devices（验证可以在真实设备上跑）"><a href="#Flower-enables-FL-evaluation-on-real-devices（验证可以在真实设备上跑）" class="headerlink" title="Flower enables FL evaluation on real devices（验证可以在真实设备上跑）"></a>Flower enables FL evaluation on real devices（验证可以在真实设备上跑）</h3><h4 id="可以在很多设备上跑"><a href="#可以在很多设备上跑" class="headerlink" title="可以在很多设备上跑"></a>可以在很多设备上跑</h4><p>deploying Flower on six types of heterogeneous real-world mobile and embedded devices, including Java-based <strong>Android smartphones</strong> and Python-based Nvidia <strong>Jetson series devices</strong> and <strong>Raspberry Pi</strong>.</p>
 <ul>
 <li>FedAvg</li>
-<li>FedProx</li>
+<li>云虚拟机上跑。</li>
+<li>Python实现的clients</li>
+<li>TensorFlow（TensorFlow Lite），While TFLite is primarily designed for on-device inference, we leverage its capabilities to do on-device model personalization to implement a FL client application (Lite, 2020)</li>
 </ul>
-<h3 id="production-oriented-FL-libraries"><a href="#production-oriented-FL-libraries" class="headerlink" title="production-oriented FL libraries"></a>production-oriented FL libraries</h3><ul>
-<li>FATE</li>
-<li>PaddleFL</li>
-</ul>
-<p><strong>not</strong> designed as <strong>flexible</strong> frameworks that aim to support algorithmic innovation for open FL problems</p>
-<h3 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h3><p><img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211212248490.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211212248490.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211212248490"></p>
-<h2 id="Background（当前别人实现的框架哪里不行）"><a href="#Background（当前别人实现的框架哪里不行）" class="headerlink" title="Background（当前别人实现的框架哪里不行）"></a>Background（当前别人实现的框架哪里不行）</h2><ul>
-<li><p><strong>Lack of support of diverse FL computing paradigms.</strong></p>
-</li>
-<li><p><strong>Lack of support of diverse FL configurations.</strong> FL is diverse in network topology, exchanged information, and training procedures.</p>
-</li>
-<li><p><strong>Lack of standardized FL algorithm implementations and benchmarks.</strong></p>
-<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211212649188.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211212649188.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211212649188"></p>
-</li>
-</ul>
-<h2 id="FedML（我的框架行）"><a href="#FedML（我的框架行）" class="headerlink" title="FedML（我的框架行）"></a>FedML（我的框架行）</h2><p>前面四点是针对当前的问题来说的。</p>
+<p><img src="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221218004537772.png" class="lazyload placeholder" data-srcset="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221218004537772.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221218004537772"></p>
 <ul>
-<li><p>(i) Support of diverse FL computing paradigms.</p>
+<li>DeepConvLSTM</li>
+<li>a human activity recognition task on Python-enabled Jetson and Raspberry Pi devices</li>
+<li>client上的代码可以不用改就能跑。</li>
+<li>启发：By comparing the relative energy consumption and training times across various devices, FL researchers can devise more informed client selection policies that can tradeoff between FL convergence time and overall energy consumption.</li>
+</ul>
+<h4 id="可以在实际设备上实现细粒度的分析"><a href="#可以在实际设备上实现细粒度的分析" class="headerlink" title="可以在实际设备上实现细粒度的分析"></a>可以在实际设备上实现细粒度的分析</h4><ul>
+<li>10 Android clients</li>
+<li>2 convolutional layers and 3 fully-connected layers</li>
+<li>CIFAR10 dataset</li>
+<li>TensorFlow Lite is used as the training ML framework on the devices</li>
+<li>We measure the time taken for various FL operations, such as local SGD training, communication between the server and client, local evaluation on the client, and the overhead due to the Flower framework：</li>
+<li><img src="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221218005254632.png" class="lazyload placeholder" data-srcset="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221218005254632.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221218005254632"></li>
+<li>大部分的时间都是device上的训练时间，Flower整个框架的overhead很小的。</li>
+</ul>
+<h3 id="Realism-in-Federated-Learning（验证可以帮助研究者开发更好的优化算法）"><a href="#Realism-in-Federated-Learning（验证可以帮助研究者开发更好的优化算法）" class="headerlink" title="Realism in Federated Learning（验证可以帮助研究者开发更好的优化算法）"></a>Realism in Federated Learning（验证可以帮助研究者开发更好的优化算法）</h3><p>举了两个设计样例去验证了一下。</p>
+<h4 id="Computational-Heterogeneity-across-Clients"><a href="#Computational-Heterogeneity-across-Clients" class="headerlink" title="Computational Heterogeneity across Clients"></a>Computational Heterogeneity across Clients</h4><p>比如根据Flower上观测的结果去微调了FedAvg算法，牺牲了部分的精度换来了更快的收敛时间。</p>
+<h4 id="Heterogeneity-in-Network-Speeds"><a href="#Heterogeneity-in-Network-Speeds" class="headerlink" title="Heterogeneity in Network Speeds"></a>Heterogeneity in Network Speeds</h4><p>客户端的选择策略、通信都会影响训练。</p>
+<p><img src="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221218010543925.png" class="lazyload placeholder" data-srcset="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221218010543925.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221218010543925"></p>
 <ul>
-<li><p>on-device training for edge devices including smartphones and Internet of Things (IoT).</p>
+<li>可以观测到，然后针对性的进行优化。</li>
+</ul>
+<h3 id="Secure-Aggregation-Overheads"><a href="#Secure-Aggregation-Overheads" class="headerlink" title="Secure Aggregation Overheads"></a>Secure Aggregation Overheads</h3><p>实现了SecAgg和SecAgg+</p>
+<p>模型的向量size和clients发生dropouts时候，在服务器端评测了计算和通信开销。we evaluate its impact on server-side computation and communication overhead with the model vector size and clients dropouts。</p>
 <ul>
-<li>FedML-Mobile: Android smartphones</li>
-<li>FedML-IoT: Raspberry PI 4 and NVIDIA Jetson Nano</li>
-<li><strong>smoothly transplant</strong> the distributed computing code <strong>to the FedML-Mobile and FedML-IoT platforms</strong></li>
+<li>Intel Xeon E-2136 CPU (3.30GHz), with 256 GB of RAM</li>
+<li>all entries of our local vectors are of size 24 bits</li>
+<li>ignore communication latency</li>
+<li>all dropouts simulated happen after stage 2, i.e. Share Keys Stage. This is because this imposes the most significant overhead as the server not only needs to regenerate dropped-out clients’ secrets, but also compute their pairwise masks generated between their neighbours.</li>
+<li>the n and t parameters of the t-outof-n secret-sharing scheme are set to 51 and 26,These parameters are chosen to reference SecAgg+’s proven correctness and security guarantees</li>
+<li>Fixing the number of sampled clients to 100,</li>
+<li>CPU running times through aggregating a vector of size 100k entries to aggregating one of size 500k entries in Figure 8：</li>
+<li><img src="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221218011017894.png" class="lazyload placeholder" data-srcset="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/image-20221218011017894.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221218011017894"></li>
 </ul>
-</li>
-<li><p>distributed computing.</p>
-</li>
-<li><p>single-machine simulation to meet algorithmic and system-level research requirements under different system deployment scenarios.</p>
-</li>
-</ul>
-</li>
-<li><p>(ii) Support of diverse FL configurations.</p>
-<ul>
-<li>a worker/client-oriented programming interface to enable diverse network topologies.</li>
-</ul>
-</li>
-<li><p>(iii) Standardized FL algorithm implementations.</p>
-<ul>
-<li>FedML includes standardized implementations of status quo FL algorithms.</li>
-</ul>
-</li>
-<li><p>(iv) Standardized FL benchmarks.</p>
-<ul>
-<li>FedML provides standardized benchmarks with well-defined evaluation metrics, multiple synthetic and real-world non-I.I.D. datasets, as well as verified baseline results to facilitate fair performance comparison.</li>
-</ul>
-</li>
-<li><p>(v) Fully open and evolving.</p>
-</li>
-</ul>
-<h3 id="FedML-Library"><a href="#FedML-Library" class="headerlink" title="FedML Library"></a>FedML Library</h3><p><img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211213555125.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211213555125.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211213555125"></p>
-<ul>
-<li><p>FedML-API：high-level API</p>
-<ul>
-<li>FedML-API： new algorithms in distributed version can be easily implemented by adopting the <strong>client-oriented programming interface</strong>.<ul>
-<li><strong>is essential for scenarios</strong> in which <strong>large DNN training cannot be handled by standalone simulation due to GPU memory and training time constraints.</strong></li>
-<li><strong>separates</strong> the implementations of <strong>models, datasets, and algorithms</strong>.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>FedML-core：low-level API</p>
-<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211220013821.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211220013821.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211220013821"></p>
-<ul>
-<li>The distributed communication module is responsible for low-level communication among different workers/clients （自底向上分别为）.<ul>
-<li><strong>The communication backend is based on MPI (message passing interface).</strong>[MPI，OpenMPI 与深度学习](<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/158584571">MPI，OpenMPI 与深度学习 - 知乎 (zhihu.com)</a>)</li>
-<li><strong>TopologyManager supports a variety of network topologies that can be used in many existing FL algorithms.</strong></li>
-<li></li>
-<li><strong>security/privacy-related functions are also supported?</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="FedML-Library-Programming-Interface（我的框架怎么用）"><a href="#FedML-Library-Programming-Interface（我的框架怎么用）" class="headerlink" title="FedML Library: Programming Interface（我的框架怎么用）"></a>FedML Library: Programming Interface（我的框架怎么用）</h2><p>总结</p>
-<ul>
-<li><p>用的编程模式是Worker/client-oriented programming，可以通过集成WorkerManager实现自定义的Worker上跑的代码。</p>
-</li>
-<li><p>可以自定义不同的Worker之间发送的消息。</p>
-</li>
-<li><p>每一个Worker可以通过TopologyManager获取neighbour的worker ID</p>
-</li>
-<li><p><strong>Trainer and coordinator</strong>这种不是必要的东西不帮用户去实现，让用户自己去实现。</p>
-</li>
-<li><p>保护隐私方面：</p>
-<ul>
-<li><p>提供了一些常见<strong>加密原语</strong>的低层级的API的实现。</p>
-</li>
-<li><p><strong>plan to</strong> include an implementation of <strong>Lagrange Coded Computing (LCC)</strong>.</p>
-</li>
-<li><p><strong>a sample implementation</strong> of the <strong>secure aggregation algorithm</strong>.</p>
-</li>
-<li><p>To <strong>accelerate generating benchmark results on new types of adversarial attacks</strong> in FL, we include the latest robust aggregation methods presented in literature, <strong>Our APIs are easily extendable to support newly developed types of robust aggregation methods</strong>.</p>
-<p>  <strong>most of the existing attacks are highly task-specific</strong>. Thus, it is challenging to provide general adversarial attack APIs. Support the backdoor with model replacement attack presented in [20] and the edge-case backdoor attack presented in [118] to <strong>provide a reference for researchers to develop new attacks</strong>.</p>
-<ul>
-<li>(i) norm difference clipping; weak differential private (DP)</li>
-<li>(ii) RFA (geometric median)</li>
-<li>(iii) KRUM and (iv) MULTIKRUM</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>具体的介绍：</p>
-<ul>
-<li><p>FedML-API：high-level API：<strong>Worker/client-oriented programming</strong>.</p>
-<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211225128831.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211225128831.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211225128831"></p>
-<ul>
-<li>之前的框架例如torch.distributed（the standard distributed training library）是左边的例子：需要在一个客户端上写完整的训练过程，不够灵活。</li>
-<li>我们的方法右边的例子：只需要聚焦于每个客户端上具体是怎么做的，较为灵活。可以通过继承WorkerMananger类实现register_message_receive_handlers等方法去实现。</li>
-</ul>
-</li>
-<li><p><strong>Message definition beyond gradient and model.</strong> （可以传递除了梯度和模型之外的任何<strong>自定义</strong>的消息）</p>
-</li>
-<li><p><strong>Topology management.</strong></p>
-<ul>
-<li>FedML provides TopologyManager to manage the topology and allows users to send messages to arbitrary neighbors during training.</li>
-<li>after the initial setting of TopologyManager is completed, for each trainer in the network, <strong>the neighborhood worker ID can be queried via the TopologyManager.</strong></li>
-</ul>
-</li>
-<li><p>**Trainer and coordinator.**（给点样例，让用户自己去实现）</p>
-<ul>
-<li>For the trainer and coordinator, FedML does not over-design. Rather, it gives the implementation completely to the developers, reflecting the flexibility of our framework.</li>
-</ul>
-</li>
-<li><p><strong>Privacy, security, and robustness.</strong></p>
-<ul>
-<li><p>we include <strong>low-level APIs</strong> that <strong>implement common cryptographic primitives</strong> such as secrete sharing, key agreement, digital signature, and public key infrastructure.</p>
-</li>
-<li><p><strong>plan to</strong> include an implementation of <strong>Lagrange Coded Computing (LCC)</strong>.</p>
-</li>
-<li><p><strong>a sample implementation</strong> of the <strong>secure aggregation algorithm</strong>.</p>
-</li>
-<li><p>To <strong>accelerate generating benchmark results on new types of adversarial attacks</strong> in FL, we include the latest robust aggregation methods presented in literature, <strong>Our APIs are easily extendable to support newly developed types of robust aggregation methods</strong>.</p>
-<p>  <strong>most of the existing attacks are highly task-specific</strong>. Thus, it is challenging to provide general adversarial attack APIs. Support the backdoor with model replacement attack presented in [20] and the edge-case backdoor attack presented in [118] to <strong>provide a reference for researchers to develop new attacks</strong>.</p>
-<ul>
-<li>(i) norm difference clipping; weak differential private (DP)</li>
-<li>(ii) RFA (geometric median)</li>
-<li>(iii) KRUM and (iv) MULTIKRUM</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="FedML-Benchmark-Algorithms-Models-and-Datasets-我用我的框架实现了哪些算法、运用了哪些模型、提供了哪些数据集"><a href="#FedML-Benchmark-Algorithms-Models-and-Datasets-我用我的框架实现了哪些算法、运用了哪些模型、提供了哪些数据集" class="headerlink" title="FedML Benchmark: Algorithms, Models, and Datasets (我用我的框架实现了哪些算法、运用了哪些模型、提供了哪些数据集)"></a>FedML Benchmark: Algorithms, Models, and Datasets (我用我的框架实现了哪些算法、运用了哪些模型、提供了哪些数据集)</h2><h3 id="Algorithms-Federated-Optimizer（当前用此框架实现的算法）"><a href="#Algorithms-Federated-Optimizer（当前用此框架实现的算法）" class="headerlink" title="Algorithms: Federated Optimizer（当前用此框架实现的算法）"></a>Algorithms: Federated Optimizer（当前用此框架实现的算法）</h3><ul>
-<li>Federated Averaging (FedAvg)</li>
-<li>Decentralized FL</li>
-<li>Vertical Federated Learning (VFL)</li>
-<li>Split learning</li>
-<li>Federated Neural Architecture Search (FedNAS)</li>
-<li>Turbo-Aggregate</li>
-<li><strong>will keep following the latest algorithm</strong> to be published at top-tier machine learning conferences</li>
-<li>will continuously add new FL algorithms such as：<ul>
-<li>Adaptive Federated Optimizer</li>
-<li>FedNova</li>
-<li>FedProx</li>
-<li>FedMA</li>
-</ul>
-</li>
-</ul>
-<h3 id="Models-and-Datasets（当前此框架提供的模型和数据集）"><a href="#Models-and-Datasets（当前此框架提供的模型和数据集）" class="headerlink" title="Models and Datasets（当前此框架提供的模型和数据集）"></a>Models and Datasets（当前此框架提供的模型和数据集）</h3><ul>
-<li><p>总结了过去两年（19-20）顶会上用的non-I.I.D.的数据集和模型:</p>
-<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211232944169.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211232944169.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211232944169"></p>
-</li>
-<li><p>对模型做了一个分类：</p>
-<ul>
-<li><p>linear models (convex optimization)</p>
-<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211233126326.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211233126326.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211233126326"></p>
-</li>
-<li><p>lightweight shallow neural networks (non-convex optimization)</p>
-<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211233139976.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211233139976.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211233139976"></p>
-</li>
-<li><p>deep neural networks (non-convex optimization)</p>
-<p>  <img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211233407833.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211233407833.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211233407833"></p>
-<p>  Given the resource constraints of edge devices, large DNN models are usually trained under the cross-organization FL (also called cross-silo FL) setting.</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Experiments（我们增加新的benchmark的时候还会给大家提供一个能训练成什么效果的参考）"><a href="#Experiments（我们增加新的benchmark的时候还会给大家提供一个能训练成什么效果的参考）" class="headerlink" title="Experiments（我们增加新的benchmark的时候还会给大家提供一个能训练成什么效果的参考）"></a>Experiments（我们增加新的benchmark的时候还会给大家提供一个能训练成什么效果的参考）</h2><p>例如使用ResNet-56和MobileNet去测试的结果<strong>精度随着epoch的变化</strong>如下。</p>
-<p><img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211234055821.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211234055821.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211234055821"></p>
-<p>单GPU模拟和多GPU模拟的区别：</p>
-<p><img src="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211234358774.png" class="lazyload placeholder" data-srcset="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/image-20221211234358774.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221211234358774"></p>
-<ul>
-<li>Table reveals that when training large CNNs, <strong>the standalone simulation is about 8 times slower than distributed computing with 10 parallel workers</strong>. </li>
-<li>Therefore, <strong>when training large DNNs, we suggest using FedML’s distributed computing paradigm, which is not supported by existing FL libraries such as PySyft [28], LEAF [40], and TTF [39]</strong>. </li>
-<li>Moreover, <strong>FedML supports multiprocessing in a single GPU card</strong> which enables FedML to run a large number of training workers by using only a few GPU cards. As an example, when training ResNet on CIFAR-10, FedML can run 112 workers in a server with 8 GPUs.</li>
-</ul>
-
+<h2 id="Conclusion（最终结论）"><a href="#Conclusion（最终结论）" class="headerlink" title="Conclusion（最终结论）"></a>Conclusion（最终结论）</h2>
       </div>
       <div class="post-tags-categories">
         
@@ -869,10 +818,6 @@
               About FL
             </a>
           
-            <a href="../../../../tags/Benchmark/" class="">
-              Benchmark
-            </a>
-          
         </div>
         
       </div>
@@ -884,7 +829,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/" target="_blank" title="arXiv20-FedML-A Research Library and Benchmark for Federated Machine Learning">https://hiyoungshen.github.io/2022/12/11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/</a>
+    <a href="/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/" target="_blank" title="arXiv20-FLOWER: A FRIENDLY FEDERATED LEARNING FRAMEWORK">https://hiyoungshen.github.io/2022/12/17/arxiv20-flower-a-friendly-federated-learning-framework/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -902,40 +847,21 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="../../../../medias/4.jpg" class="lazyload placeholder" data-srcset="../../../../medias/4.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
-    </div>
-    <a href="../../17/arxiv20-flower-a-friendly-federated-learning-framework/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">arXiv20-FLOWER: A FRIENDLY FEDERATED LEARNING FRAMEWORK</div>
-      </div>
-      
-      <!-- <div class="content">
-        arXiv20-FLOWER-A-FRIENDLY-FEDERATED-LEARNING-FRAMEWORK
-解决的问题
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="../../../../medias/4.jpg" class="lazyload placeholder" data-srcset="../../../../medias/4.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="../../../../medias/6.jpg" class="lazyload placeholder" data-srcset="../../../../medias/6.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
     </div>
-    <a href="../../../11/20/pmlr21-data-free-knowledge-distillation-for-heterogeneous-federated-learning/" class="post-nav-link">
+    <a href="../../11/arxiv20-fedml-a-research-library-and-benchmark-for-federated-machine-learning/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">Data-Free Knowledge Distillation for Heterogeneous Federated Learning</div>
+        <div class="title-text">arXiv20-FedML-A Research Library and Benchmark for Federated Machine Learning</div>
       </div>
       <!-- <div class="content">
-        PMLR21-Data-Free-Knowledge-Distillation-for-Heterogeneous-Fe
+        arXiv20-FedML-A Research Library and Benchmark for Federated
       </div> -->
     </a>
   </div>
