@@ -746,29 +746,22 @@
 <h2 id="3-Walle-Architecture-and-Design-Rationale（Walle的架构和设计原理）"><a href="#3-Walle-Architecture-and-Design-Rationale（Walle的架构和设计原理）" class="headerlink" title="3 Walle: Architecture and Design Rationale（Walle的架构和设计原理）"></a>3 Walle: Architecture and Design Rationale（Walle的架构和设计原理）</h2><p><img src="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221004619237.png" class="lazyload placeholder" data-srcset="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221004619237.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p>
 <center>
 <figure class="half">
-    <img src="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221005206478.png" class="lazyload placeholder" data-srcset="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221005206478.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" width="400">
-    <img src="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221005218469.png" class="lazyload placeholder" data-srcset="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221005218469.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" width="400">
+    <img src="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221005206478.png" class="lazyload placeholder" data-srcset="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221005206478.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" width="300">
+    <img src="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221005218469.png" class="lazyload placeholder" data-srcset="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221005218469.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" width="300">
 </figure>
 <center>
-
 
 
 <ul>
 <li><p>Compute Container</p>
 <ul>
-<li><p>通过refine CPython实现了一个<strong>Python VM</strong>，针对实际的mobile APP的需求实现了定制。</p>
-<ul>
-<li><p>考虑到不同ML任务的独立特征和每个ML任务不同阶段的执行，在实现的Python VM中抛弃了GIL，第一次通过将每一个ML task绑定到线程并执行thread isolation来支持tasl-level的thread 。这样的Python VM-based的设计给Compute Container赋予了动态任务派发的能力，将ML任务的迭代和数月/数周的移动App的更细解绑。</p>
-</li>
-<li><p>在底层，使用C/C++实现了跨平台高性能的<strong>tensor compute engine</strong>，core使用了geometric computing和semi-auto search的创新的机制。</p>
-</li>
-<li><p><img src="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221142104361.png" class="lazyload placeholder" data-srcset="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221142104361.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221221142104361"></p>
-<ul>
+<li>通过refine CPython实现了一个<strong>Python VM</strong>，针对实际的mobile APP的需求实现了定制。</li>
+<li>考虑到不同ML任务的独立特征和每个ML任务不同阶段的执行，在实现的Python VM中抛弃了GIL，第一次通过将每一个ML task绑定到线程并执行thread isolation来支持tasl-level的thread 。这样的Python VM-based的设计给Compute Container赋予了动态任务派发的能力，将ML任务的迭代和数月/数周的移动App的更细解绑。</li>
+<li>在底层，使用C/C++实现了跨平台高性能的<strong>tensor compute engine</strong>，core使用了geometric computing和semi-auto search的创新的机制。</li>
+<li><img src="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221142104361.png" class="lazyload placeholder" data-srcset="/2022/12/20/osdi22-walle-an-end-to-end-general-purpose-and-large-scale-production-system-for-device-cloud-collaborative-machine-learning/image-20221221142104361.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221221142104361"><ul>
 <li><strong>geometric computing</strong> extracts a new atomic operator from transform operators, by leveraging the nature of coordinate transformation as well as the linear mapping between an element’s coordinate and its memory address. <strong>As a result</strong>, all the transform and composite operators, accounting for roughly <strong>49% of all the operators, can be decomposed to the atomic operators</strong>, <strong>reducing 46% of the workload</strong> of manually implementing and optimizing 124 operators for 16 kinds of backends from algorithm, ISA, memory, and assembly.</li>
 <li>Then, to <strong>quickly identify the backend available on a mobile device or a cloud server</strong> to execute a computation graph with a series of operators at the minimum cost, <strong>semi-auto search is applied in runtime to find the optimal implementation algorithm with the optimal parameters for each operator on each available backend</strong>.</li>
 <li>Based on the tensor compute engine, we implement <strong>the libraries of scientific computing, image processing, model inference, and model training</strong>, and expose them to Python VM as standard APIs, supporting the whole cycle of diverse ML tasks with standard data input.</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -811,7 +804,7 @@
 <li><strong>算法-level的优化</strong>：对于一些计算密集型的操作符，例如卷积和矩阵的乘法，采取了Winograd和Strassen等更高效的算法，极大的减少了乘法的数量。</li>
 <li><strong>the ISA-level optimization</strong>：充分利用单指令多数据（SIMD）的优点，例如ARM Neon和X86的AVX512来加速。为了充分发挥SIMD中data-level的并行，仔细设计了data layout和data packing，具体来说没使用新的NC/4HW4 layout和一个为卷积打造的channel-major packing。</li>
 <li><strong>the memory-level的优化</strong>集中于减少内存读写的次数，提升内存分配的contiguity。具体的说，对于矩阵乘法来说，使用了tiling和memory reordering。</li>
-<li><strong>the assembly-based optimization</strong>能够取得指令级别的加速。实现了一些core operators的手写汇编，仔细做了一些优化，例如loop unrolling, software pipelining和instruction reordering。</li>
+<li> <strong>the assembly-based optimization</strong>能够取得指令级别的加速。实现了一些core operators的手写汇编，仔细做了一些优化，例如loop unrolling, software pipelining和instruction reordering。</li>
 </ul>
 <p><strong>Semi-Auto Search （？）：</strong></p>
 <p>Data processing和model execution通常涉及一些列操作（也就是automic, raster和control-flow的operators），不同的backends对于operators由不同的实现和优化，mobile device和cloud server通常由several backends。因此<strong>Semi-Auto Search的全局目标是使用minimum cost去identify backend</strong>。每一个backend的cost是所有operators采取optimal implementations的和，为了identify一个操作符在一个确定的backend上最优的算法实现，需要找到每一个可能的算法的optimal参数，这就变成了 一个<strong>可解的constrained optimization problem</strong>，可以被快速求解，目Semi-Auto Search。算发的规范化表述如下：</p>
