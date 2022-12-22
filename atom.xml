@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2022-12-21T14:23:05.511Z</updated>
+  <updated>2022-12-22T09:07:56.125Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IMC17-Complexity vs. Performance: Empirical Analysis of Machine Learning as a Service</title>
+    <link href="https://hiyoungshen.github.io/2022/12/21/imc17-complexity-vs-performance-empirical-analysis-of-machine-learning-as-a-service/"/>
+    <id>https://hiyoungshen.github.io/2022/12/21/imc17-complexity-vs-performance-empirical-analysis-of-machine-learning-as-a-service/</id>
+    <published>2022-12-21T14:48:16.000Z</published>
+    <updated>2022-12-22T09:07:56.125Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;IMC17-Complexity-vs-Performance-Empirical-Analysis-of-Machine-Learning-as-a-Service&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About Empirical Study" scheme="https://hiyoungshen.github.io/tags/About-Empirical-Study/"/>
+    
+  </entry>
   
   <entry>
     <title>OSDI22-Walle: An End-to-End, General-Purpose, and Large-Scale Production System for Device-Cloud Collaborative Machine Learning</title>
