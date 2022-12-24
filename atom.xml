@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2022-12-22T09:07:56.125Z</updated>
+  <updated>2022-12-24T13:59:58.933Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SenSys21-FedMask: Joint Computation and Communication-Efficient Personalized Federated Learning via Heterogeneous Masking</title>
+    <link href="https://hiyoungshen.github.io/2022/12/24/sensys21-fedmask-joint-computation-and-communication-efficient-personalized-federated-learning-via-heterogeneous-masking/"/>
+    <id>https://hiyoungshen.github.io/2022/12/24/sensys21-fedmask-joint-computation-and-communication-efficient-personalized-federated-learning-via-heterogeneous-masking/</id>
+    <published>2022-12-24T06:55:52.000Z</published>
+    <updated>2022-12-24T13:59:58.933Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;SenSys21-FedMask-Joint-Computation-and-Communication-Efficient-Personalized-Federated-Learning-via-Heterogeneous-Masking&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
+    
+    <category term="About Prune" scheme="https://hiyoungshen.github.io/tags/About-Prune/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MobiCom21-Hermes: An Efficient Federated Learning Framework for Heterogeneous Mobile</title>
+    <link href="https://hiyoungshen.github.io/2022/12/23/mobicom21-hermes-an-efficient-federated-learning-framework-for-heterogeneous-mobile-clients/"/>
+    <id>https://hiyoungshen.github.io/2022/12/23/mobicom21-hermes-an-efficient-federated-learning-framework-for-heterogeneous-mobile-clients/</id>
+    <published>2022-12-23T09:57:11.000Z</published>
+    <updated>2022-12-24T13:59:38.215Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;MobiCom21-Hermes-An-Efficient-Federated-Learning-Framework-for-Heterogeneous-Mobile&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
+    
+    <category term="About Prune" scheme="https://hiyoungshen.github.io/tags/About-Prune/"/>
+    
+  </entry>
   
   <entry>
     <title>IMC17-Complexity vs. Performance: Empirical Analysis of Machine Learning as a Service</title>
@@ -272,16 +330,14 @@
     <link href="https://hiyoungshen.github.io/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/"/>
     <id>https://hiyoungshen.github.io/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/</id>
     <published>2022-11-12T04:19:00.000Z</published>
-    <updated>2022-11-20T13:04:51.696Z</updated>
+    <updated>2022-12-24T13:45:27.840Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;Oort优化了中央服务器选择client的策略，不再用random选择的策略，而是给每一个client都设置一个名叫utility的东西，utility是根据client的历史上根据对model的更新算出来的.&lt;/li&gt;
-&lt;li&gt;优化了statistical</summary>
+    <summary type="html">&lt;h1 id=&quot;OSDI21-Oort-Efficient-Federated-Learning-via-Guided-Participant-Selection&quot;&gt;&lt;a</summary>
         
       
     

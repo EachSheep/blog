@@ -643,52 +643,44 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <ul>
-<li>Oort优化了中央服务器选择client的策略，不再用random选择的策略，而是给每一个client都设置一个名叫utility的东西，utility是根据client的历史上根据对model的更新算出来的.</li>
-<li>优化了statistical model efficiency和system efficiency</li>
-<li>同时做出了一个可以让开发者选择自己想要的数据的系统方便开发者去做测试。</li>
-</ul>
-<p>作者是怎么在那么多上使用ImageNet数据集跑MobileNet模型的？每个clienr是怎么确定自己用什么样的数据的？</p>
+        <h1 id="OSDI21-Oort-Efficient-Federated-Learning-via-Guided-Participant-Selection"><a href="#OSDI21-Oort-Efficient-Federated-Learning-via-Guided-Participant-Selection" class="headerlink" title="OSDI21-Oort Efficient Federated Learning via Guided Participant Selection"></a>OSDI21-Oort Efficient Federated Learning via Guided Participant Selection</h1><p><img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221224210212604.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221224210212604.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221224210212604"></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/507487766">一种新型的联邦分布式架构（Oort）及未来研究方向 - 知乎 (zhihu.com)</a></p>
-<h1 id="OSDI21-Oort-Efficient-Federated-Learning-via-Guided-Participant-Selection"><a href="#OSDI21-Oort-Efficient-Federated-Learning-via-Guided-Participant-Selection" class="headerlink" title="OSDI21-Oort Efficient Federated Learning via Guided Participant Selection"></a>OSDI21-Oort Efficient Federated Learning via Guided Participant Selection</h1><h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><ul>
-<li><strong>Target</strong>: improve the performance of federated training and testing with guided participant selection<ul>
-<li>prioritizes the use of those clients who have both data that offers the greatest utility in improving model accuracy and the capability to run training quickly</li>
-<li>To enable FL developers to interpret their results in model testing, Oort enforces their requirements on the distribution of participant data while improving the duration of federated testing by cherry-picking clients</li>
-</ul>
-</li>
-<li><strong>Result</strong>: time-to-accuracy performance by 1.2×-14.1× and final model accuracy by 1.3%-9.8%, while efficiently enforcing developer-specified model testing criteria at the scale of millions of clients.</li>
-<li>方法：通过选择一个client的子集（通过client最近的loss去选择，惩罚会导致全局聚合时间增加的client）去优化statistical model efficiency和system efficiency<ul>
-<li>选择client的方法用的是FL已经给你提供的信息，并且限制参与者的数量。（可以通过调参兼顾模型的公平性和保护隐私的要求）。</li>
-<li>开发者可以自定义测试数据集的分布去debug model efficiency。</li>
-<li>PySyft上实现，真实的workloads上测试。</li>
-</ul>
-</li>
-</ul>
-<h2 id="Background-and-Motivation"><a href="#Background-and-Motivation" class="headerlink" title="Background and Motivation"></a>Background and Motivation</h2><h3 id="FL"><a href="#FL" class="headerlink" title="FL"></a>FL</h3><p>联邦学习通常每一轮几百台设备，花好几天训练完成。（为什么不挑选出人数最多的分布去做训练？然后在设备上做finetune）</p>
-<p>开发者测试的时候有挑选出一部分数据集做训练的需求：</p>
+<p><strong>优先选择既有优质的数据（快速的让loss下降）又算的快的client</strong>。（prioritizes the use of those clients who have both data that offers the greatest utility in improving model accuracy and the capability to run training quickly）</p>
+<p><strong>Oort可以强制要求参与者数据的分布，这样开发者可以较方面的解释他的结果。</strong>（To enable FL developers to interpret their results in model testing, Oort enforces their requirements on the distribution of participant data while improving the duration of federated testing by cherry-picking clients）</p>
+<p><strong>Result</strong>: <strong>time-to-accuracy performance</strong> by <strong>1.2×-14.1×</strong> and <strong>final model accuracy</strong> by <strong>1.3%-9.8%</strong>, while efficiently enforcing developer-specified model testing criteria at the scale of millions of clients.</p>
+<p><strong>方法</strong>：通过client最近的loss（utility）去选择一个client的子集（惩罚会导致全局聚合时间增加的client）去优化statistical model efficiency和system efficiency。</p>
+<p><strong>实现</strong>：<strong>PySyft</strong>上，真实的workloads上测试。</p>
 <ul>
-<li>“50k representative samples”</li>
-<li>“x samples of class y”</li>
-<li>“a subset with less than X% data deviation from the global”</li>
+<li>选择client的策略同时考虑了设备异构性、数据异构型和通信开销的问题。</li>
+<li>通过选择client的策略来优化训练的效率，缺少了个性化。</li>
 </ul>
-<h3 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h3><ul>
-<li>数据异构性：展示了一些数据集上不同clients之间数据规模和pairwise data divergence的CDF图。</li>
-<li>设备异构性：用mobilenet在几百个设备上跑，计算了<strong>推导延迟</strong>和<strong>网络的吞吐率</strong>画了两张图。</li>
-<li>Enormous population and pervasive uncertainty</li>
-<li>Privacy concerns</li>
-</ul>
-<h3 id="Limitations-of-Existing-FL-Solutions"><a href="#Limitations-of-Existing-FL-Solutions" class="headerlink" title="Limitations of Existing FL Solutions"></a>Limitations of Existing FL Solutions</h3><ul>
-<li>the potential for curbing these disadvantages by cherry-picking participants before execution has largely been overlooked</li>
-<li>Suboptimality in maximizing efficiency： 用MobileNet和ShuffleNet在1.6 million的OpenImage数据集上做训练，在超过一万四的clients上随机选择100个做训练，用图片在100clients均匀分布训练出的结果为upper bound，发现即使用了YoGi和Prox等优化技术，忽略系统的异构性都会显著增加每一轮此的延迟。</li>
-<li>Inability to enforce data selection criteria：当前的participants选择策略不仅影响执行，也影响最终训练的bias和confidence。使用预训练的shufflenet做训练的时候，和数据的全局分布比起来，差距也很大，尽管当clients数量增加的时候，这种deviation会减少，但是<strong>去量化不同客户端数量下的这种偏差</strong>，仍然十分重要。同时，即使选择了很多的clients，开发者仍然不能指定他们想要的数据集的分布，比如开发者想要一个相对balanced datasets，但是randomchoice可能会导致这样的bias，如图4(b)所示。</li>
-</ul>
-<h2 id="Oort设计"><a href="#Oort设计" class="headerlink" title="Oort设计"></a>Oort设计</h2><p>Oort is a participant selection framework that identifies and cherry-picks valuable participants for FL training and testing</p>
+<h2 id="Background（为什么做这件事）"><a href="#Background（为什么做这件事）" class="headerlink" title="Background（为什么做这件事）"></a>Background（为什么做这件事）</h2><p>联邦学习通常每一轮几百台设备，花好几天训练完成。</p>
+<p><strong>训练模型的wall clock time仍然是一个关键的性能指标，需要提升</strong>。</p>
+<p><strong>开发者测试的时候有挑选出一部分数据集做训练和测试的需求</strong>：“50k representative samples”、“x samples of class y”、“a subset with less than X% data deviation from the global”。</p>
+<p><strong>当前的FL有什么挑战？</strong></p>
 <ul>
-<li>位于Coordinator里面，和FL execution interact.</li>
-<li>Given developer-specified criteria, it responds with a list of participants, whereas the driver is in charge of initiating and managing execution on the Oort-selected remote participants</li>
+<li><p>数据异构性：展示了一些数据集上不同clients之间数据规模和pairwise data divergence的CDF图。</p>
+<p>  <img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221224213011528.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221224213011528.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221224213011528"></p>
+</li>
+<li><p>设备异构性：用mobilenet在几百个设备上跑，计算了<strong>推理事件</strong>和<strong>网络的吞吐率</strong>画了两张图。</p>
+<p>  <img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221224213023703.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221224213023703.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221224213023703"></p>
+</li>
+<li><p>Enormous population and pervasive uncertainty</p>
+</li>
+<li><p>Privacy concerns</p>
+</li>
 </ul>
-<p><img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111134439590.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111134439590.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221111134439590"></p>
-<p>Oort interacts with the developer and FL execution frameworks. </p>
+<p><strong>当前的解决办法有什么不足（Limitations of Existing FL Solutions）</strong></p>
+<ul>
+<li><p>the potential for curbing these disadvantages by cherry-picking participants before execution has largely been overlooked</p>
+</li>
+<li><p>Suboptimality in maximizing efficiency： 用MobileNet和ShuffleNet在1.6 million的OpenImage数据集上做训练，在超过一万四的clients上随机选择100个做训练，用图片在100clients均匀分布训练出的结果为upper bound，发现即使用了YoGi和Prox等优化技术，忽略系统的异构性都会显著增加每一轮此的延迟。<img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221224213308401.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221224213308401.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221224213308401"></p>
+</li>
+<li><p>Inability to enforce data selection criteria：<strong>Figure 4（a）</strong>展示，即使是同样的participants，随机选择策略会导致显著的data deviations，尽管这种deviation会随着participants数量的增加而增加，但去两户啊这种deviation仍然十分重要。Figure 4（b）显示，选择participants的时候，开发者不能指定他想要的分布，会导致测试的结果的偏差范围很大。</p>
+<p>  <img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221224213431960.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221224213431960.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221224213431960"></p>
+</li>
+</ul>
+<h2 id="Oort整体设计"><a href="#Oort整体设计" class="headerlink" title="Oort整体设计"></a>Oort整体设计</h2><p><img src="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111134439590.png" class="lazyload placeholder" data-srcset="/2022/11/12/osdi21-oort-efficient-federated-learning-via-guided-participant-selection/image-20221111134439590.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="image-20221111134439590"></p>
 <ul>
 <li><strong>Job submission</strong>: the developer submits and specifies the participant selection criteria to the FL coordinator in the cloud. </li>
 <li><strong>Participant selection</strong>: the coordinator enquires the clients meeting eligibility properties (e.g., battery level), and forwards their characteristics (e.g., liveness) to Oort.</li>
@@ -697,7 +689,7 @@
 <li>Execution: the coordinator distributes relevant profiles (e.g., model) to these participants, and then each participant independently computes results (e.g., model weights in training) on her data</li>
 <li>Aggregation: when participants complete the computation, the coordinator aggregates updates from participants</li>
 </ul>
-<h3 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h3><p><strong>Training selector</strong>: </p>
+<h3 id="Interface（Oort的接口设计）"><a href="#Interface（Oort的接口设计）" class="headerlink" title="Interface（Oort的接口设计）"></a>Interface（Oort的接口设计）</h3><p><strong>Training selector</strong>: </p>
 <ul>
 <li>improve the timeto-accuracy performance of federated training</li>
 <li>it captures the utility of clients in training, and efficiently explores and selects high-utility clients at runtime</li>
@@ -777,7 +769,7 @@
 </ul>
 <p><strong>Accommodation to diverse selection criteria</strong></p>
 <p>可以自定义utility的计算方法。</p>
-<h2 id="联邦学习的模型测试（没大看懂）"><a href="#联邦学习的模型测试（没大看懂）" class="headerlink" title="联邦学习的模型测试（没大看懂）"></a>联邦学习的模型测试（没大看懂）</h2><h3 id="开发者未自定义数据的分布时默认给出的数据具有代表性"><a href="#开发者未自定义数据的分布时默认给出的数据具有代表性" class="headerlink" title="开发者未自定义数据的分布时默认给出的数据具有代表性"></a>开发者未自定义数据的分布时默认给出的数据具有代表性</h3><p>enable guided participant selection by determining the number of participants needed to guarantee this deviation target.</p>
+<h2 id="联邦学习的模型测试"><a href="#联邦学习的模型测试" class="headerlink" title="联邦学习的模型测试"></a>联邦学习的模型测试</h2><h3 id="开发者未自定义数据的分布时默认给出的数据具有代表性"><a href="#开发者未自定义数据的分布时默认给出的数据具有代表性" class="headerlink" title="开发者未自定义数据的分布时默认给出的数据具有代表性"></a>开发者未自定义数据的分布时默认给出的数据具有代表性</h3><p>enable guided participant selection by determining the number of participants needed to guarantee this deviation target.</p>
 <p><strong>好像只是对数据的样本数进行了一个抽取数据的分布的限制，使抽取的数据更加具有代表性。</strong></p>
 <h4 id="Preserving-Data-Representativeness"><a href="#Preserving-Data-Representativeness" class="headerlink" title="Preserving Data Representativeness"></a>Preserving Data Representativeness</h4><p>使用L1 distance去度量所有参与者与全局数据分布的偏差，对于类别X, L1-distance计算如下：</p>
 <p>$\left| \overline{X} - E[\overline{X}] \right|$，表示所有参与者的样本均值和所有clients之间样本均值的关系。</p>
@@ -801,7 +793,7 @@
 <li>故障恢复。</li>
 <li>Gurobi solver去解决MILP问题。</li>
 </ul>
-<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>68个英伟达 Tesla P100的GPUs上每一轮模拟了1300个参与者，在。训练和测试阶段模拟真实的异构client系统的性能和数据，使用了一个开源的FL benchmark：</p>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p><strong>68个英伟达 Tesla P100的GPUs上每一轮模拟了1300个参与者</strong>，在。训练和测试阶段模拟真实的异构client系统的性能和数据，使用了一个开源的FL benchmark：</p>
 <ul>
 <li>不同的设备</li>
 <li>不同的模型</li>
