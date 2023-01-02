@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2022-12-24T13:59:58.933Z</updated>
+  <updated>2022-12-25T15:22:55.446Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -15,6 +15,93 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WWW21-Characterizing Impacts of Heterogeneity in Federated Learning upon Large-Scale Smartphone Data</title>
+    <link href="https://hiyoungshen.github.io/2022/12/25/www21-characterizing-impacts-of-heterogeneity-in-federated-learning-upon-large-scale-smartphone-data/"/>
+    <id>https://hiyoungshen.github.io/2022/12/25/www21-characterizing-impacts-of-heterogeneity-in-federated-learning-upon-large-scale-smartphone-data/</id>
+    <published>2022-12-25T12:38:21.000Z</published>
+    <updated>2022-12-25T15:22:55.446Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;WWW21-Characterizing-Impacts-of-Heterogeneity-in-Federated-Learning-upon-Large-Scale-Smartphone-Data&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
+    
+    <category term="About Empirical Study" scheme="https://hiyoungshen.github.io/tags/About-Empirical-Study/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MobiSys22-FedBalancer: Data and Pace Control for Efficient Federated Learning on Heterogeneous Clients</title>
+    <link href="https://hiyoungshen.github.io/2022/12/24/mobisys-fedbalancer-data-and-pace-control-for-efficient-federated-learning-on-heterogeneous-clients/"/>
+    <id>https://hiyoungshen.github.io/2022/12/24/mobisys-fedbalancer-data-and-pace-control-for-efficient-federated-learning-on-heterogeneous-clients/</id>
+    <published>2022-12-24T15:01:02.000Z</published>
+    <updated>2022-12-25T12:39:35.225Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;MobiSys22-FedBalancer-Data-and-Pace-Control-for-Efficient-Federated-Learning-on-Heterogeneous-Clients&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
+    
+    <category term="About DataSelecting" scheme="https://hiyoungshen.github.io/tags/About-DataSelecting/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>arXiv22-FEDNAS: FEDERATED DEEP LEARNING VIA NEURAL ARCHITECTURE SEARCH</title>
+    <link href="https://hiyoungshen.github.io/2022/12/24/arxiv22-fednas-federated-deep-learning-via-neural-architecture-search/"/>
+    <id>https://hiyoungshen.github.io/2022/12/24/arxiv22-fednas-federated-deep-learning-via-neural-architecture-search/</id>
+    <published>2022-12-24T14:02:49.000Z</published>
+    <updated>2022-12-24T14:03:31.512Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;arXiv22-FEDNAS-FEDERATED-DEEP-LEARNING-VIA-NEURAL-ARCHITECTURE-SEARCH&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About FL" scheme="https://hiyoungshen.github.io/tags/About-FL/"/>
+    
+    <category term="About NAS" scheme="https://hiyoungshen.github.io/tags/About-NAS/"/>
+    
+  </entry>
   
   <entry>
     <title>SenSys21-FedMask: Joint Computation and Communication-Efficient Personalized Federated Learning via Heterogeneous Masking</title>
@@ -488,23 +575,6 @@
     
     
     <category term="About Blogs" scheme="https://hiyoungshen.github.io/tags/About-Blogs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>About Me</title>
-    <link href="https://hiyoungshen.github.io/2021/08/07/about-me/"/>
-    <id>https://hiyoungshen.github.io/2021/08/07/about-me/</id>
-    <published>2021-08-07T08:39:00.000Z</published>
-    <updated>2022-10-28T15:07:36.151Z</updated>
-    
-    
-    
-    
-    <category term="About Me" scheme="https://hiyoungshen.github.io/categories/About-Me/"/>
-    
-    
-    <category term="About Me" scheme="https://hiyoungshen.github.io/tags/About-Me/"/>
     
   </entry>
   
